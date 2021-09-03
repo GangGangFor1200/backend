@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -15,22 +17,11 @@ public class Vlog {
     @Column(name = "vlog_id")
     private Long id;
 
-    private String name;
-
     private String url;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "place_id")
-    private Place place;
 
-    public void setPlace(Place place){
-        this.place=place;
-        place.getVlogList().add(this);
-    }
-    public static Vlog createVlog(Place place){
-        Vlog vlog=new Vlog();
-        vlog.setPlace(place);
+    @OneToMany(mappedBy = "place",cascade = CascadeType.ALL)
+    private List<Place_Vlog> place_vlogList=new ArrayList<>();
 
-        return vlog;
-    }
+
 }

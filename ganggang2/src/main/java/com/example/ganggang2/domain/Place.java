@@ -31,10 +31,14 @@ public class Place {
 
     private String explanation;
 
-    private int rank;
+    private Long count;
 
     @OneToMany(mappedBy = "place",cascade = CascadeType.ALL)
-    private List<Vlog> vlogList=new ArrayList<>();
+    private List<Place_Vlog> place_vlogList=new ArrayList<>();
+
+    public void Countplus(){
+        this.count++;
+    }
 
     //order을 저장할 때, category와 station에도 추가되도록 setter만들기
     public void setCategory(Category category){
@@ -52,7 +56,4 @@ public class Place {
         return place;
     }
 
-    public List<Vlog> getVlogList(int i){
-        return vlogList.subList(i,i+3);
-    }
 }

@@ -19,6 +19,12 @@ public class PlaceRepository {
         em.persist(place);
     }
 
+    public List<Place> findName(String name){
+        return em.createQuery("select m from Place m where m.name = :name",Place.class)
+                .setParameter("name",name)
+                .getResultList();
+    }
+
     public Place findOne(Long id){
         return em.find(Place.class,id);
     }

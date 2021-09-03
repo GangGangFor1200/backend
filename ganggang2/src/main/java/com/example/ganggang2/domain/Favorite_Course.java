@@ -9,16 +9,19 @@ import java.io.Serializable;
 @Entity
 @Getter
 @Setter
-public class Favorite_Course implements Serializable {
+public class Favorite_Course {
 
     @Id
     @GeneratedValue
+    @Column(name = "favorite_course_id")
+    private Long id;
+
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "favorite_id")
     private Favorite favorite;
 
-    @Id
-    @GeneratedValue
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id")
     private Course course;

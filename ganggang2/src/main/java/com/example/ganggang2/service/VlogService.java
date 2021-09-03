@@ -40,7 +40,8 @@ public class VlogService {
 
             }
             //place_vlog 만들기
-            place_vlogRepository.save(new Place_Vlog(place,vlog));
+            Place_Vlog place_vlog=Place_Vlog.createPlace_Vlog(place,vlog);
+            place_vlogRepository.save(place_vlog);
 
         }
 

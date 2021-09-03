@@ -26,9 +26,21 @@ public class Place_Vlog {
     @JoinColumn(name = "vlog_id")
     private Vlog vlog;
 
-    public Place_Vlog(Place place, Vlog vlog) {//vlogservice에서만
+    public void setPlace(Place place){
         this.place=place;
+        place.getPlace_vlogList().add(this);
+    }
+
+    public void setVlog(Vlog vlog){
         this.vlog=vlog;
+        vlog.getPlace_vlogList().add(this);
+    }
+
+    public static Place_Vlog createPlace_Vlog(Place place, Vlog vlog){
+        Place_Vlog place_vlog=new Place_Vlog();
+        place_vlog.setPlace(place);
+        place_vlog.setVlog(vlog);
+        return place_vlog;
     }
 
     public Place_Vlog() {

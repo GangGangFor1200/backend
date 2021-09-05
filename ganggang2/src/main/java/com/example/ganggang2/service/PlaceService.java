@@ -30,4 +30,7 @@ public class PlaceService {
     }
 
 
+    public long find(long placeId) {
+        return placeRepository.findOne(placeId).getId();
+    }
 }

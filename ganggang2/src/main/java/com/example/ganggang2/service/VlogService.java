@@ -22,9 +22,10 @@ public class VlogService {
     private final PlaceRepository placeRepository;
 
     //값이 들어올 때 어떻게 들어올지 몰라서 일단 placelist로 해놨는데 수정하면 돼용
-    public void createVlog(String url, List<Place> placeList){
+    public void createVlog(String url, String name, List<Place> placeList){
         //vlog 만들기
         Vlog vlog=new Vlog();
+        vlog.setName(name);
         vlog.setUrl(url);
 
         for(int i=0;i<placeList.size();i++) {

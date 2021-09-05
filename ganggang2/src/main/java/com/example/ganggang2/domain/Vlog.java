@@ -17,10 +17,12 @@ public class Vlog {
     @Column(name = "vlog_id")
     private Long id;
 
+    private String name;
+
     private String url;
 
 
-    @OneToMany(mappedBy = "place",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "vlog",cascade = CascadeType.ALL)
     private List<Place_Vlog> place_vlogList=new ArrayList<>();
 
 

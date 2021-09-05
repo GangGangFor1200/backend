@@ -33,13 +33,13 @@ public class SecondControllerTest {
 
     }
     @Test
-    public void 카테고리저장(){
+    public void findplace(){
         //given
-        Category category=new Category();
-        category.setName("CAFE");
+        long placeId=1;
         //when
-
+        long placenew=placeService.find(placeId);
         //then
+        System.out.println(placenew==placeId);
 
     }
     @Test

@@ -1,4 +1,4 @@
-package com.example.ganggang2.domain;
+package ganggang3.gang.domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,15 +10,14 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Course {
-
+public class Province {
     @Id
     @GeneratedValue
-    @Column(name = "Course_id")
+    @Column(name="province_id")
     private Long id;
 
     private String name;
 
-    @OneToMany(mappedBy = "course",cascade = CascadeType.ALL)
-    private List<Favorite_Course> favoriteCourseList=new ArrayList<>();
+    @OneToMany(mappedBy = "province",cascade = CascadeType.ALL)
+    private List<Station> stationList=new ArrayList<>();
 }

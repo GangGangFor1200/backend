@@ -23,8 +23,6 @@ import static org.junit.Assert.assertEquals;
 @Transactional
 public class SecondControllerTest {
 
-    @PersistenceContext
-    EntityManager em;
     @Autowired
     PlaceService placeService;
     @Autowired

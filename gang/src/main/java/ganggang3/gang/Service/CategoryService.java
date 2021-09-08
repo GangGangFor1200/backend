@@ -1,10 +1,12 @@
-package com.example.ganggang2.service;
+package ganggang3.gang.Service;
 
-import com.example.ganggang2.domain.Category;
-import com.example.ganggang2.repository.CategoryRepository;
+import ganggang3.gang.Repository.CategoryRepository;
+import ganggang3.gang.domain.Category;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -13,7 +15,5 @@ public class CategoryService {
 
     private final CategoryRepository categoryRepository;
 
-    public void CategorySave(Category category){
-        categoryRepository.save(category);
-    }
+
 }

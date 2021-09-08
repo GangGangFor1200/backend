@@ -22,4 +22,8 @@ public class Station {
     @OneToMany(mappedBy = "station",cascade = CascadeType.ALL)
     private List<Place> placeList=new ArrayList<>();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "province_id")
+    private Province province;
+
 }

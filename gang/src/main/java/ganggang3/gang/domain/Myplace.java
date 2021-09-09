@@ -1,5 +1,6 @@
 package ganggang3.gang.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,6 +26,9 @@ public class Myplace {
     private double locationx;
     private double locationy;
 
+    private String address;
+
+    @JsonManagedReference
     @OneToMany(mappedBy = "myplace",cascade = CascadeType.ALL)
     private List<Myplace_Course> myplace_courseList=new ArrayList<>();
 

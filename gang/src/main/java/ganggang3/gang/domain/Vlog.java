@@ -1,5 +1,6 @@
 package ganggang3.gang.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,6 +23,7 @@ public class Vlog {
     private String url;
 
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "vlog",cascade = CascadeType.ALL)
     private List<Place_Vlog> place_vlogList=new ArrayList<>();
 

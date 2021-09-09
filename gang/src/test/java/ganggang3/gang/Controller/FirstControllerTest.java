@@ -4,6 +4,7 @@ import ganggang3.gang.Repository.CategoryRepository;
 import ganggang3.gang.Repository.ProvinceRepository;
 import ganggang3.gang.Service.CategoryService;
 import ganggang3.gang.Service.PlaceService;
+import ganggang3.gang.Service.ProvinceService;
 import ganggang3.gang.domain.Category;
 import ganggang3.gang.domain.Province;
 import ganggang3.gang.domain.Station;
@@ -17,7 +18,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,10 +34,9 @@ public class FirstControllerTest {
     CategoryService categoryService;
 
     @Autowired
-    CategoryRepository categoryRepository;
+    ProvinceService provinceService;
 
-    @Autowired
-    ProvinceRepository provinceRepository;
+
 
     @Test
     public void 확인(){
@@ -50,7 +52,7 @@ public class FirstControllerTest {
         //given -> db에 categorylist가 들어가 있을 때
 
         //when
-        List<Category> categoryList=categoryRepository.findAll();
+        List<Category> categoryList=categoryService.findAll();
 
         //then
         assertEquals(5,categoryList.size(),0);
@@ -63,7 +65,7 @@ public class FirstControllerTest {
 
 
         //when
-        List<Province> provinceList=provinceRepository.findAll();
+        List<Province> provinceList=provinceService.findAll();
 
         //then
         assertEquals(1,provinceList.size(),0);
@@ -75,12 +77,25 @@ public class FirstControllerTest {
         //given -> db에 province와 station이 들어가 있을 때
 
         //when
-        List<Province> provinceList=provinceRepository.findAll();
+        List<Province> provinceList=provinceService.findAll();
 
         //then -> 일단 하나의 province만 test
         List<Station> stationList=provinceList.get(0).getStationList();
         assertEquals(6,stationList.size(),0);
         for(int i=0;i<stationList.size();i++)
             assertEquals(provinceList.get(0),stationList.get(i).getProvince());
+    }
+    @Test
+    public void category_province_json으로보내기(){
+        //given
+        Map<String,Object> map=new HashMap<>();
+        map.put("province",provinceService.findAll());
+        map.put("category",categoryService.findAll());
+
+        //when
+
+
+        //then
+
     }
 }

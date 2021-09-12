@@ -31,30 +31,17 @@ public class PlaceApiController {
         for(int i=0;i< findTop5.size();i++){
             Place P = findTop5.get(i);
             List<Place_Vlog> p_v_list = P.getPlace_vlogList();
-
-            //Top5 place 의 place_vlog 리스트를 넣을 Dto
-            List<Place_Vlog_Dto> p_v_d_list=new ArrayList<>();
+            //Top5 place 의 vlog_list
+            List<Vlog_Dto> vlog_list=new ArrayList<>();
             for(int j = 0; j< p_v_list.size(); j++){
                 Place_Vlog pv = p_v_list.get(j);
-                Place p = pv.getPlace();
                 Vlog v = pv.getVlog();
-                //Tpo5 place의 plcae_vlog DTO를 할당
-                Place_Vlog_Dto pvd = new Place_Vlog_Dto(
-                        //Tpo5 place_vlog DTO안에 Place Dto , Vlog Dto 할당
-                        new PlaceDto_del(
-                                p.getName(),
-                                p.getLocationx(),
-                                p.getLocationy(),
-                                p.getExplanation(),
-                                p.getAddress()
-                                //이 place의 place_vlog 리스트는 필요없다
-                        ),
+                //Top5 place의 Vlog DTO를 할당
+                vlog_list.add(
                         new Vlog_Dto(
-                                v.getName(),
-                                v.getUrl()
-                        ));
-
-                p_v_d_list.add(pvd);
+                        v.getName(),
+                        v.getUrl()
+                ));
             }
 
             //Place Dto 할당
@@ -64,7 +51,7 @@ public class PlaceApiController {
                     P.getLocationy(),
                     P.getExplanation(),
                     P.getAddress(),
-                    p_v_d_list // 위에서 만들어준 place_vlog_dto
+                    vlog_list // 위에서 만들어준 place_vlog_dto
             );
             //리스트에 할당
             collect.add(pd);
@@ -86,27 +73,27 @@ public class PlaceApiController {
         private double locationy;
         private String explanation;
         private String address;
-        private List<Place_Vlog_Dto> place_vlogList;
+        private List<Vlog_Dto> vlog_list;
     }
 
-    @Data
-    @AllArgsConstructor
-    static class Place_Vlog_Dto{
-        private PlaceDto_del place;
-        private Vlog_Dto vlog;
-
-    }
-    @Data
-    @AllArgsConstructor
-    static class PlaceDto_del{
-        private String name;
-        private double locationx;
-        private double locationy;
-        private String explanation;
-        private String address;
-
-//        private List<Place_Vlog_Dto> place_vlogList;
-    }
+//    @Data
+//    @AllArgsConstructor
+//    static class Place_Vlog_Dto{
+//        private PlaceDto_del place;
+//        private Vlog_Dto vlog;
+//
+//    }
+//    @Data
+//    @AllArgsConstructor
+//    static class PlaceDto_del{
+//        private String name;
+//        private double locationx;
+//        private double locationy;
+//        private String explanation;
+//        private String address;
+//
+////        private List<Place_Vlog_Dto> place_vlogList;
+//    }
     @Data
     @AllArgsConstructor
     static class Vlog_Dto{

@@ -30,8 +30,8 @@ public class Place {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    private double locationx;
-    private double locationy;
+    private double location_x;
+    private double location_y;
 
     private String explanation;
 

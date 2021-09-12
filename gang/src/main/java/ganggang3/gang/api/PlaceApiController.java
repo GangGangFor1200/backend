@@ -22,7 +22,7 @@ public class PlaceApiController {
 
     private final PlaceService placeService;
 
-    @GetMapping("/api/place/{station}/{category}")
+    @GetMapping("/api/place/findtop5/{station}/{category}")
     public Result findTop5(@PathVariable("station") int station_id, @PathVariable("category") int category_id){
 
         List<Place> findTop5 = placeService.findTOP5(station_id,category_id);
@@ -47,8 +47,8 @@ public class PlaceApiController {
             //Place Dto 할당
             PlaceDto pd = new PlaceDto(
                     P.getName(),
-                    P.getLocationx(),
-                    P.getLocationy(),
+                    P.getLocation_x(),
+                    P.getLocation_y(),
                     P.getExplanation(),
                     P.getAddress(),
                     vlog_list // 위에서 만들어준 place_vlog_dto
@@ -69,31 +69,14 @@ public class PlaceApiController {
     @AllArgsConstructor
     static class PlaceDto{
         private String name;
-        private double locationx;
-        private double locationy;
+        private double location_x;
+        private double location_y;
         private String explanation;
         private String address;
         private List<Vlog_Dto> vlog_list;
     }
 
-//    @Data
-//    @AllArgsConstructor
-//    static class Place_Vlog_Dto{
-//        private PlaceDto_del place;
-//        private Vlog_Dto vlog;
-//
-//    }
-//    @Data
-//    @AllArgsConstructor
-//    static class PlaceDto_del{
-//        private String name;
-//        private double locationx;
-//        private double locationy;
-//        private String explanation;
-//        private String address;
-//
-////        private List<Place_Vlog_Dto> place_vlogList;
-//    }
+
     @Data
     @AllArgsConstructor
     static class Vlog_Dto{

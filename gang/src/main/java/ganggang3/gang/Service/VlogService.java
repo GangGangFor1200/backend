@@ -24,7 +24,7 @@ public class VlogService {
     }
 
     public List<Place> findPlaceList(long vlogId) {
-        List<Place_Vlog> placeVlogList=findPlaceVlogList(vlogId);
+        List<Place_Vlog> placeVlogList=vlogRepository.findPlaceVlogList(vlogId);
         List<Place> placeList=new ArrayList<>();
         for(int i=0;i<placeVlogList.size();i++){
             Place_Vlog placeVlog=placeVlogList.get(i);

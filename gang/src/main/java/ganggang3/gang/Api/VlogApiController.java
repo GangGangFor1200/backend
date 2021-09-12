@@ -1,8 +1,7 @@
-package ganggang3.gang.api;
+package ganggang3.gang.Api;
 
 import ganggang3.gang.Service.VlogService;
 import ganggang3.gang.domain.Place;
-import ganggang3.gang.domain.Vlog;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -50,4 +49,5 @@ public class VlogApiController {
         private String explanation;
         private String address;
     }
+
 }

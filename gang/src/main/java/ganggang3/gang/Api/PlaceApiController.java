@@ -1,4 +1,4 @@
-package ganggang3.gang.api;
+package ganggang3.gang.Api;
 
 import ganggang3.gang.Service.PlaceService;
 import ganggang3.gang.domain.Place;
@@ -7,14 +7,12 @@ import ganggang3.gang.domain.Vlog;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor

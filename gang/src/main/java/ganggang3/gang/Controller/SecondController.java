@@ -23,6 +23,7 @@ public class SecondController {
 
         return "";
     }
+
     //myplace 정보 가져와야함
     @PostMapping("/{station}/{category}")
     public String exmaple(@PathVariable("station") int station_id, @PathVariable("category") int category_id, Model model){

@@ -1,9 +1,7 @@
 package ganggang3.gang.Api;
 
-import ganggang3.gang.Controller.FirstController;
-import ganggang3.gang.Service.CategoryService;
+
 import ganggang3.gang.Service.ProvinceService;
-import ganggang3.gang.domain.Category;
 import ganggang3.gang.domain.Province;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,10 +28,10 @@ public class ProvinceApiController {
         for(int i=0;i<provinceList.size();i++){
             Province province = provinceList.get(i);
 
-            List<StationDto> stationDtoList = province.getStationList().stream()
-                    .map(s-> new StationDto(s.getName()))
+            List<CityDto> cityDtoList = province.getCityList().stream()
+                    .map(s-> new CityDto(s.getName()))
                     .collect(Collectors.toList());
-            provinceDtoList.add(new ProvinceDto(province.getName(),stationDtoList));
+            provinceDtoList.add(new ProvinceDto(province.getName(),cityDtoList));
         }
 
         return new Result(provinceDtoList);
@@ -49,11 +47,11 @@ public class ProvinceApiController {
     @AllArgsConstructor
     static class ProvinceDto{
         private String name;
-        private List<StationDto> stationList;
+        private List<CityDto> stationList;
     }
     @Data
     @AllArgsConstructor
-    static class StationDto{
+    static class CityDto{
         private String name;
     }
 }

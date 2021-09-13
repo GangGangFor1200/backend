@@ -20,10 +20,10 @@ public class PlaceApiController {
 
     private final PlaceService placeService;
 
-    @GetMapping("/api/place/findtop5/{station}/{category}")
-    public Result findTop5(@PathVariable("station") int station_id, @PathVariable("category") int category_id){
+    @GetMapping("/api/place/findtop5/{city}/{category}")
+    public Result findTop5(@PathVariable("city") int city_id, @PathVariable("category") int category_id){
 
-        List<Place> findTop5 = placeService.findTOP5(station_id,category_id);
+        List<Place> findTop5 = placeService.findTOP5(city_id,category_id);
 
         List<PlaceDto> collect=new ArrayList<>();
         for(int i=0;i< findTop5.size();i++){

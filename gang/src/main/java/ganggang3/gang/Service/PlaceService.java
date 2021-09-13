@@ -25,12 +25,12 @@ public class PlaceService {
         return placeRepository.findOne(placeId).getId();
     }
 
-    public List<Place> findPlaceList(long stationId, long categoryId) {
-        return placeRepository.findPlace(stationId,categoryId);
+    public List<Place> findPlaceList(long cityId, long categoryId) {
+        return placeRepository.findPlace(cityId,categoryId);
     }
 
-    public List<Place> findTOP5(long stationId, long categoryId) {
-        List<Place> placeList=placeRepository.findPlace(stationId,categoryId);
+    public List<Place> findTOP5(long cityId, long categoryId) {
+        List<Place> placeList=placeRepository.findPlace(cityId,categoryId);
         Collections.sort(placeList, new Comparator<Place>() {
             @Override
             public int compare(Place o1, Place o2) {

@@ -24,10 +24,10 @@ public class PlaceRepository {
         return em.find(Place.class,id);
     }
 
-    public List<Place> findPlace(long stationId, long categoryId) {
-        return em.createQuery("select m  from Place m where m.category.id= :categoryid and m.station.id= :stationid",Place.class)
+    public List<Place> findPlace(long cityId, long categoryId) {
+        return em.createQuery("select m  from Place m where m.category.id= :categoryid and m.city.id= :cityid",Place.class)
                 .setParameter("categoryid",categoryId)
-                .setParameter("stationid",stationId)
+                .setParameter("cityid",cityId)
                 .getResultList();
     }
 

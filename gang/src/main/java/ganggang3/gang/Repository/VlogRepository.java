@@ -1,7 +1,6 @@
 package ganggang3.gang.Repository;
 
-import ganggang3.gang.domain.Place;
-import ganggang3.gang.domain.Place_Vlog;
+import ganggang3.gang.domain.PlaceVlog;
 import ganggang3.gang.domain.Vlog;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -19,7 +18,7 @@ public class VlogRepository {
         return em.find(Vlog.class,id);
     }
 
-    public List<Place_Vlog> findPlaceVlogList(long vlogId) {
+    public List<PlaceVlog> findPlaceVlogList(long vlogId) {
         Vlog vlog=findOne(vlogId);
         return vlog.getPlace_vlogList();
     }

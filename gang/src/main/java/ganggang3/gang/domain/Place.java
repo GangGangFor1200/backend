@@ -40,7 +40,7 @@ public class Place {
     private Long count;
 
     @OneToMany(mappedBy = "place",cascade = CascadeType.ALL)
-    private List<Place_Vlog> place_vlogList=new ArrayList<>();
+    private List<PlaceVlog> place_vlogList=new ArrayList<>();
 
     //order을 저장할 때, category와 station에도 추가되도록 setter만들기
     public void setCategory(Category category){
@@ -50,6 +50,10 @@ public class Place {
     public void setCity(City city){
         this.city = city;
         city.getPlaceList().add(this);
+    }
+
+    public static Place of(PlaceVlog place_vlog) {
+        return place_vlog.getPlace();
     }
 
 }

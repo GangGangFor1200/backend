@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class Myplace_Course {
+public class MyplaceCourse {
     @Id
     @GeneratedValue
     @Column(name = "favorite_course_id")

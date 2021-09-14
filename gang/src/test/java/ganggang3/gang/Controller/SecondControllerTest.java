@@ -3,7 +3,7 @@ package ganggang3.gang.Controller;
 import ganggang3.gang.Service.PlaceService;
 import ganggang3.gang.Service.VlogService;
 import ganggang3.gang.domain.Place;
-import ganggang3.gang.domain.Place_Vlog;
+import ganggang3.gang.domain.PlaceVlog;
 import ganggang3.gang.domain.Vlog;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -87,12 +87,12 @@ public class SecondControllerTest {
         long placeId=1;
 
         //when
-        List<Place_Vlog> placeVlogList= placeService.findPlaceVlogList(placeId);
+        List<PlaceVlog> placeVlogList= placeService.findPlaceVlogList(placeId);
 
         //then
         assertEquals(7,placeVlogList.size(),0);
         for(int i=0;i<placeVlogList.size();i++){
-            Place_Vlog place_vlog=placeVlogList.get(i);
+            PlaceVlog place_vlog=placeVlogList.get(i);
             assertEquals(placeId,place_vlog.getPlace().getId(),0);
         }
 
@@ -115,12 +115,12 @@ public class SecondControllerTest {
         long vlogId=1;
 
         //when
-        List<Place_Vlog> placeVlogList= vlogService.findPlaceVlogList(vlogId);
+        List<PlaceVlog> placeVlogList= vlogService.findPlaceVlogList(vlogId);
 
         //then
         assertEquals(10,placeVlogList.size(),0);
         for(int i=0;i<placeVlogList.size();i++){
-            Place_Vlog place_vlog=placeVlogList.get(i);
+            PlaceVlog place_vlog=placeVlogList.get(i);
             assertEquals(vlogId,place_vlog.getVlog().getId(),0);
         }
 

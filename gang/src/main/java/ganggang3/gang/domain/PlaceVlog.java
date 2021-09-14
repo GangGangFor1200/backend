@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class Place_Vlog {
+public class PlaceVlog {
 
     @Id
     @GeneratedValue
@@ -38,14 +38,14 @@ public class Place_Vlog {
         vlog.getPlace_vlogList().add(this);
     }
 
-    public static Place_Vlog createPlace_Vlog(Place place, Vlog vlog){
-        Place_Vlog place_vlog=new Place_Vlog();
+    public static PlaceVlog createPlace_Vlog(Place place, Vlog vlog){
+        PlaceVlog place_vlog=new PlaceVlog();
         place_vlog.setPlace(place);
         place_vlog.setVlog(vlog);
         return place_vlog;
     }
 
-    public Place_Vlog() {
+    public PlaceVlog() {
 
     }
 }

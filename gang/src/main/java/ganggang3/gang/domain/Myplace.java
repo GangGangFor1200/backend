@@ -28,6 +28,6 @@ public class Myplace {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "myplace",cascade = CascadeType.ALL)
-    private List<Myplace_Course> myplace_courseList=new ArrayList<>();
+    private List<MyplaceCourse> myplace_courseList=new ArrayList<>();
 
 }

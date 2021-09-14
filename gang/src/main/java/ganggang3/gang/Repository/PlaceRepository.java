@@ -1,7 +1,7 @@
 package ganggang3.gang.Repository;
 
 import ganggang3.gang.domain.Place;
-import ganggang3.gang.domain.Place_Vlog;
+import ganggang3.gang.domain.PlaceVlog;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -31,7 +31,7 @@ public class PlaceRepository {
                 .getResultList();
     }
 
-    public List<Place_Vlog> findPlaceVlogList(long placeId) {
+    public List<PlaceVlog> findPlaceVlogList(long placeId) {
         Place place=findOne(placeId);
         return place.getPlace_vlogList();
     }

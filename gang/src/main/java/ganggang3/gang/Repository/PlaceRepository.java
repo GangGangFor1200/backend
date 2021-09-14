@@ -1,38 +1,18 @@
 package ganggang3.gang.Repository;
 
+import ganggang3.gang.domain.Category;
+import ganggang3.gang.domain.City;
 import ganggang3.gang.domain.Place;
-import ganggang3.gang.domain.PlaceVlog;
-import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-@RequiredArgsConstructor
-public class PlaceRepository {
+public interface PlaceRepository extends JpaRepository<Place,Long> {
 
-    private final EntityManager em;
+    Optional<Place> findById(long id);
+    List<Place>  findByCityAndCategory(City city, Category category);
 
-    public List<Place> findName(String name){
-        return em.createQuery("select m from Place m where m.name = :name",Place.class)
-                .setParameter("name",name)
-                .getResultList();
-    }
-
-    public Place findOne(Long id){
-        return em.find(Place.class,id);
-    }
-
-    public List<Place> findPlace(long cityId, long categoryId) {
-        return em.createQuery("select m  from Place m where m.category.id= :categoryid and m.city.id= :cityid",Place.class)
-                .setParameter("categoryid",categoryId)
-                .setParameter("cityid",cityId)
-                .getResultList();
-    }
-
-    public List<PlaceVlog> findPlaceVlogList(long placeId) {
-        Place place=findOne(placeId);
-        return place.getPlace_vlogList();
-    }
 }

@@ -3,23 +3,15 @@ package ganggang3.gang.Repository;
 import ganggang3.gang.domain.PlaceVlog;
 import ganggang3.gang.domain.Vlog;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-@RequiredArgsConstructor
-public class VlogRepository {
+public interface VlogRepository extends JpaRepository<Vlog,Long> {
 
-    private final EntityManager em;
-
-    public Vlog findOne(Long id){
-        return em.find(Vlog.class,id);
-    }
-
-    public List<PlaceVlog> findPlaceVlogList(long vlogId) {
-        Vlog vlog=findOne(vlogId);
-        return vlog.getPlace_vlogList();
-    }
+    Optional<Vlog> findById(long id);
 }

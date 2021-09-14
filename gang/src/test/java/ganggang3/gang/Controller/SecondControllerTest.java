@@ -43,7 +43,7 @@ public class SecondControllerTest {
 
     }
     @Test
-    public void stationcategory이용해서placeList가져오기(){
+    public void citycategory이용해서placeList가져오기(){
         //given -> station,category id가 주어졌을 때
         long cityId=1;
         long categoryId=1;
@@ -69,7 +69,7 @@ public class SecondControllerTest {
         long categoryId=1;
 
         //when
-        List<Place> TOP5=placeService.findTOP5(cityId,categoryId);
+        List<Place> TOP5=placeService.findTop5FromDb(cityId,categoryId);
 
         //then
         assertEquals(5,TOP5.size(),0);

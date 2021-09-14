@@ -63,8 +63,8 @@ public class FirstControllerTest {
         List<Province> provinceList=provinceService.findAll();
 
         //then
-        assertEquals(1,provinceList.size(),0);
-        assertEquals("광역시",provinceList.get(0).getName());
+        assertEquals(5,provinceList.size(),0);
+        assertEquals("경기도",provinceList.get(0).getName());
     }
 
     @Test
@@ -76,7 +76,7 @@ public class FirstControllerTest {
 
         //then -> 일단 하나의 province만 test
         List<City> cityList =provinceList.get(0).getCityList();
-        assertEquals(6, cityList.size(),0);
+        assertEquals(5, cityList.size(),0);
         for(int i = 0; i< cityList.size(); i++)
             assertEquals(provinceList.get(0), cityList.get(i).getProvince());
     }

@@ -37,12 +37,10 @@ public class Place {
 
     private String address;
 
-    private Long count;
-
     @OneToMany(mappedBy = "place",cascade = CascadeType.ALL)
     private List<PlaceVlog> place_vlogList=new ArrayList<>();
 
-    //order을 저장할 때, category와 station에도 추가되도록 setter만들기
+    //category와 station에도 추가되도록 setter만들기
     public void setCategory(Category category){
         this.category=category;
         category.getPlaceList().add(this);

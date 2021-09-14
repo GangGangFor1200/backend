@@ -21,10 +21,8 @@ public class Myplace {
 
     private String category;
 
-    private String explanation;
-
-    private double locationx;
-    private double locationy;
+    private double location_x;
+    private double location_y;
 
     private String address;
 

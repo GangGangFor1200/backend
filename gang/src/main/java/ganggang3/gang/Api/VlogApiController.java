@@ -2,6 +2,7 @@ package ganggang3.gang.Api;
 
 import ganggang3.gang.Service.VlogService;
 import ganggang3.gang.domain.Place;
+import ganggang3.gang.dto.PlaceDtoVlog;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -22,15 +23,8 @@ public class VlogApiController {
     public Result findPlace(@PathVariable("vlog") int vlogId){
         List<Place> placeList=vlogService.findPlaceList(vlogId);
         //place Dto로  변환
-        List<PlaceDto> placeDtoList = placeList.stream()
-                .map(p -> new PlaceDto(
-                        p.getName(),
-                        p.getLocation_x(),
-                        p.getLocation_y(),
-                        p.getExplanation(),
-                        p.getAddress()
-                        )
-                )
+        List<PlaceDtoVlog> placeDtoList = placeList.stream()
+                .map(p -> PlaceDtoVlog.of(p))
                 .collect(Collectors.toList());
         return new Result(placeDtoList);
     }
@@ -40,8 +34,7 @@ public class VlogApiController {
     static class Result<T>{
         private T data;
     }
-    @Data
-    @AllArgsConstructor
+
     static class PlaceDto{
         private String name;
         private double location_x;

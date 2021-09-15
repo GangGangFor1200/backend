@@ -25,15 +25,14 @@ public class ProvinceApiController {
 
         // Province Dto 만들기
         List<ProvinceDto> provinceDtoList = new ArrayList<>();
-        for(int i=0;i<provinceList.size();i++){
-            Province province = provinceList.get(i);
-
-            List<CityDto> cityDtoList = province.getCityList().stream()
-                    .map(s-> new CityDto(s.getName()))
-                    .collect(Collectors.toList());
-            provinceDtoList.add(new ProvinceDto(province.getName(),cityDtoList));
-        }
-
+        provinceList.forEach(
+                province -> {
+                    List<CityDto> cityDtoList = province.getCityList().stream()
+                            .map(s-> new CityDto(s.getName()))
+                            .collect(Collectors.toList());
+                    provinceDtoList.add(new ProvinceDto(province.getName(),cityDtoList));
+                }
+        );
         return new Result(provinceDtoList);
     }
 

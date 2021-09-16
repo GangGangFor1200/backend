@@ -1,7 +1,10 @@
 package ganggang3.gang.Api;
 
+import ganggang3.gang.Service.MyplaceService;
+import ganggang3.gang.domain.Member;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -10,28 +13,24 @@ import javax.transaction.Transactional;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Transactional
-public class CourseApiController {
+public class MyplaceApiController {
+    @Autowired
+    MyplaceService myplaceService;
+
+
+
     @Test
-    public void findAllMyCourse(){
+    public void findAllMyplace(){
         //given
 
+        myplaceService.add()
         //when
 
         //then
     }
 
     @Test
-    //course save버튼
-    public void updateCourse(){
-        //given
-
-        //when
-
-        //then
-    }
-
-    @Test
-    public void addCourseToMember(){
+    public void addMyplace(){
         //given
 
         //when
@@ -39,11 +38,12 @@ public class CourseApiController {
         //then
     }
     @Test
-    public void deleteCourseFromMember(){
+    public void deleteMyplace(){
         //given
 
         //when
 
         //then
     }
+
 }

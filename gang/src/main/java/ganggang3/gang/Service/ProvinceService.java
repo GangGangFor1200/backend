@@ -19,4 +19,6 @@ public class ProvinceService {
     public List<Province> findAll(){
         return provinceRepository.findAll();
     }
+
+
 }

@@ -19,6 +19,8 @@ public class Province {
 
     private String name;
 
+    private String provinceLink;
+
     @JsonManagedReference
     @OneToMany(mappedBy = "province",cascade = CascadeType.ALL)
     private List<City> cityList =new ArrayList<>();

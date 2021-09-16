@@ -21,6 +21,8 @@ public class City {
 
     private String name;
 
+    private String cityLink;
+
     @JsonManagedReference
     @OneToMany(mappedBy = "city",cascade = CascadeType.ALL)
     private List<Place> placeList=new ArrayList<>();

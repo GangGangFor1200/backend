@@ -28,9 +28,9 @@ public class ProvinceApiController {
         provinceList.forEach(
                 province -> {
                     List<CityDto> cityDtoList = province.getCityList().stream()
-                            .map(s-> new CityDto(s.getName()))
+                            .map(s-> new CityDto(s.getName(),s.getCityLink()))
                             .collect(Collectors.toList());
-                    provinceDtoList.add(new ProvinceDto(province.getName(),cityDtoList));
+                    provinceDtoList.add(new ProvinceDto(province.getName(),cityDtoList, province.getProvinceLink()));
                 }
         );
         return new Result(provinceDtoList);
@@ -47,10 +47,12 @@ public class ProvinceApiController {
     static class ProvinceDto{
         private String name;
         private List<CityDto> cityList;
+        private String provinceLink;
     }
     @Data
     @AllArgsConstructor
     static class CityDto{
         private String name;
+        private String cityLink;
     }
 }

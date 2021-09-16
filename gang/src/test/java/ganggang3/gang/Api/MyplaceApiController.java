@@ -23,7 +23,7 @@ public class MyplaceApiController {
     public void findAllMyplace(){
         //given
 
-        myplaceService.add()
+//        myplaceService.add();
         //when
 
         //then

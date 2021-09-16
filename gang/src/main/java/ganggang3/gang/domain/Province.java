@@ -22,4 +22,6 @@ public class Province {
     @JsonManagedReference
     @OneToMany(mappedBy = "province",cascade = CascadeType.ALL)
     private List<City> cityList =new ArrayList<>();
+
+
 }

@@ -1,9 +1,8 @@
 package ganggang3.gang.Service;
 
-import ganggang3.gang.Repository.PlaceRepository;
 import ganggang3.gang.Repository.VlogRepository;
 import ganggang3.gang.domain.Place;
-import ganggang3.gang.domain.Place_Vlog;
+import ganggang3.gang.domain.PlaceVlog;
 import ganggang3.gang.domain.Vlog;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -19,17 +19,24 @@ public class VlogService {
 
     private final VlogRepository vlogRepository;
 
-    public List<Place_Vlog> findPlaceVlogList(long vlogId) {
-        return vlogRepository.findPlaceVlogList(vlogId);
+    public List<PlaceVlog> findPlaceVlogList(long vlogId) {
+        Optional<Vlog> vlog=vlogRepository.findById(vlogId);
+        return vlog.get().getPlace_vlogList();
     }
 
     public List<Place> findPlaceList(long vlogId) {
-        List<Place_Vlog> placeVlogList=findPlaceVlogList(vlogId);
+        Optional<Vlog> vlog=vlogRepository.findById(vlogId);
+        List<PlaceVlog> placeVlogList=vlog.get().getPlace_vlogList();
         List<Place> placeList=new ArrayList<>();
-        for(int i=0;i<placeVlogList.size();i++){
-            Place_Vlog placeVlog=placeVlogList.get(i);
-            placeList.add(placeVlog.getPlace());
+
+        // placeVlogList 에 아무것도 없으면 null이 되므로 null 체크해야한다
+        if (placeVlogList != null) {
+            for (int i = 0; i < placeVlogList.size(); i++) {
+                PlaceVlog placeVlog = placeVlogList.get(i);
+                placeList.add(placeVlog.getPlace());
+            }
         }
+        
         return placeList;
     }
 }

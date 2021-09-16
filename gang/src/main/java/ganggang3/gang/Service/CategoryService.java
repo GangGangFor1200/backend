@@ -16,8 +16,12 @@ public class CategoryService {
 
     private final CategoryRepository categoryRepository;
 
+//    private final JpaRepository jpaRepository;
+
     public List<Category> findAll(){
         return categoryRepository.findAll();
     }
+
+
 
 }

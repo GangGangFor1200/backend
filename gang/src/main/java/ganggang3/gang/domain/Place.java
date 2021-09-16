@@ -22,44 +22,36 @@ public class Place {
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "station_id")
-    private Station station;
+    @JoinColumn(name = "city_id")
+    private City city;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
 
-    private double locationx;
-    private double locationy;
+    private double location_x;
+    private double location_y;
 
     private String explanation;
 
     private String address;
 
-    private Long count;
-
     @OneToMany(mappedBy = "place",cascade = CascadeType.ALL)
-    private List<Place_Vlog> place_vlogList=new ArrayList<>();
+    private List<PlaceVlog> place_vlogList=new ArrayList<>();
 
-    public void Countplus(){
-        this.count++;
-    }
-
-    //order을 저장할 때, category와 station에도 추가되도록 setter만들기
+    //category와 station에도 추가되도록 setter만들기
     public void setCategory(Category category){
         this.category=category;
         category.getPlaceList().add(this);
     }
-    public void setStation(Station station){
-        this.station=station;
-        station.getPlaceList().add(this);
+    public void setCity(City city){
+        this.city = city;
+        city.getPlaceList().add(this);
     }
-    public static Place createPlace(Category category,Station station){
-        Place place=new Place();
-        place.setCategory(category);
-        place.setStation(station);
-        return place;
+
+    public static Place of(PlaceVlog place_vlog) {
+        return place_vlog.getPlace();
     }
 
 }

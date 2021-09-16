@@ -25,7 +25,7 @@ public class Vlog {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "vlog",cascade = CascadeType.ALL)
-    private List<Place_Vlog> place_vlogList=new ArrayList<>();
+    private List<PlaceVlog> place_vlogList=new ArrayList<>();
 
 
 }

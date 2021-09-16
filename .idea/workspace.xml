@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fd3d456c-5a75-4025-a191-e37b4339dd96" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/gang/src.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Api/CategoryApiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Api/PlaceApiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Api/ProvinceApiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Api/VlogApiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/CityRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/JpaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/City.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Member.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/dto/PlaceDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/dto/PlaceDtoVlog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/dto/VlogDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Api/CourseApiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Api/MyplcaeApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Controller/FirstController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Controller/FirstController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Controller/SecondController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Controller/SecondController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/PlaceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/PlaceRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/ProvinceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/ProvinceRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/VlogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/VlogRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/PlaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/PlaceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/VlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/VlogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Myplace.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Myplace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Myplace_Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/MyplaceCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Place.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Place.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Place_Vlog.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/PlaceVlog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Province.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Province.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Station.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Vlog.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Vlog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Controller/FirstControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Controller/FirstControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Controller/SecondControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Controller/SecondControllerTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1yBGvVtnpnQx9Rvq6qntQQx0Gtk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fd3d456c-5a75-4025-a191-e37b4339dd96" name="Default Changelist" comment="" />
+      <created>1631717803468</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1631717803468</updated>
+      <workItem from="1631717807030" duration="6000" />
+    </task>
+    <servers />
+  </component>
+</project>

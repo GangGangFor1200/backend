@@ -21,15 +21,13 @@ public class Myplace {
 
     private String category;
 
-    private String explanation;
-
-    private double locationx;
-    private double locationy;
+    private double location_x;
+    private double location_y;
 
     private String address;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "myplace",cascade = CascadeType.ALL)
-    private List<Myplace_Course> myplace_courseList=new ArrayList<>();
+    private List<MyplaceCourse> myplace_courseList=new ArrayList<>();
 
 }

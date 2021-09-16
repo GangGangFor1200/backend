@@ -12,17 +12,26 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Station {
+public class City {
 
     @Id
     @GeneratedValue
-    @Column(name="station_id")
+    @Column(name="city_id")
     private Long id;
 
     private String name;
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "city",cascade = CascadeType.ALL)
+    private List<Place> placeList=new ArrayList<>();
+
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "city_id")
-    private City city;
+    @JoinColumn(name = "province_id")
+    private Province province;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "city",cascade = CascadeType.ALL)
+    private List<Station> stationList =new ArrayList<>();
+
 }

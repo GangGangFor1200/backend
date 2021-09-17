@@ -35,6 +35,8 @@ public class Place {
 
     private String explanation;
 
+    private String placeId;
+
     private String address;
 
     @OneToMany(mappedBy = "place",cascade = CascadeType.ALL)

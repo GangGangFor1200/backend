@@ -14,10 +14,12 @@ import java.util.List;
 @Setter
 public class Station {
 
+
     @Id
     @GeneratedValue
     @Column(name="station_id")
     private Long id;
+
 
     private String name;
 
@@ -25,4 +27,7 @@ public class Station {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
     private City city;
+
+
+
 }

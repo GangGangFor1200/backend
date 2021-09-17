@@ -22,7 +22,6 @@ public class Vlog {
 
     private String url;
 
-
     @JsonManagedReference
     @OneToMany(mappedBy = "vlog",cascade = CascadeType.ALL)
     private List<PlaceVlog> place_vlogList=new ArrayList<>();

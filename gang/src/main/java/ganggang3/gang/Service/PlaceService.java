@@ -63,8 +63,7 @@ public class PlaceService {
                 return Long.compare(o2.getPlace_vlogList().size(),o1.getPlace_vlogList().size());
             }
         });
-        return placeList.subList(0,5);
-
+        return placeList.size()>=5 ? placeList.subList(0,5):placeList.subList(0,placeList.size());
     }
 
 

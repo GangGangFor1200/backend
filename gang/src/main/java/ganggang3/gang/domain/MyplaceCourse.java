@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class MyplaceCourse {
     @Id
     @GeneratedValue
-    @Column(name = "favorite_course_id")
+    @Column(name = "myplace_course_id")
     private Long id;
 
 

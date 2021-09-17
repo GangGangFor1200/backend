@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="fd3d456c-5a75-4025-a191-e37b4339dd96" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Myplace.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Myplace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Province.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Province.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Api/tgt.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Api/tgt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/ProvinceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/ProvinceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Place.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Place.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Station.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,21 +54,10 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GangApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="gang.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ganggang3.gang.GangApplication" />
@@ -89,6 +77,7 @@
       <workItem from="1631717807030" duration="6000" />
       <workItem from="1631761366365" duration="438000" />
       <workItem from="1631762066007" duration="3442000" />
+      <workItem from="1631862564501" duration="2787000" />
     </task>
     <servers />
   </component>

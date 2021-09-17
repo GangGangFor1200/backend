@@ -14,7 +14,6 @@ import java.util.List;
 @Setter
 public class Station {
 
-
     @Id
     @GeneratedValue
     @Column(name="station_id")
@@ -27,7 +26,6 @@ public class Station {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
     private City city;
-
 
 
 }

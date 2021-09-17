@@ -20,5 +20,4 @@ public class ProvinceService {
         return provinceRepository.findAll();
     }
 
-
 }

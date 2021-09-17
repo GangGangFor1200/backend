@@ -35,7 +35,7 @@ public class Place {
 
     private String explanation;
 
-    private String placeId;
+    private String placeNum;
 
     private String address;
 

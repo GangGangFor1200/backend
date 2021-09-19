@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd3d456c-5a75-4025-a191-e37b4339dd96" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Api/VlogApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Api/VlogApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/MyplaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/MyplaceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/PlaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/PlaceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Api/MyplaceApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Api/MyplaceApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Api/testApi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Api/tgt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Controller/FirstControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Controller/FirstControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +33,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$/gang">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand />
@@ -37,28 +45,156 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit4 Test Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="ProjectId" id="1yBGvVtnpnQx9Rvq6qntQQx0Gtk" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="h2" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/resoures" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vislab\Desktop\backend\gang\src\test\java\ganggang3\gang\resoures" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="ganggang3.gang.Service" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.MyplaceApiController.findMember">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyplaceApiController.확인" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gang.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ganggang3.gang.Api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ganggang3.gang.Api" />
+      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Api.MyplaceApiController" />
+      <option name="METHOD_NAME" value="확인" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyplaceApiController.findAllMyplace" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gang.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ganggang3.gang.Api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ganggang3.gang.Api" />
+      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Api.MyplaceApiController" />
+      <option name="METHOD_NAME" value="findAllMyplace" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyplaceApiController.findMember" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gang.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ganggang3.gang.Api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ganggang3.gang.Api" />
+      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Api.MyplaceApiController" />
+      <option name="METHOD_NAME" value="findMember" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tgt.commonGetTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gang.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ganggang3.gang.Api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ganggang3.gang.Api" />
+      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Api.tgt" />
+      <option name="METHOD_NAME" value="commonGetTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tt.province_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gang.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ganggang3.gang.Api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ganggang3.gang.Api" />
+      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Api.tt" />
+      <option name="METHOD_NAME" value="province_test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GangApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="gang.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ganggang3.gang.GangApplication" />
@@ -66,6 +202,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MyplaceApiController.findMember" />
+        <item itemvalue="JUnit.tt.province_test" />
+        <item itemvalue="JUnit.MyplaceApiController.findAllMyplace" />
+        <item itemvalue="JUnit.MyplaceApiController.확인" />
+        <item itemvalue="JUnit.tgt.commonGetTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -79,7 +224,7 @@
       <workItem from="1631761366365" duration="438000" />
       <workItem from="1631762066007" duration="3442000" />
       <workItem from="1631862564501" duration="4784000" />
-      <workItem from="1632011069521" duration="1470000" />
+      <workItem from="1632011069521" duration="10053000" />
     </task>
     <servers />
   </component>

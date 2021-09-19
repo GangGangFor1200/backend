@@ -31,8 +31,6 @@ public class FirstControllerTest {
     @Autowired
     ProvinceService provinceService;
 
-
-
     @Test
     public void 확인(){
         //given
@@ -50,7 +48,7 @@ public class FirstControllerTest {
         List<Category> categoryList=categoryService.findAll();
 
         //then
-        assertEquals(5,categoryList.size(),0);
+        assertEquals(3,categoryList.size(),0);
 
 
     }
@@ -63,7 +61,7 @@ public class FirstControllerTest {
         List<Province> provinceList=provinceService.findAll();
 
         //then
-        assertEquals(5,provinceList.size(),0);
+        assertEquals(15,provinceList.size(),0);
         assertEquals("경기도",provinceList.get(0).getName());
     }
 
@@ -76,21 +74,9 @@ public class FirstControllerTest {
 
         //then -> 일단 하나의 province만 test
         List<City> cityList =provinceList.get(0).getCityList();
-        assertEquals(5, cityList.size(),0);
+        assertEquals(14, cityList.size(),0);
         for(int i = 0; i< cityList.size(); i++)
             assertEquals(provinceList.get(0), cityList.get(i).getProvince());
     }
-    @Test
-    public void category_province_json으로보내기(){
-        //given
-        Map<String,Object> map=new HashMap<>();
-        map.put("province",provinceService.findAll());
-        map.put("category",categoryService.findAll());
 
-        //when
-
-
-        //then
-
-    }
 }

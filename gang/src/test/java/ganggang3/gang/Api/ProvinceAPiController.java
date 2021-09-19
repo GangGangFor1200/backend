@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Transactional
 @SpringBootTest
 @AutoConfigureMockMvc
-public class tt {
+public class ProvinceAPiController {
 
     @Autowired
     MockMvc mockMvc;
@@ -35,14 +35,9 @@ public class tt {
     @Test
     public void province_test() throws Exception {
         // Given
-//        ProvinceApiController provinceApiController = new ProvinceApiController;
-
-//        ProvinceApiController.ProvinceDto provinceDto = new ProvinceApiController.ProvinceDto("name","");
-//
-//        UpdatePostRequest updatePostRequest = new UpdatePostRequest("title", "body");
-
-        mockMvc.perform(get("/api/province/findprovince")).
-                 andExpect(status().isOk()).andExpect(jsonPath("$.data[0].name").value("경기도"))
+        mockMvc.perform(get("/api/province/findprovince"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data[0].name").value("경기도"))
                 .andDo(print());
     }
 }

@@ -1,8 +1,12 @@
-package ganggang3.gang.Api;
+package ganggang3.gang.Service;
 
+import ganggang3.gang.Repository.MemberRepository;
+import ganggang3.gang.Repository.PlaceRepository;
 import ganggang3.gang.Service.MemberService;
 import ganggang3.gang.Service.MyplaceService;
+import ganggang3.gang.Service.PlaceService;
 import ganggang3.gang.domain.Member;
+import ganggang3.gang.domain.Place;
 import ganggang3.gang.dto.MyplaceDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,31 +23,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Transactional
-public class MyplaceApiController {
+public class MyplaceServiceTest {
 
     @Autowired
     MyplaceService myplaceService;
     @Autowired
     MemberService memberService;
+    @Autowired
+    PlaceService placeService;
+    @Autowired
+    PlaceRepository placeRepository;
+    @Autowired
+    MemberRepository memberRepository;
+
 
     @Test
     public void 확인(){
 
     }
 
-    @Test
-    public void findMember(){
-        //given
-        long memberId=2;
 
-        //when
-        Member member=memberService.findById(memberId);
-
-        //then
-        assertEquals(memberId,member.getId(),1e-15);
-        System.out.println(member.getName());
-
-    }
 
     @Test
     public void findAllMyplace(){
@@ -59,14 +58,25 @@ public class MyplaceApiController {
         //then
         assertEquals(10,myplaceDtoList.size(),0);
     }
-
+    //테스트 처음에 안되다가 계속 실행하면서 id가 올라가더니 10번 이후로 실행됨
+    //이거 관련된 처리를 해야하는데 어캐할지 고민좀
+    //test할때는 다른db에 저장되는게 맞는지 확인
+    //콘솔상에서 확인안됨
     @Test
     public void addMyplace(){
         //given
-
+        Place place= placeRepository.findById(1).get();
+        System.out.println(place.getName());
+        Member member = memberRepository.findById(2);
+        System.out.println(member.getName());
         //when
-
+        long id=myplaceService.add(member,place);
+        System.out.println(id);
         //then
+        List<MyplaceDto> myplaceList = myplaceService.findMyplaceList(member);
+        MyplaceDto myplaceDto = myplaceList.get(0);
+        assertEquals(place.getName(),myplaceDto.getName());
+        System.out.println(myplaceDto.getName());
     }
 
     @Test

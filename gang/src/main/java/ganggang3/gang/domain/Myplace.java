@@ -2,16 +2,19 @@ package ganggang3.gang.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
+@ToString
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+//밖에서 생성자 못쓰게 하는거 createOrderitem만 쓰도록하는거 롬복
 public class Myplace {
     @Id
     @GeneratedValue
@@ -35,5 +38,22 @@ public class Myplace {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
+
+    public static Myplace createMyplace(String name, String category, double location_x,
+                   double location_y, String address, Member member) {
+        Myplace myplace = new Myplace ();
+
+        myplace.setName(name);
+        myplace.setCategory(category);
+        myplace.setLocation_x(location_x);
+        myplace.setLocation_y(location_y);
+        myplace.setAddress(address);
+        myplace.setMember(member);
+
+        return myplace;
+
+    }
+
+
 
 }

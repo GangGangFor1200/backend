@@ -10,5 +10,5 @@ import java.util.List;
 public interface MyplaceRepository  extends JpaRepository<Myplace,Long> {
 
     List<Myplace> findAllByMember(Member member);
-    Myplace findById(long id);
+
 }

@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="fd3d456c-5a75-4025-a191-e37b4339dd96" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Api/ProvinceAPiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Api/ProvinceApiControllerTest123.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/MyplaceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/MyplaceRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/MyplaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/MyplaceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Myplace.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Myplace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Api/MyplaceApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Service/MyplaceServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,11 +96,11 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="ganggang3.gang.Api" />
       <recent name="ganggang3.gang.Service" />
+      <recent name="ganggang3.gang.Api" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ProvinceApiControllerTest">
+  <component name="RunManager" selected="JUnit.MyplaceServiceTest.addMyplace">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -109,79 +112,81 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MyplaceApiController.확인" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MemberServiceTest.findMember" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gang.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ganggang3.gang.Api.*" />
+          <option name="PATTERN" value="ganggang3.gang.Service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ganggang3.gang.Api" />
-      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Api.MyplaceApiController" />
-      <option name="METHOD_NAME" value="확인" />
+      <option name="PACKAGE_NAME" value="ganggang3.gang.Service" />
+      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Service.MemberServiceTest" />
+      <option name="METHOD_NAME" value="findMember" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProvinceApiControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MyplaceServiceTest.addMyplace" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gang.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ganggang3.gang.Api.*" />
+          <option name="PATTERN" value="ganggang3.gang.Service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ganggang3.gang.Service" />
+      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Service.MyplaceServiceTest" />
+      <option name="METHOD_NAME" value="addMyplace" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyplaceServiceTest.findAllMyplace" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gang.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ganggang3.gang.Service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ganggang3.gang.Service" />
+      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Service.MyplaceServiceTest" />
+      <option name="METHOD_NAME" value="findAllMyplace" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyplaceService.add" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gang.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ganggang3.gang.Service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ganggang3.gang.Service" />
+      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Service.MyplaceService" />
+      <option name="METHOD_NAME" value="add" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProvinceApiControllerTest.province_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gang.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ganggang3.gang.Service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ganggang3.gang.Api" />
       <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Api.ProvinceApiControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProvinceApiControllerTest123" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="gang.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ganggang3.gang.Api.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ganggang3.gang.Api" />
-      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Api.ProvinceApiControllerTest123" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProvinceApiControllerTest123.province_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="gang.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ganggang3.gang.Api.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ganggang3.gang.Api" />
-      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Api.ProvinceApiControllerTest123" />
       <option name="METHOD_NAME" value="province_test" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SecondControllerTest.findplace" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="gang.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ganggang3.gang.Controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ganggang3.gang.Controller" />
-      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Controller.SecondControllerTest" />
-      <option name="METHOD_NAME" value="findplace" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -196,11 +201,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProvinceApiControllerTest" />
-        <item itemvalue="JUnit.SecondControllerTest.findplace" />
-        <item itemvalue="JUnit.ProvinceApiControllerTest123" />
-        <item itemvalue="JUnit.ProvinceApiControllerTest123.province_test" />
-        <item itemvalue="JUnit.MyplaceApiController.확인" />
+        <item itemvalue="JUnit.MyplaceServiceTest.addMyplace" />
+        <item itemvalue="JUnit.MyplaceServiceTest.findAllMyplace" />
+        <item itemvalue="JUnit.MemberServiceTest.findMember" />
+        <item itemvalue="JUnit.MyplaceService.add" />
+        <item itemvalue="JUnit.ProvinceApiControllerTest.province_test" />
       </list>
     </recent_temporary>
   </component>
@@ -216,7 +221,7 @@
       <workItem from="1631761366365" duration="438000" />
       <workItem from="1631762066007" duration="3442000" />
       <workItem from="1631862564501" duration="4784000" />
-      <workItem from="1632011069521" duration="10979000" />
+      <workItem from="1632011069521" duration="18909000" />
     </task>
     <servers />
   </component>

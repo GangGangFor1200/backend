@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -23,15 +24,24 @@ public class MyplaceService {
 
     private final MyplaceRepository myplaceRepository;
 
-
-
-    public Long add(Myplace myplace){
-        //여기서 반환한거 아이디 그냥 반환해도 될거같은데 영한이형은 jpa사용안해서 지금 한 방식대로 한건가 싶기두 하고 일단은 이렇게 두고 나중에 다시 보는걸로
-        myplaceRepository.save(myplace);
-        Optional<Myplace> byId = myplaceRepository.findById(myplace.getId());
-        return byId.get().getId();
+    //기존에 있는거 처리하는거 추가해야하나?
+    public Long add(Member member,Place place){
+    List<MyplaceCourse> myplace_courseList=new ArrayList<>();
+       Myplace myplace = Myplace.createMyplace(
+               place.getName(),
+               place.getCategory().getName(),
+               place.getLocation_x(),
+               place.getLocation_y(),
+               place.getAddress(),
+               member
+       );
+       System.out.println(myplace.toString());
+       Myplace saved = myplaceRepository.save(myplace);
+        System.out.println(saved.toString());
+       return saved.getId();
     }
-    //주리 대답오면 위에꺼 아래꺼에 합치기
+
+
     public List<MyplaceDto> findMyplaceList(Member member){
         List<Myplace> myplaceList = myplaceRepository.findAllByMember(member);
         List<MyplaceDto> myplaceDtoList = new ArrayList<>();

@@ -6,10 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="fd3d456c-5a75-4025-a191-e37b4339dd96" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/MyplaceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/MyplaceRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/MemberRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/MyplaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/MyplaceService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Myplace.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Myplace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Api/MyplaceApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Service/MyplaceServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Service/MyplaceServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Service/MyplaceServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,12 +102,29 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.MyplaceServiceTest.addMyplace">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MemberServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gang.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ganggang3.gang.Service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ganggang3.gang.Service" />
+      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Service.MemberServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -176,22 +194,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProvinceApiControllerTest.province_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="gang.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ganggang3.gang.Service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ganggang3.gang.Api" />
-      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Api.ProvinceApiControllerTest" />
-      <option name="METHOD_NAME" value="province_test" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GangApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="gang.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ganggang3.gang.GangApplication" />
@@ -204,8 +206,8 @@
         <item itemvalue="JUnit.MyplaceServiceTest.addMyplace" />
         <item itemvalue="JUnit.MyplaceServiceTest.findAllMyplace" />
         <item itemvalue="JUnit.MemberServiceTest.findMember" />
+        <item itemvalue="JUnit.MemberServiceTest" />
         <item itemvalue="JUnit.MyplaceService.add" />
-        <item itemvalue="JUnit.ProvinceApiControllerTest.province_test" />
       </list>
     </recent_temporary>
   </component>
@@ -221,7 +223,8 @@
       <workItem from="1631761366365" duration="438000" />
       <workItem from="1631762066007" duration="3442000" />
       <workItem from="1631862564501" duration="4784000" />
-      <workItem from="1632011069521" duration="18909000" />
+      <workItem from="1632011069521" duration="21903000" />
+      <workItem from="1632063738303" duration="2993000" />
     </task>
     <servers />
   </component>
@@ -238,5 +241,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

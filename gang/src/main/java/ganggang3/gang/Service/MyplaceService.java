@@ -28,6 +28,7 @@ public class MyplaceService {
     public Long add(Member member,Place place){
     List<MyplaceCourse> myplace_courseList=new ArrayList<>();
        Myplace myplace = Myplace.createMyplace(
+
                place.getName(),
                place.getCategory().getName(),
                place.getLocation_x(),

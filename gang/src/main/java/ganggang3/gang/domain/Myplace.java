@@ -17,7 +17,7 @@ import java.util.List;
 //밖에서 생성자 못쓰게 하는거 createOrderitem만 쓰도록하는거 롬복
 public class Myplace {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "myplace_id")
     private Long id;
 
@@ -42,7 +42,7 @@ public class Myplace {
     public static Myplace createMyplace(String name, String category, double location_x,
                    double location_y, String address, Member member) {
         Myplace myplace = new Myplace ();
-
+//        myplace.setId(Long.valueOf(id));
         myplace.setName(name);
         myplace.setCategory(category);
         myplace.setLocation_x(location_x);

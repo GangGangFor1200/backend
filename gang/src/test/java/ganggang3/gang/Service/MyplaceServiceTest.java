@@ -47,7 +47,7 @@ public class MyplaceServiceTest {
     @Test
     public void findAllMyplace(){
         //given
-        long memberId=1;
+        long memberId=3;
 
         Member member=memberService.findById(memberId);
         System.out.println(member.getName());

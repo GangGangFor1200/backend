@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="fd3d456c-5a75-4025-a191-e37b4339dd96" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/ProvinceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/ProvinceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Place.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Place.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Station.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Api/VlogApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Api/VlogApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/MyplaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/MyplaceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/PlaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/PlaceService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +56,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunManager">
     <configuration name="GangApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -77,11 +78,23 @@
       <workItem from="1631717807030" duration="6000" />
       <workItem from="1631761366365" duration="438000" />
       <workItem from="1631762066007" duration="3442000" />
-      <workItem from="1631862564501" duration="2787000" />
+      <workItem from="1631862564501" duration="4784000" />
+      <workItem from="1632011069521" duration="1470000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

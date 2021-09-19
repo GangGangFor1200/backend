@@ -35,12 +35,5 @@ public class VlogApiController {
         private T data;
     }
 
-    static class PlaceDto{
-        private String name;
-        private double location_x;
-        private double location_y;
-        private String explanation;
-        private String address;
-    }
 
 }

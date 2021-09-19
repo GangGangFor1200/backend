@@ -26,19 +26,24 @@ public class MyplaceService {
     public List<Myplace> findMyplaceList(Member member){
         return myplaceRepository.findAllByMember(member);
     }
+
     public Long add(Myplace myplace){
+        //여기서 반환한거 아이디 그냥 반환해도 될거같은데 영한이형은 jpa사용안해서 지금 한 방식대로 한건가 싶기두 하고 일단은 이렇게 두고 나중에 다시 보는걸로
         myplaceRepository.save(myplace);
         Optional<Myplace> byId = myplaceRepository.findById(myplace.getId());
         return byId.get().getId();
     }
+    //주리 대답오면 위에꺼 아래꺼에 합치기
     public List<MyplaceDto> ApifindMyplaceList(Member member){
         List<Myplace> myplaceList=findMyplaceList(member);
         List<MyplaceDto> myplaceDtoList = new ArrayList<>();
-        myplaceList.forEach(p->{
-            List<MyplaceCourse> myplaceCourseList=p.getMyplace_courseList();
-            MyplaceDto md=MyplaceDto.of(p,myplaceCourseList);
-            myplaceDtoList.add(md);
-        });
+        if (myplaceList!=null) {
+            myplaceList.forEach(p -> {
+                List<MyplaceCourse> myplaceCourseList = p.getMyplace_courseList();
+                MyplaceDto md = MyplaceDto.of(p, myplaceCourseList);
+                myplaceDtoList.add(md);
+            });
+        }
 
         return myplaceDtoList;
     }

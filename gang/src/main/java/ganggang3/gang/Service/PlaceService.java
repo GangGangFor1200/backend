@@ -42,9 +42,11 @@ public class PlaceService {
     public List<Vlog> findVlogList(long placeId) {
         List<PlaceVlog> placeVlogList=findPlaceVlogList(placeId);
         List<Vlog> vlogList=new ArrayList<>();
-        for(int i=0;i<placeVlogList.size();i++){
-            PlaceVlog placeVlog=placeVlogList.get(i);
-            vlogList.add(placeVlog.getVlog());
+        if (placeVlogList != null) {
+            for (int i = 0; i < placeVlogList.size(); i++) {
+                PlaceVlog placeVlog = placeVlogList.get(i);
+                vlogList.add(placeVlog.getVlog());
+            }
         }
         return vlogList;
     }

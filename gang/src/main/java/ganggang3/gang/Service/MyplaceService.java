@@ -24,20 +24,27 @@ public class MyplaceService {
 
     private final MyplaceRepository myplaceRepository;
     public Myplace findByMemberAndName(Member member, String name){
+
         return myplaceRepository.findByMemberAndName(member,name);
     }
-    //기존에 있는거 처리하는거 추가해야하나?
+
     @Transactional
     public Long add(Member member,Place place){
-    List<MyplaceCourse> myplace_courseList=new ArrayList<>();
-       Myplace myplace = Myplace.createMyplace(
-               place.getName(),
-               place.getCategory().getName(),
-               place.getLocation_x(),
-               place.getLocation_y(),
-               place.getAddress(),
-               member
-       );
+        //add되어 있는지 확인
+        Myplace rep = findByMemberAndName(member, place.getName());
+        if (rep!=null){
+            //예외처리 하기
+            return rep.getId();
+        }
+        List<MyplaceCourse> myplace_courseList=new ArrayList<>();
+           Myplace myplace = Myplace.createMyplace(
+                   place.getName(),
+                   place.getCategory().getName(),
+                   place.getLocation_x(),
+                   place.getLocation_y(),
+                   place.getAddress(),
+                   member
+           );
 
         Myplace chk = findByMemberAndName(member, myplace.getName());
         // 해당 member에 이미 myplace가 있다면 에러 발생

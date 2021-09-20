@@ -22,6 +22,10 @@ public class PlaceService {
     private final CategoryRepository categoryRepository;
     private final CityRepository cityRepository;
 
+    public Place findById(long placeId){
+        Optional<Place> place=placeRepository.findById(placeId);
+        return place.get();
+    }
 
     public long find(long placeId) {
         Optional<Place> place=placeRepository.findById(placeId);

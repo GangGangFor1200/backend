@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
@@ -47,7 +48,7 @@ public class MyplaceServiceTest {
     @Test
     public void findAllMyplace(){
         //given
-        long memberId=3;
+        long memberId=1;
 
         Member member=memberService.findById(memberId);
         System.out.println(member.getName());
@@ -56,25 +57,26 @@ public class MyplaceServiceTest {
         List<MyplaceDto> myplaceDtoList=myplaceService.findMyplaceList(member);
         myplaceDtoList.forEach(p-> System.out.println(p.getName()));
         //then
-        assertEquals(10,myplaceDtoList.size(),0);
+        assertEquals(12,myplaceDtoList.size(),0);
     }
     //테스트 처음에 안되다가 계속 실행하면서 id가 올라가더니 10번 이후로 실행됨
     //이거 관련된 처리를 해야하는데 어캐할지 고민좀
     //test할때는 다른db에 저장되는게 맞는지 확인
     //콘솔상에서 확인안됨
     @Test
+//    @Rollback(false)
     public void addMyplace(){
         //given
-        Place place= placeRepository.findById(1).get();
+        Place place= placeRepository.findById(5).get();
         System.out.println(place.getName());
-        Member member = memberRepository.findById(3);
+        Member member = memberRepository.findById(4);
         System.out.println(member.getName());
         //when
         long id=myplaceService.add(member,place);
         System.out.println(id);
         //then
         List<MyplaceDto> myplaceList = myplaceService.findMyplaceList(member);
-        MyplaceDto myplaceDto = myplaceList.get(0);
+        MyplaceDto myplaceDto = myplaceList.get(1);
         assertEquals(place.getName(),myplaceDto.getName());
         System.out.println(myplaceDto.getName());
     }

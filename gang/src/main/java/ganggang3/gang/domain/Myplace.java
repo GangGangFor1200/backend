@@ -14,10 +14,11 @@ import java.util.List;
 @Setter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+
 //밖에서 생성자 못쓰게 하는거 createOrderitem만 쓰도록하는거 롬복
 public class Myplace {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     @Column(name = "myplace_id")
     private Long id;
 

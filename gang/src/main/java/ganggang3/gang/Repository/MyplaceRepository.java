@@ -7,8 +7,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
+
 public interface MyplaceRepository  extends JpaRepository<Myplace,Long> {
 
+
     List<Myplace> findAllByMember(Member member);
+    Myplace findAllByMemberAndName(Member member , String name);
+
 
 }

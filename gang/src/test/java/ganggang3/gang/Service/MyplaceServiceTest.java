@@ -64,21 +64,22 @@ public class MyplaceServiceTest {
     //test할때는 다른db에 저장되는게 맞는지 확인
     //콘솔상에서 확인안됨
     @Test
-//    @Rollback(false)
+    @Rollback(false)
     public void addMyplace(){
         //given
-        Place place= placeRepository.findById(5).get();
-        System.out.println(place.getName());
-        Member member = memberRepository.findById(4);
-        System.out.println(member.getName());
+        Member member = memberRepository.findById(1);
+//        System.out.println(member.getName());
+        Place place= placeRepository.findById(2).get();
+//        System.out.println(place.getName());
+
         //when
         long id=myplaceService.add(member,place);
         System.out.println(id);
         //then
         List<MyplaceDto> myplaceList = myplaceService.findMyplaceList(member);
-        MyplaceDto myplaceDto = myplaceList.get(1);
+        MyplaceDto myplaceDto = myplaceList.get(3);
+
         assertEquals(place.getName(),myplaceDto.getName());
-        System.out.println(myplaceDto.getName());
     }
 
     @Test

@@ -37,6 +37,15 @@ public class MyplaceService {
                member
        );
 
+        Myplace chk = myplaceRepository.findAllByMemberAndName(member, myplace.getName());
+        // 해당 member에 이미 myplace가 있다면 에러 발생
+        if (chk!=null){
+            //에로 발생시키기
+            //exception으로 만들어야함!!!
+            System.out.println("중복된 Myplace입니다");
+            return chk.getId();
+
+        }
 
         Myplace saved = myplaceRepository.save(myplace);
 

@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd3d456c-5a75-4025-a191-e37b4339dd96" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/MyplaceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/MyplaceRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/MyplaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/MyplaceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/add.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/add.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Myplace.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/domain/Myplace.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Service/MyplaceServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Service/MyplaceServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -121,7 +117,7 @@
       <module name="gang.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ganggang3.gang.Service.*" />
+          <option name="PATTERN" value="ganggang3.gang.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -136,7 +132,7 @@
       <module name="gang.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ganggang3.gang.Service.*" />
+          <option name="PATTERN" value="ganggang3.gang.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -152,7 +148,7 @@
       <module name="gang.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ganggang3.gang.Service.*" />
+          <option name="PATTERN" value="ganggang3.gang.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -168,7 +164,7 @@
       <module name="gang.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ganggang3.gang.Service.*" />
+          <option name="PATTERN" value="ganggang3.gang.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -184,7 +180,7 @@
       <module name="gang.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ganggang3.gang.Service.*" />
+          <option name="PATTERN" value="ganggang3.gang.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -228,7 +224,7 @@
       <workItem from="1632011069521" duration="21903000" />
       <workItem from="1632063738303" duration="3745000" />
       <workItem from="1632108949019" duration="5985000" />
-      <workItem from="1632138572890" duration="8546000" />
+      <workItem from="1632138572890" duration="10020000" />
     </task>
     <servers />
   </component>

@@ -67,7 +67,7 @@ public class MyplaceServiceTest {
         //given
         Place place= placeRepository.findById(1).get();
         System.out.println(place.getName());
-        Member member = memberRepository.findById(2);
+        Member member = memberRepository.findById(3);
         System.out.println(member.getName());
         //when
         long id=myplaceService.add(member,place);

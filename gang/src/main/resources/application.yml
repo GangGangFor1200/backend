@@ -16,4 +16,8 @@ spring:
         show_sql: true
         format_sql: true
     generate-ddl: false
-logging.level.org.hibernate.type: trace
+logging:
+  level:
+    org.hibernate.type: trace
+    org.springframework: INFO
+    org.springframework.web: DEBUG

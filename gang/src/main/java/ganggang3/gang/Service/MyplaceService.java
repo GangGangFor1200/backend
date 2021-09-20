@@ -25,9 +25,11 @@ public class MyplaceService {
     private final MyplaceRepository myplaceRepository;
 
     //기존에 있는거 처리하는거 추가해야하나?
+    @Transactional
     public Long add(Member member,Place place){
     List<MyplaceCourse> myplace_courseList=new ArrayList<>();
        Myplace myplace = Myplace.createMyplace(
+
 
                place.getName(),
                place.getCategory().getName(),

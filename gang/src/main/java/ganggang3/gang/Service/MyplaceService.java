@@ -23,7 +23,9 @@ import java.util.Optional;
 public class MyplaceService {
 
     private final MyplaceRepository myplaceRepository;
-
+    public Myplace findByMemberAndName(Member member, String name){
+        return myplaceRepository.findByMemberAndName(member,name);
+    }
     //기존에 있는거 처리하는거 추가해야하나?
     @Transactional
     public Long add(Member member,Place place){
@@ -37,7 +39,7 @@ public class MyplaceService {
                member
        );
 
-        Myplace chk = myplaceRepository.findAllByMemberAndName(member, myplace.getName());
+        Myplace chk = findByMemberAndName(member, myplace.getName());
         // 해당 member에 이미 myplace가 있다면 에러 발생
         if (chk!=null){
             //에로 발생시키기
@@ -51,7 +53,10 @@ public class MyplaceService {
 
        return saved.getId();
     }
-
+    @Transactional
+    public void delete(Member member, Place place){
+        myplaceRepository.deleteByMemberAndId(member, place.getName());
+    }
 
     public List<MyplaceDto> findMyplaceList(Member member){
         List<Myplace> myplaceList = myplaceRepository.findAllByMember(member);

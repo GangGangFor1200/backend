@@ -69,7 +69,7 @@ public class MyplaceServiceTest {
         //given
         Member member = memberRepository.findById(1);
 //        System.out.println(member.getName());
-        Place place= placeRepository.findById(2).get();
+        Place place= placeRepository.findById(6).get();
 //        System.out.println(place.getName());
 
         //when
@@ -77,7 +77,7 @@ public class MyplaceServiceTest {
         System.out.println(id);
         //then
         List<MyplaceDto> myplaceList = myplaceService.findMyplaceList(member);
-        MyplaceDto myplaceDto = myplaceList.get(3);
+        MyplaceDto myplaceDto = myplaceList.get(0);
 
         assertEquals(place.getName(),myplaceDto.getName());
     }
@@ -85,10 +85,14 @@ public class MyplaceServiceTest {
     @Test
     public void deleteMyplace(){
         //given
-
-        //when
-
-        //then
+//        Member member = memberRepository.findById(1);
+//        Place place= placeRepository.findById(2).get();
+//
+//        //when
+//        myplaceService.delete(member,place);
+//
+//        //then
+//        myplaceService.find
     }
 
 }

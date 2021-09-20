@@ -100,7 +100,7 @@
       <recent name="ganggang3.gang.Api" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MyplaceServiceTest.addMyplace">
+  <component name="RunManager" selected="JUnit.MyplaceServiceTest.deleteMyplace">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -161,6 +161,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MyplaceServiceTest.deleteMyplace" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gang.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ganggang3.gang.Service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ganggang3.gang.Service" />
+      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Service.MyplaceServiceTest" />
+      <option name="METHOD_NAME" value="deleteMyplace" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MyplaceServiceTest.findAllMyplace" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gang.test" />
       <extension name="coverage">
@@ -177,22 +193,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MyplaceService.add" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="gang.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ganggang3.gang.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ganggang3.gang.Service" />
-      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Service.MyplaceService" />
-      <option name="METHOD_NAME" value="add" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GangApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="gang.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ganggang3.gang.GangApplication" />
@@ -202,11 +202,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MyplaceServiceTest.deleteMyplace" />
         <item itemvalue="JUnit.MyplaceServiceTest.addMyplace" />
         <item itemvalue="JUnit.MyplaceServiceTest.findAllMyplace" />
         <item itemvalue="JUnit.MemberServiceTest.findMember" />
         <item itemvalue="JUnit.MemberServiceTest" />
-        <item itemvalue="JUnit.MyplaceService.add" />
       </list>
     </recent_temporary>
   </component>
@@ -225,7 +225,7 @@
       <workItem from="1632011069521" duration="21903000" />
       <workItem from="1632063738303" duration="3745000" />
       <workItem from="1632108949019" duration="5985000" />
-      <workItem from="1632138572890" duration="10964000" />
+      <workItem from="1632138572890" duration="12261000" />
     </task>
     <servers />
   </component>

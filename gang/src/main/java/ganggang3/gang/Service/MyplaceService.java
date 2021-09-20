@@ -44,7 +44,9 @@ public class MyplaceService {
         if (chk!=null){
             //에로 발생시키기
             //exception으로 만들어야함!!!
+            //나중에 오류 창 뜨도록
             System.out.println("중복된 Myplace입니다");
+
             return chk.getId();
 
         }
@@ -55,7 +57,7 @@ public class MyplaceService {
     }
     @Transactional
     public void delete(Member member, Place place){
-        myplaceRepository.deleteByMemberAndId(member, place.getName());
+        myplaceRepository.deleteByMemberAndName(member, place.getName());
     }
 
     public List<MyplaceDto> findMyplaceList(Member member){

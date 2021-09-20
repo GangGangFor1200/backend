@@ -14,16 +14,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Transactional
+@Transactional(readOnly = true)
 public class MyplaceServiceTest {
 
     @Autowired
@@ -59,40 +60,33 @@ public class MyplaceServiceTest {
         //then
         assertEquals(12,myplaceDtoList.size(),0);
     }
-    //테스트 처음에 안되다가 계속 실행하면서 id가 올라가더니 10번 이후로 실행됨
-    //이거 관련된 처리를 해야하는데 어캐할지 고민좀
-    //test할때는 다른db에 저장되는게 맞는지 확인
-    //콘솔상에서 확인안됨
+
     @Test
-    @Rollback(false)
+    @Transactional
+//    @Rollback(false)
     public void addMyplace(){
         //given
         Member member = memberRepository.findById(1);
-//        System.out.println(member.getName());
-        Place place= placeRepository.findById(6).get();
-//        System.out.println(place.getName());
-
+        Place place= placeRepository.findById(8).get();
         //when
         long id=myplaceService.add(member,place);
-        System.out.println(id);
         //then
-        List<MyplaceDto> myplaceList = myplaceService.findMyplaceList(member);
-        MyplaceDto myplaceDto = myplaceList.get(0);
-
-        assertEquals(place.getName(),myplaceDto.getName());
+        assertNotNull(myplaceService.findByMemberAndName(member,place.getName()));
     }
 
     @Test
+    @Transactional
+//    @Rollback(false)
     public void deleteMyplace(){
         //given
-//        Member member = memberRepository.findById(1);
-//        Place place= placeRepository.findById(2).get();
-//
-//        //when
-//        myplaceService.delete(member,place);
-//
-//        //then
-//        myplaceService.find
+        Member member = memberRepository.findById(1);
+        Place place= placeRepository.findById(8).get();
+        //when
+        myplaceService.delete(member,place);
+        System.out.println("ASd");
+        //then
+        assertNull(myplaceService.findByMemberAndName(member, place.getName()));
+
     }
 
 }

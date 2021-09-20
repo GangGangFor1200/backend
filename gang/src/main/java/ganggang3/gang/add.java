@@ -31,7 +31,7 @@ public class add implements ApplicationRunner {
     @Override
     @Transactional
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("ApplicationRunner!");
+//        System.out.println("Myplace data 넣음!");
 
 //        for (int i=0; i<5;i++) {
 //            Member member = memberRepository.findById(i+1);

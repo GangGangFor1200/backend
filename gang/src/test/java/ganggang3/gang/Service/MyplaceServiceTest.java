@@ -58,7 +58,7 @@ public class MyplaceServiceTest {
         List<MyplaceDto> myplaceDtoList=myplaceService.findMyplaceList(member);
         myplaceDtoList.forEach(p-> System.out.println(p.getName()));
         //then
-        assertEquals(12,myplaceDtoList.size(),0);
+        assertEquals(2,myplaceDtoList.size(),0);
     }
 
     @Test
@@ -79,11 +79,16 @@ public class MyplaceServiceTest {
 //    @Rollback(false)
     public void deleteMyplace(){
         //given
+        addMyplace();
         Member member = memberRepository.findById(1);
         Place place= placeRepository.findById(8).get();
+        //원래 있는 데이터인지 확인
+        //이게 없다면 원래 없는데이터여서 그냥 통과할 수 있음
+        assertNotNull(myplaceService.findByMemberAndName(member,place.getName()));
+
         //when
         myplaceService.delete(member,place);
-        System.out.println("ASd");
+
         //then
         assertNull(myplaceService.findByMemberAndName(member, place.getName()));
 

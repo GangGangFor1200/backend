@@ -8,6 +8,7 @@ import ganggang3.gang.domain.Place;
 import ganggang3.gang.dto.MyplaceDto;
 import ganggang3.gang.dto.PlaceDto;
 import ganggang3.gang.dto.VlogDto;
+import ganggang3.gang.exception.NoDeliveryException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,7 +35,7 @@ public class MyplaceService {
         Myplace rep = findByMemberAndName(member, place.getName());
         if (rep!=null){
             //예외처리 하기
-            return rep.getId();
+            throw new NoDeliveryException("이미 저장되어 있는 PLACE입니다!");
         }
         List<MyplaceCourse> myplace_courseList=new ArrayList<>();
            Myplace myplace = Myplace.createMyplace(
@@ -46,24 +47,17 @@ public class MyplaceService {
                    member
            );
 
-        Myplace chk = findByMemberAndName(member, myplace.getName());
-        // 해당 member에 이미 myplace가 있다면 에러 발생
-        if (chk!=null){
-            //에로 발생시키기
-            //exception으로 만들어야함!!!
-            //나중에 오류 창 뜨도록
-            System.out.println("중복된 Myplace입니다");
-
-            return chk.getId();
-
-        }
-
         Myplace saved = myplaceRepository.save(myplace);
 
        return saved.getId();
     }
     @Transactional
     public void delete(Member member, Place place){
+        Myplace rep = findByMemberAndName(member, place.getName());
+        if (rep==null){
+            //예외처리 하기
+            throw new NoDeliveryException("저장되지 않는 PLACE입니다!");
+        }
         myplaceRepository.deleteByMemberAndName(member, place.getName());
     }
 

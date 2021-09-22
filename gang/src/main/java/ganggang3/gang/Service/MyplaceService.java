@@ -6,17 +6,13 @@ import ganggang3.gang.domain.Myplace;
 import ganggang3.gang.domain.MyplaceCourse;
 import ganggang3.gang.domain.Place;
 import ganggang3.gang.dto.MyplaceDto;
-import ganggang3.gang.dto.PlaceDto;
-import ganggang3.gang.dto.VlogDto;
-import ganggang3.gang.exception.NoDeliveryException;
+import ganggang3.gang.exception.DatabaseException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -32,10 +28,10 @@ public class MyplaceService {
     @Transactional
     public Long add(Member member,Place place){
         //add되어 있는지 확인
-        Myplace rep = findByMemberAndName(member, place.getName());
-        if (rep!=null){
+        Myplace check = findByMemberAndName(member, place.getName());
+        if (check!=null){
             //예외처리 하기
-            throw new NoDeliveryException("이미 저장되어 있는 PLACE입니다!");
+            throw new DatabaseException("이미 저장되어 있는 PLACE입니다!");
         }
         List<MyplaceCourse> myplace_courseList=new ArrayList<>();
            Myplace myplace = Myplace.createMyplace(
@@ -56,7 +52,7 @@ public class MyplaceService {
         Myplace rep = findByMemberAndName(member, place.getName());
         if (rep==null){
             //예외처리 하기
-            throw new NoDeliveryException("저장되지 않는 PLACE입니다!");
+            throw new DatabaseException("저장되지 않는 PLACE입니다!");
         }
         myplaceRepository.deleteByMemberAndName(member, place.getName());
     }

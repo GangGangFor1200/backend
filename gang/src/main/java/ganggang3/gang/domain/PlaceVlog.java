@@ -45,7 +45,5 @@ public class PlaceVlog {
         return place_vlog;
     }
 
-    public PlaceVlog() {
 
-    }
 }

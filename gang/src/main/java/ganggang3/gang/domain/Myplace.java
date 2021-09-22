@@ -42,6 +42,7 @@ public class Myplace {
 
     public static Myplace createMyplace(String name, String category, double location_x,
                    double location_y, String address, Member member) {
+
         Myplace myplace = new Myplace ();
 //        myplace.setId(Long.valueOf(id));
         myplace.setName(name);

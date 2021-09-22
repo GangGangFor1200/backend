@@ -26,5 +26,15 @@ public class MyplaceCourse {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id")
     private Course course;
+
+    public void setMyplace(Myplace myplace){
+        this.myplace=myplace;
+        myplace.getMyplace_courseList().add(this);
+    }
+
+    public void setCourse(Course course){
+        this.course=course;
+        course.getMyplace_courseList().add(this);
+    }
 }
 

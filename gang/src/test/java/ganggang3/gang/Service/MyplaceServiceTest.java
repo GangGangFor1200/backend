@@ -57,6 +57,7 @@ public class MyplaceServiceTest {
         //when
         List<MyplaceDto> myplaceDtoList=myplaceService.findMyplaceList(member);
         myplaceDtoList.forEach(p-> System.out.println(p.getName()));
+
         //then
         assertEquals(2,myplaceDtoList.size(),0);
     }

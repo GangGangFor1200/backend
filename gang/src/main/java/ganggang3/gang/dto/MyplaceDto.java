@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class MyplaceDto {
-
+    private Long id;
     private String name;
     private String category;
     private double location_x;
@@ -20,6 +20,7 @@ public class MyplaceDto {
 
     public static MyplaceDto of (Myplace M, List<MyplaceCourse> myplace_courseList){
         return new MyplaceDto(
+                M.getId(),
                 M.getName(),
                 M.getCategory(),
                 M.getLocation_x(),

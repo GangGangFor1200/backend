@@ -36,5 +36,13 @@ public class MyplaceCourse {
         this.course=course;
         course.getMyplace_courseList().add(this);
     }
+    public static MyplaceCourse createMyplaceCourse(Myplace myplace, Course course){
+        MyplaceCourse myplaceCourse = new MyplaceCourse();
+        myplaceCourse.setCourse(course);
+        myplaceCourse.setMyplace(myplace);
+        return myplaceCourse;
+
+    }
+
 }
 

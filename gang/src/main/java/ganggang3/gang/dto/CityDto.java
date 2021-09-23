@@ -11,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 public class CityDto {
 
+    private long cityid;
     private String name;
     private String cityLink;
     private long provinceid;
@@ -18,6 +19,7 @@ public class CityDto {
 
     public static CityDto of (City C,List<StationDto> stationDtoList){
         return new CityDto(
+                C.getId(),
                 C.getName(),
                 C.getCityLink(),
                 C.getProvince().getId(),

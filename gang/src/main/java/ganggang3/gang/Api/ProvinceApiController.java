@@ -32,7 +32,7 @@ public class ProvinceApiController {
         provinceList.forEach(
                 province -> {
                     List<CityDto> cityDtoList = province.getCityList().stream()
-                            .map(c-> new CityDto(c.getName(),c.getCityLink(),province.getId(),c.getStationList().stream()
+                            .map(c-> new CityDto(c.getId(),c.getName(),c.getCityLink(),province.getId(),c.getStationList().stream()
                                     .map(s-> new StationDto(s.getName()))
                                     .collect(Collectors.toList())))
                             .collect(Collectors.toList());

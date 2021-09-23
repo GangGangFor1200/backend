@@ -31,4 +31,11 @@ public class Course {
     private List<MyplaceCourse> myplace_courseList=new ArrayList<>();
 
 
+    public static  Course createCourse(String name, Member member){
+        Course course = new Course();
+        course.setName(name);
+        course.setMember(member);
+        return course;
+    }
+
 }

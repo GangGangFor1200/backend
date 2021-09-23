@@ -15,6 +15,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import javax.transaction.Transactional;
+
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -64,7 +66,7 @@ public class CourseApiController {
     public void addCourse() throws Exception {
         //given
         Member member= memberService.findById(1);
-        List<MyplaceDto> myplaceList = myplaceService.findMyplaceList(member);
+        List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
 
 
         //when ,then

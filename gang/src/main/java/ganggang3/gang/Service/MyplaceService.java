@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -49,7 +48,7 @@ public class MyplaceService {
        return saved.getId();
     }
     @Transactional
-    public void deleteByPlace(Member member, Place place){//place로 지우기
+    public void delete(Member member, Place place){
         Myplace rep = findByMemberAndName(member, place.getName());
         if (rep==null){
             //예외처리 하기
@@ -57,26 +56,19 @@ public class MyplaceService {
         }
         myplaceRepository.deleteByMemberAndName(member, place.getName());
     }
-    @Transactional
-    public void deleteByMyplace(Member member, Myplace myplace){//myplace로 지우기
-        myplaceRepository.deleteByMemberAndName(member, myplace.getName());
-    }
 
-    public List<MyplaceDto> findMyplaceList(Member member){
+    public List<Myplace> findMyplaceList(Member member){
         List<Myplace> myplaceList = myplaceRepository.findAllByMember(member);
-        List<MyplaceDto> myplaceDtoList = new ArrayList<>();
-        if (myplaceList!=null) {
-            myplaceList.forEach(p -> {
-                List<MyplaceCourse> myplaceCourseList = p.getMyplace_courseList();
-                MyplaceDto md = MyplaceDto.of(p, myplaceCourseList);
-                myplaceDtoList.add(md);
-            });
-        }
+//        List<MyplaceDto> myplaceDtoList = new ArrayList<>();
+//        if (myplaceList!=null) {
+//            myplaceList.forEach(p -> {
+//                List<MyplaceCourse> myplaceCourseList = p.getMyplace_courseList();
+//                MyplaceDto md = MyplaceDto.of(p, myplaceCourseList);
+//                myplaceDtoList.add(md);
+//            });
+//        }
 
-        return myplaceDtoList;
+        return myplaceList;
     }
 
-    public Myplace findById(long myplaceId) {
-        return myplaceRepository.findById(myplaceId).get();
-    }
 }

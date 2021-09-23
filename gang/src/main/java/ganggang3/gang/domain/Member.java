@@ -19,6 +19,7 @@ public class Member {
     private Long id;
 
     private String name;
+
     @JsonManagedReference
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<Course> courseList =new ArrayList<>();

@@ -6,6 +6,7 @@ import ganggang3.gang.Service.MemberService;
 import ganggang3.gang.Service.MyplaceService;
 import ganggang3.gang.Service.PlaceService;
 import ganggang3.gang.domain.Member;
+import ganggang3.gang.domain.Myplace;
 import ganggang3.gang.domain.Place;
 import ganggang3.gang.dto.MyplaceDto;
 import org.junit.Test;
@@ -55,7 +56,7 @@ public class MyplaceServiceTest {
         System.out.println(member.getName());
 
         //when
-        List<MyplaceDto> myplaceDtoList=myplaceService.findMyplaceList(member);
+        List<Myplace> myplaceDtoList=myplaceService.findMyplaceList(member);
         myplaceDtoList.forEach(p-> System.out.println(p.getName()));
 
         //then
@@ -88,7 +89,7 @@ public class MyplaceServiceTest {
         assertNotNull(myplaceService.findByMemberAndName(member,place.getName()));
 
         //when
-        myplaceService.deleteByPlace(member,place);
+        myplaceService.delete(member,place);
 
         //then
         assertNull(myplaceService.findByMemberAndName(member, place.getName()));

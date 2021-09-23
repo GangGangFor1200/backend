@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -48,13 +49,17 @@ public class MyplaceService {
        return saved.getId();
     }
     @Transactional
-    public void delete(Member member, Place place){
+    public void deleteByPlace(Member member, Place place){//place로 지우기
         Myplace rep = findByMemberAndName(member, place.getName());
         if (rep==null){
             //예외처리 하기
             throw new DatabaseException("저장되지 않는 PLACE입니다!");
         }
         myplaceRepository.deleteByMemberAndName(member, place.getName());
+    }
+    @Transactional
+    public void deleteByMyplace(Member member, Myplace myplace){//myplace로 지우기
+        myplaceRepository.deleteByMemberAndName(member, myplace.getName());
     }
 
     public List<MyplaceDto> findMyplaceList(Member member){
@@ -71,4 +76,7 @@ public class MyplaceService {
         return myplaceDtoList;
     }
 
+    public Myplace findById(long myplaceId) {
+        return myplaceRepository.findById(myplaceId).get();
+    }
 }

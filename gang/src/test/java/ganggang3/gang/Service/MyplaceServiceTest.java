@@ -88,7 +88,7 @@ public class MyplaceServiceTest {
         assertNotNull(myplaceService.findByMemberAndName(member,place.getName()));
 
         //when
-        myplaceService.delete(member,place);
+        myplaceService.deleteByPlace(member,place);
 
         //then
         assertNull(myplaceService.findByMemberAndName(member, place.getName()));

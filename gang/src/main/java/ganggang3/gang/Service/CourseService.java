@@ -22,7 +22,7 @@ public class CourseService {
     private final MemberRepository memberRepository;
     private final MyplaceCourseRepository myplaceCourseRepository;
 
-
+    @Transactional
     public Long addCourse(Member member, List<Myplace> myplaceList, String name){
         List<Course> courseList = member.getCourseList();
 
@@ -48,5 +48,14 @@ public class CourseService {
 
         return save.getId();
 
+    }
+//    @Transactional
+//    public Long updateCourse(Member member, Course course, List<Myplace> myplaceList, String name){
+//
+//
+//    }
+
+    public Course findByNameAndMember(String name, Member member){
+        return courseRepository.findByNameAndMember(name,member);
     }
 }

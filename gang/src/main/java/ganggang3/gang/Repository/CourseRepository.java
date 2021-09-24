@@ -10,5 +10,8 @@ import java.util.List;
 public interface CourseRepository extends JpaRepository<Course,Long> {
 //    Course findByNameAndMemberAndMyplace_courseList(String name, Member member, List<Myplace> myplaceList);
     Course findByNameAndMember(String name, Member member);
-    void delete
+//    boolean exis(String name, Member member);
+
+//    @Override
+    boolean existsByNameAndMember(String name, Member member);
 }

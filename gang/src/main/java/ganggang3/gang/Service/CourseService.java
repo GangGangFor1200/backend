@@ -28,15 +28,12 @@ public class CourseService {
 
         Course byNameAndMember = courseRepository.findByNameAndMember(name, member);
         //이미 존재하면 update
-        if (byNameAndMember==null){
-            byNameAndMember = Course.createCourse(name, member);
+        if (byNameAndMember!=null){
+            //오류 발생 이미 있는 코스이름입니다.
+            throw new IllegalStateException("이미 있는 코스 이름입니다.");
         }
-        else{
-            myplaceCourseRepository.deleteAllByCourse(byNameAndMember);
-        }
-        Course course= byNameAndMember;
 
-//        Course course= Course.createCourse(name, member);
+        Course course= Course.createCourse(name, member);
         myplaceList.forEach(mp->{
             MyplaceCourse myplaceCourse = MyplaceCourse.createMyplaceCourse(mp, course);
             System.out.println(mp.getName());

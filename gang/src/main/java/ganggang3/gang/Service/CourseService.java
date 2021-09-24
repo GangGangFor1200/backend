@@ -9,10 +9,15 @@ import ganggang3.gang.domain.Myplace;
 import ganggang3.gang.domain.MyplaceCourse;
 import ganggang3.gang.dto.MyplaceDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+
+import static org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor.logger;
+
 
 @Service
 @Transactional(readOnly = true)
@@ -34,28 +39,41 @@ public class CourseService {
         }
 
         Course course= Course.createCourse(name, member);
-        myplaceList.forEach(mp->{
-            MyplaceCourse myplaceCourse = MyplaceCourse.createMyplaceCourse(mp, course);
-            System.out.println(mp.getName());
-            //이거 cascade땜에 안해도됨
-//            myplaceCourseRepository.save(myplaceCourse);
-            }
-        );
+        addmyplaceCourse(course, myplaceList);
 
         courseList.add(course);
         Course save = courseRepository.save(course);
-
-
         return save.getId();
 
     }
-//    @Transactional
-//    public Long updateCourse(Member member, Course course, List<Myplace> myplaceList, String name){
-//
-//
-//    }
+    @Transactional
+    public Long updateCourse(Member member, Course course, List<Myplace> myplaceList, String name){
+        Optional<Course> byId = courseRepository.findById(course.getId());
+        if (byId==null){
+            throw new IllegalStateException("코스가 존재하지 않습니다");
+        }
+        myplaceCourseRepository.deleteAllByCourse(byId.get());
+
+        addmyplaceCourse(course, myplaceList);
+
+        byId.get().setName(name);
+
+        Course save = courseRepository.save(course);
+        return save.getId();
+    }
+
+    private void addmyplaceCourse(Course course, List<Myplace> myplaceList) {
+        myplaceList.forEach(mp -> {
+                    MyplaceCourse myplaceCourse = MyplaceCourse.createMyplaceCourse(mp, course);
+                    myplaceCourseRepository.save(myplaceCourse);
+                }
+        );
+    }
 
     public Course findByNameAndMember(String name, Member member){
         return courseRepository.findByNameAndMember(name,member);
+    }
+    public Optional<Course> findById(Long id){
+        return courseRepository.findById(id);
     }
 }

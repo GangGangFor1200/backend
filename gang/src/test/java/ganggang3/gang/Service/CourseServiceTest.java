@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.util.Lists.newArrayList;
 import static org.junit.Assert.*;
@@ -49,12 +50,21 @@ public class CourseServiceTest {
     @Rollback(value = false)
     public void updateCourse(){
         Member member= memberService.findById(2);
-        Course course = courseService.findByNameAndMember("ASd",member);
+        Course course = courseService.findByNameAndMember("코스모스",member);
         List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
 
         List<Myplace> myplaces = newArrayList(myplaceList.subList(1,2));
-        //
-//        Long id = courseService.updateCourse(member,course,myplaceList,"newName");
+
+        Long id = courseService.updateCourse(member,course,myplaces,"ㄴ");
+
+        Optional<Course> byId = courseService.findById(id);
+
+        assertEquals(byId.get().getName(),"ㄴ");
+
+
+
     }
+
+
 
 }

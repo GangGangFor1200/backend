@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="fd3d456c-5a75-4025-a191-e37b4339dd96" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/MyplaceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Repository/MyplaceRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/MyplaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/MyplaceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Service/MyplaceServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Service/MyplaceServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/main/java/ganggang3/gang/Service/CourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Service/CourseServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gang/src/test/java/ganggang3/gang/Service/CourseServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,46 +99,45 @@
       <recent name="ganggang3.gang.Api" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MyplaceServiceTest.deleteMyplace">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.CourseServiceTest.updateCourse">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MemberServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="gang.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ganggang3.gang.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ganggang3.gang.Service" />
-      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Service.MemberServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MemberServiceTest.findMember" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CourseServiceTest.addCourse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="gang.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ganggang3.gang.*" />
+          <option name="PATTERN" value="ganggang3.gang.Service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ganggang3.gang.Service" />
-      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Service.MemberServiceTest" />
-      <option name="METHOD_NAME" value="findMember" />
+      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Service.CourseServiceTest" />
+      <option name="METHOD_NAME" value="addCourse" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CourseServiceTest.updateCourse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="gang.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ganggang3.gang.Service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ganggang3.gang.Service" />
+      <option name="MAIN_CLASS_NAME" value="ganggang3.gang.Service.CourseServiceTest" />
+      <option name="METHOD_NAME" value="updateCourse" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -202,11 +200,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CourseServiceTest.updateCourse" />
+        <item itemvalue="JUnit.CourseServiceTest.addCourse" />
         <item itemvalue="JUnit.MyplaceServiceTest.deleteMyplace" />
         <item itemvalue="JUnit.MyplaceServiceTest.addMyplace" />
         <item itemvalue="JUnit.MyplaceServiceTest.findAllMyplace" />
-        <item itemvalue="JUnit.MemberServiceTest.findMember" />
-        <item itemvalue="JUnit.MemberServiceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -226,6 +224,7 @@
       <workItem from="1632063738303" duration="3745000" />
       <workItem from="1632108949019" duration="5985000" />
       <workItem from="1632138572890" duration="12261000" />
+      <workItem from="1632485047579" duration="3598000" />
     </task>
     <servers />
   </component>

@@ -29,6 +29,7 @@ public class CourseServiceTest {
     @Test
     @Rollback(value = false)
     public void addCourse(){
+
         //given
         Member member= memberService.findById(2);
         List<Myplace> myplaceList = myplaceService.findMyplaceList(member);

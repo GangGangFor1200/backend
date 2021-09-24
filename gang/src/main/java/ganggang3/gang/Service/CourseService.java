@@ -26,14 +26,17 @@ public class CourseService {
     public Long addCourse(Member member, List<Myplace> myplaceList, String name){
         List<Course> courseList = member.getCourseList();
 
-//        Course byNameAndMember = courseRepository.findByNameAndMember(name, member);
-//        //이미 존재하면 update
-//        if (byNameAndMember==null){
-//            byNameAndMember = Course.createCourse(name, member);
-//        }
-//        Course course= byNameAndMember;
+        Course byNameAndMember = courseRepository.findByNameAndMember(name, member);
+        //이미 존재하면 update
+        if (byNameAndMember==null){
+            byNameAndMember = Course.createCourse(name, member);
+        }
+        else{
+            myplaceCourseRepository.deleteAllByCourse(byNameAndMember);
+        }
+        Course course= byNameAndMember;
 
-        Course course= Course.createCourse(name, member);
+//        Course course= Course.createCourse(name, member);
         myplaceList.forEach(mp->{
             MyplaceCourse myplaceCourse = MyplaceCourse.createMyplaceCourse(mp, course);
             System.out.println(mp.getName());

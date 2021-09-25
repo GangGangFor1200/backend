@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import javax.validation.Valid;
+
 import java.util.List;
 
 @RestController
@@ -25,11 +25,9 @@ public class CourseApiController {
 
     @PostMapping("/api/course/add/{member}")
     public void addCourse(@PathVariable("member") Long member_id,
-                        @RequestBody @Valid addCourseRequest request){
+                        @RequestBody addCourseRequest request){ //@Valid 써야하는데 안먹히네
         Member member= memberService.findById(member_id);
         courseService.addCourse(member,request.getMyplaceList(),request.getName());
-
-
     }
 
     @Data
@@ -40,6 +38,8 @@ public class CourseApiController {
         String name;
     }
 
+    //참고용
+
 //    @PutMapping("/api/v2/members/{id}")
 //    public UpdateMemberResponse updateMemberV2(@PathVariable("id") Long id,
 //                                               @RequestBody @Valid UpdateMemberRequest request) {
@@ -47,6 +47,7 @@ public class CourseApiController {
 //        Member findMember = memberService.findOne(id);
 //        return new UpdateMemberResponse(findMember.getId(), findMember.getName());
 //    }
+
 //@ToString
 //@Getter
 //@NoArgsConstructor

@@ -61,10 +61,6 @@ public class CourseApiController {
         return new Result(courseDtoList);
     }
 
-    //코스안에있는 모든 장소들 보여주는api
-
-
-
     @Data
     @AllArgsConstructor
     static class Result<T>{

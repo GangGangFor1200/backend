@@ -50,12 +50,12 @@ public class CourseServiceTest {
     @Rollback(value = false)
     public void updateCourse(){
         Member member= memberService.findById(2);
-        Course course = courseService.findByNameAndMember("코스모스",member);
+        Optional<Course> course = courseService.findByNameAndMember("코스모스",member);
         List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
 
         List<Myplace> myplaces = newArrayList(myplaceList.subList(1,2));
 
-        Long id = courseService.updateCourse(member,course,myplaces,"ㄴ");
+        Long id = courseService.updateCourse(member,course.get(),myplaces,"ㄴ");
 
         Optional<Course> byId = courseService.findById(id);
 

@@ -14,10 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
-
-
-
 
 @Service
 @Transactional(readOnly = true)
@@ -31,11 +29,10 @@ public class CourseService {
     public Long addCourse(Member member, List<Myplace> myplaceList, String name){
         List<Course> courseList = member.getCourseList();
 
-        Course byNameAndMember = courseRepository.findByNameAndMember(name, member);
-        //이미 존재하면 update
-        if (byNameAndMember!=null){
-            //오류 발생 이미 있는 코스이름입니다.
-            throw new IllegalStateException("이미 있는 코스 이름입니다.");
+        //Optional로 null 검사
+        Optional<Course> byNameAndMember = courseRepository.findByNameAndMember(name, member);
+        if (byNameAndMember.isPresent()) {
+            throw new NoSuchElementException("존재하는 이름입니다");
         }
 
         Course course= Course.createCourse(name, member);
@@ -46,12 +43,12 @@ public class CourseService {
         return save.getId();
 
     }
+
     @Transactional
     public Long updateCourse(Member member, Course course, List<Myplace> myplaceList, String name){
+
         Optional<Course> byId = courseRepository.findById(course.getId());
-        if (byId==null){
-            throw new IllegalStateException("코스가 존재하지 않습니다");
-        }
+        byId.orElseThrow(()->new NoSuchElementException("코스가 존재하지 않습니다"));
         myplaceCourseRepository.deleteAllByCourse(byId.get());
 
         addmyplaceCourse(course, myplaceList);
@@ -60,6 +57,7 @@ public class CourseService {
 
         Course save = courseRepository.save(course);
         return save.getId();
+
     }
 
     private void addmyplaceCourse(Course course, List<Myplace> myplaceList) {
@@ -72,10 +70,11 @@ public class CourseService {
     public List<Course> findAllByMember(Member member){
         return courseRepository.findAllByMember(member);
     }
-    public Course findByNameAndMember(String name, Member member){
+    public Optional<Course> findByNameAndMember(String name, Member member){
         return courseRepository.findByNameAndMember(name,member);
     }
     public Optional<Course> findById(Long id){
         return courseRepository.findById(id);
     }
+
 }

@@ -1,10 +1,7 @@
 package ganggang3.gang.Service;
 
 import ganggang3.gang.Repository.MyplaceRepository;
-import ganggang3.gang.domain.Member;
-import ganggang3.gang.domain.Myplace;
-import ganggang3.gang.domain.MyplaceCourse;
-import ganggang3.gang.domain.Place;
+import ganggang3.gang.domain.*;
 import ganggang3.gang.dto.MyplaceDto;
 import ganggang3.gang.exception.DatabaseException;
 import lombok.RequiredArgsConstructor;
@@ -62,20 +59,11 @@ public class MyplaceService {
     }
 
     public List<Myplace> findMyplaceList(Member member){
-        List<Myplace> myplaceList = myplaceRepository.findAllByMember(member);
-//        List<MyplaceDto> myplaceDtoList = new ArrayList<>();
-//        if (myplaceList!=null) {
-//            myplaceList.forEach(p -> {
-//                List<MyplaceCourse> myplaceCourseList = p.getMyplace_courseList();
-//                MyplaceDto md = MyplaceDto.of(p, myplaceCourseList);
-//                myplaceDtoList.add(md);
-//            });
-//        }
-
-        return myplaceList;
+        return myplaceRepository.findAllByMember(member);
     }
     public Myplace findById(long myplaceId) {
         return myplaceRepository.findById(myplaceId).get();
     }
 
 }
+

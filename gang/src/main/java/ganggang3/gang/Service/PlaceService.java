@@ -27,38 +27,7 @@ public class PlaceService {
         return place.get();
     }
 
-    public long find(long placeId) {
-        Optional<Place> place=placeRepository.findById(placeId);
-        return place.get().getId();
-    }
 
-    public List<Place> findPlaceList(long cityId, long categoryId) {
-        Optional<City> city=cityRepository.findById(cityId);
-        Optional<Category> category=categoryRepository.findById(categoryId);
-        return placeRepository.findByCityAndCategory(city.get(),category.get());
-    }
-
-    public List<PlaceVlog> findPlaceVlogList(long placeId) {
-        Optional<Place> place=placeRepository.findById(placeId);
-        return place.get().getPlace_vlogList();
-    }
-
-    public List<Vlog> findVlogList(long placeId) {
-        List<PlaceVlog> placeVlogList=findPlaceVlogList(placeId);
-        List<Vlog> vlogList=new ArrayList<>();
-        if (placeVlogList != null) {
-            for (int i = 0; i < placeVlogList.size(); i++) {
-                PlaceVlog placeVlog = placeVlogList.get(i);
-                vlogList.add(placeVlog.getVlog());
-            }
-        }
-        return vlogList;
-    }
-
-    //위에꺼 다 tdd에서 사용하는 메소드들이에용
-
-
-    //5보다 place적을 때, 예외 추가하기
     public List<Place> findTop5FromDb(long cityId, long categoryId) {
         Optional<City> city=cityRepository.findById(cityId);
         Optional<Category> category=categoryRepository.findById(categoryId);
@@ -96,6 +65,7 @@ public class PlaceService {
             //Top5 place의 Vlog DTO를 할당
             list.add(
                     new VlogDto(
+                            v.getId(),
                             v.getName(),
                             v.getUrl()
                     ));

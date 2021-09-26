@@ -23,7 +23,7 @@ public class CategoryApiController {
 
         //Categoey Dto 만들기
         List<CategoryDto> categoryDtoList = categoryList.stream()
-                .map(c -> new CategoryDto(c.getName()))
+                .map(c -> new CategoryDto(c.getId(),c.getName()))
                 .collect(Collectors.toList());
 
         return new Result(categoryDtoList);
@@ -38,6 +38,7 @@ public class CategoryApiController {
     @Data
     @AllArgsConstructor
     static class CategoryDto {
+        private long id;
         private String name;
 
     }

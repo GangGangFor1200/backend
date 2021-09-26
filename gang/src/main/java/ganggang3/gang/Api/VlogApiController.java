@@ -20,7 +20,7 @@ public class VlogApiController {
     private final VlogService vlogService;
 
     @GetMapping("/api/vlog/findplace/{vlog}")
-    public Result findPlace(@PathVariable("vlog") int vlogId){
+    public Result findPlace(@PathVariable("vlog") long vlogId){
         List<Place> placeList=vlogService.findPlaceList(vlogId);
         //place Dto로  변환
         List<PlaceDtoVlog> placeDtoList = placeList.stream()

@@ -28,8 +28,9 @@ public class MyplaceApiController {
     private final PlaceService placeService;
 
 
+    //security 넣기 전에는 미리 넣어 둔 member의 memberid로 myplace찾으면 됨
     @GetMapping("/api/myplace/findallmyplace/{memberid}")
-    public Result findAllMyplace(@PathVariable("memberid") int member_id){
+    public Result findAllMyplace(@PathVariable("memberid") long member_id){
         Member member=memberService.findById(member_id);
         List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
 
@@ -46,19 +47,19 @@ public class MyplaceApiController {
 
     }
     @PostMapping("/api/myplace/addmyplace/{memberid}/{placeid}")
-    public void addMyplace(@PathVariable("memberid") int member_id,@PathVariable("placeid") int place_id) {
+    public void addMyplace(@PathVariable("memberid") long member_id,@PathVariable("placeid") long place_id) {
         Member member=memberService.findById(member_id);
         Place place=placeService.findById(place_id);
         myplaceService.add(member,place);
     }
     @PutMapping("/api/myplace/deletemyplacebyplace/{memberid}/{placeid}")
-    public void deleteMyplaceByPlace(@PathVariable("memberid") int member_id,@PathVariable("placeid") int place_id){
+    public void deleteMyplaceByPlace(@PathVariable("memberid") long member_id,@PathVariable("placeid") long place_id){
         Member member=memberService.findById(member_id);
         Place place=placeService.findById(place_id);
         myplaceService.deleteByPlace(member,place);
     }
     @PutMapping("/api/myplace/deletemyplacebymyplace/{memberid}/{myplaceid}")
-    public void deleteMyplaceByMyplace(@PathVariable("memberid") int member_id,@PathVariable("myplaceid") int myplace_id){
+    public void deleteMyplaceByMyplace(@PathVariable("memberid") long member_id,@PathVariable("myplaceid") long myplace_id){
         Member member=memberService.findById(member_id);
         Myplace myplace=myplaceService.findById(myplace_id);
         myplaceService.deleteByMyplace(member,myplace);

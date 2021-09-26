@@ -21,7 +21,7 @@ public class PlaceApiController {
     private final PlaceService placeService;
 
     @GetMapping("/api/place/findtop5/{city}/{category}")
-    public Result findTop5(@PathVariable("city") int city_id, @PathVariable("category") int category_id){
+    public Result findTop5(@PathVariable("city") long city_id, @PathVariable("category") long category_id){
         return new Result(placeService.getTop5(city_id, category_id));
     }
 

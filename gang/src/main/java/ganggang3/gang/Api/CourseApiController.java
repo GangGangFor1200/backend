@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -25,7 +26,7 @@ public class CourseApiController {
 
     @PostMapping("/api/course/add/{member}")
     public void addCourse(@PathVariable("member") Long member_id,
-                        @RequestBody addCourseRequest request){ //@Valid 써야하는데 안먹히네
+                        @RequestBody @Valid addCourseRequest request){ // 써야하는데 안먹히네
         Member member= memberService.findById(member_id);
         courseService.addCourse(member,request.getMyplaceList(),request.getName());
     }

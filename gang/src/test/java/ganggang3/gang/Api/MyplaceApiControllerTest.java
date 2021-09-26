@@ -45,9 +45,9 @@ public class MyplaceApiControllerTest {
 
     @Test
     public void findAllMyplace() throws Exception{
-        //Given
-        mockMvc.perform(get("/api/myplace/findallmyplace/{memberid}","1"))
-                .andExpect(status().isOk())
+            //Given
+            mockMvc.perform(get("/api/myplace/findallmyplace/{memberid}","1"))
+                    .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data[0].name").value("순천만습지1"))
                 .andExpect(jsonPath("$.data[1].name").value("순천만습지2"))
                 .andExpect(jsonPath("$.data[2].name").value("순천만습지3"))

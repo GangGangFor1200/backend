@@ -52,10 +52,16 @@ public class MyplaceApiController {
         myplaceService.add(member,place);
     }
     @PutMapping("/api/myplace/deletemyplace/{memberid}/{placeid}")
-    public void deleteMyplace(@PathVariable("memberid") int member_id,@PathVariable("placeid") int place_id){
+    public void deleteMyplaceByPlace(@PathVariable("memberid") int member_id,@PathVariable("placeid") int place_id){
         Member member=memberService.findById(member_id);
         Place place=placeService.findById(place_id);
-        myplaceService.delete(member,place);
+        myplaceService.deleteByPlace(member,place);
+    }
+    @PutMapping("/api/myplace/deletemyplace/{memberid}/{myplaceid}")
+    public void deleteMyplaceByMyplace(@PathVariable("memberid") int member_id,@PathVariable("myplaceid") int myplace_id){
+        Member member=memberService.findById(member_id);
+        Myplace myplace=myplaceService.findById(myplace_id);
+        myplaceService.deleteByMyplace(member,myplace);
     }
 
 

@@ -56,11 +56,11 @@ public class MyplaceServiceTest {
         System.out.println(member.getName());
 
         //when
-        List<Myplace> myplaceDtoList=myplaceService.findMyplaceList(member);
-        myplaceDtoList.forEach(p-> System.out.println(p.getName()));
+        List<Myplace> myplaceList=myplaceService.findMyplaceList(member);
+        myplaceList.forEach(p-> System.out.println(p.getName()));
 
         //then
-        assertEquals(2,myplaceDtoList.size(),0);
+        assertEquals(2,myplaceList.size(),0);
     }
 
     @Test
@@ -89,7 +89,7 @@ public class MyplaceServiceTest {
         assertNotNull(myplaceService.findByMemberAndName(member,place.getName()));
 
         //when
-        myplaceService.delete(member,place);
+        myplaceService.deleteByPlace(member,place);
 
         //then
         assertNull(myplaceService.findByMemberAndName(member, place.getName()));

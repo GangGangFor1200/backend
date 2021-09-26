@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -19,14 +20,9 @@ public class VlogService {
 
     private final VlogRepository vlogRepository;
 
-    public List<PlaceVlog> findPlaceVlogList(long vlogId) {
-        Optional<Vlog> vlog=vlogRepository.findById(vlogId);
-        return vlog.get().getPlace_vlogList();
-    }
-
     public List<Place> findPlaceList(long vlogId) {
         Optional<Vlog> vlog=vlogRepository.findById(vlogId);
-        List<PlaceVlog> placeVlogList=vlog.get().getPlace_vlogList();
+        List<PlaceVlog> placeVlogList=vlog.orElseThrow(()->new NoSuchElementException("vlog가 존재하지 않습니다")).getPlace_vlogList();
         List<Place> placeList=new ArrayList<>();
 
         // placeVlogList 에 아무것도 없으면 null이 되므로 null 체크해야한다

@@ -24,14 +24,16 @@ public class PlaceService {
 
     public Place findById(long placeId){
         Optional<Place> place=placeRepository.findById(placeId);
-        return place.get();
+        return place.orElseThrow(()->new NoSuchElementException("place가 존재하지 않습니다"));
     }
 
 
     public List<Place> findTop5FromDb(long cityId, long categoryId) {
         Optional<City> city=cityRepository.findById(cityId);
         Optional<Category> category=categoryRepository.findById(categoryId);
-        List<Place> placeList=placeRepository.findByCityAndCategory(city.get(),category.get());
+        City city1=city.orElseThrow(()->new NoSuchElementException("city가 존재하지 않습니다"));
+        Category category1=category.orElseThrow(()->new NoSuchElementException("categoty가 존재하지 않습니다"));
+        List<Place> placeList=placeRepository.findByCityAndCategory(city1,category1);
         Collections.sort(placeList, new Comparator<Place>() {
             @Override
             public int compare(Place o1, Place o2) {

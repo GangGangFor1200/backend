@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -18,8 +20,8 @@ public class MyplaceService {
 
     private final MyplaceRepository myplaceRepository;
     public Myplace findByMemberAndName(Member member, String name){
-
-        return myplaceRepository.findByMemberAndName(member,name);
+        Optional<Myplace> myplace=myplaceRepository.findByMemberAndName(member,name);
+        return myplace.orElseThrow(()->new NoSuchElementException("myplace가 존재하지 않습니다"));
     }
 
     @Transactional

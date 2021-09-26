@@ -8,9 +8,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface CourseRepository extends JpaRepository<Course,Long> {
-//    Course findByNameAndMemberAndMyplace_courseList(String name, Member member, List<Myplace> myplaceList);
+
+    List<Course> findAllByMember(Member member);
     Course findByNameAndMember(String name, Member member);
-//    boolean exis(String name, Member member);
+
 
 //    @Override
     boolean existsByNameAndMember(String name, Member member);

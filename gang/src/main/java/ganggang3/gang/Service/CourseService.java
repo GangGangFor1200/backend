@@ -69,7 +69,9 @@ public class CourseService {
                 }
         );
     }
-
+    public List<Course> findAllByMember(Member member){
+        return courseRepository.findAllByMember(member);
+    }
     public Course findByNameAndMember(String name, Member member){
         return courseRepository.findByNameAndMember(name,member);
     }

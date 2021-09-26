@@ -51,13 +51,13 @@ public class MyplaceApiController {
         Place place=placeService.findById(place_id);
         myplaceService.add(member,place);
     }
-    @PutMapping("/api/myplace/deletemyplace/{memberid}/{placeid}")
+    @PutMapping("/api/myplace/deletemyplacebyplace/{memberid}/{placeid}")
     public void deleteMyplaceByPlace(@PathVariable("memberid") int member_id,@PathVariable("placeid") int place_id){
         Member member=memberService.findById(member_id);
         Place place=placeService.findById(place_id);
         myplaceService.deleteByPlace(member,place);
     }
-    @PutMapping("/api/myplace/deletemyplace/{memberid}/{myplaceid}")
+    @PutMapping("/api/myplace/deletemyplacebymyplace/{memberid}/{myplaceid}")
     public void deleteMyplaceByMyplace(@PathVariable("memberid") int member_id,@PathVariable("myplaceid") int myplace_id){
         Member member=memberService.findById(member_id);
         Myplace myplace=myplaceService.findById(myplace_id);

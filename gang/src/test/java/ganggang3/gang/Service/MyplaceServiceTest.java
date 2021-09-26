@@ -60,16 +60,16 @@ public class MyplaceServiceTest {
         myplaceList.forEach(p-> System.out.println(p.getName()));
 
         //then
-        assertEquals(2,myplaceList.size(),0);
+        assertEquals(0,myplaceList.size(),0);
     }
 
     @Test
     @Transactional
-//    @Rollback(false)
+    @Rollback(false)
     public void addMyplace(){
         //given
         Member member = memberRepository.findById(1);
-        Place place= placeRepository.findById(8).get();
+        Place place= placeRepository.findById(1).get();
         //when
         long id=myplaceService.add(member,place);
         //then

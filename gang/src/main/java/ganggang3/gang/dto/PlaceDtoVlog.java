@@ -12,16 +12,12 @@ public class PlaceDtoVlog {
     private String name;
     private double location_x;
     private double location_y;
-    private String explanation;
-    private String address;
 
     public static PlaceDtoVlog of (Place P){
         return new PlaceDtoVlog(
                 P.getName(),
                 P.getLocation_x(),
-                P.getLocation_y(),
-                P.getExplanation(),
-                P.getAddress()
+                P.getLocation_y()
         );
     }
 }

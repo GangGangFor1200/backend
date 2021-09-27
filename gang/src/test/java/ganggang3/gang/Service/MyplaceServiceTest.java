@@ -68,8 +68,8 @@ public class MyplaceServiceTest {
     @Rollback(false)
     public void addMyplace(){
         //given
-        Member member = memberRepository.findById(1);
-        Place place= placeRepository.findById(1).get();
+        Member member = memberService.findById(1);
+        Place place= placeService.findById(2);
         //when
         long id=myplaceService.add(member,place);
         //then
@@ -82,8 +82,8 @@ public class MyplaceServiceTest {
     public void deleteMyplace(){
         //given
         addMyplace();
-        Member member = memberRepository.findById(1);
-        Place place= placeRepository.findById(8).get();
+        Member member = memberService.findById(1);
+        Place place= placeService.findById(8);
         //원래 있는 데이터인지 확인
         //이게 없다면 원래 없는데이터여서 그냥 통과할 수 있음
         assertNotNull(myplaceService.findByMemberAndName(member,place.getName()));

@@ -13,7 +13,7 @@ public interface MyplaceRepository  extends JpaRepository<Myplace,Long> {
 
 
     List<Myplace> findAllByMember(Member member);
-    Optional<Myplace> findByMemberAndName(Member member , String name);
+    Myplace findByMemberAndName(Member member , String name);
     void deleteByMemberAndName(Member member, String name);
 
 }

@@ -61,11 +61,13 @@ public class CourseService {
     }
 
     private void addmyplaceCourse(Course course, List<Myplace> myplaceList) {
-        myplaceList.forEach(mp -> {
-                    MyplaceCourse myplaceCourse = MyplaceCourse.createMyplaceCourse(mp, course);
-                    myplaceCourseRepository.save(myplaceCourse);
-                }
-        );
+        if (myplaceList!=null) {
+            myplaceList.forEach(mp -> {
+                        MyplaceCourse myplaceCourse = MyplaceCourse.createMyplaceCourse(mp, course);
+                        myplaceCourseRepository.save(myplaceCourse);
+                    }
+            );
+        }
     }
     public List<Course> findAllByMember(Member member){
         return courseRepository.findAllByMember(member);

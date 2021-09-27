@@ -8,11 +8,13 @@ import ganggang3.gang.domain.Course;
 import ganggang3.gang.domain.Member;
 import ganggang3.gang.domain.Myplace;
 import ganggang3.gang.dto.CourseDto;
+import ganggang3.gang.dto.CourseRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -25,20 +27,15 @@ public class CourseApiController {
     private final MyplaceService myplaceService;
     private final MemberService memberService;
 
-    @PostMapping("/api/course/add/{member}")
+    @PostMapping(value = "/api/course/add/{member}")
     public void addCourse(@PathVariable("member") Long member_id,
-                        @RequestBody @Valid addCourseRequest request){ // 써야하는데 안먹히네
+                         @RequestBody @Valid CourseRequestDto request){
         Member member= memberService.findById(member_id);
+        System.out.println("------\n" + request.toString());
         courseService.addCourse(member,request.getMyplaceList(),request.getName());
     }
 
-    @Data
-    static class addCourseRequest{
-        @NotNull
-        private List<Myplace> myplaceList;
-        @NotNull
-        String name;
-    }
+
 //    @PutMapping("api/course/update/{member}/")
 //    public Long updateCourse()
 

@@ -20,18 +20,14 @@ public class MyplaceService {
 
     private final MyplaceRepository myplaceRepository;
     public Myplace findByMemberAndName(Member member, String name){
-        Optional<Myplace> myplace=myplaceRepository.findByMemberAndName(member,name);
-        return myplace.orElseThrow(()->new NoSuchElementException("myplace가 존재하지 않습니다"));
+        Myplace myplace=myplaceRepository.findByMemberAndName(member,name);
+        return myplace;
+        //return myplace.orElseThrow(()->new NoSuchElementException("myplace가 존재하지 않습니다"));-> 이거 추가하면 아래에서 add되어 있는지 확인을 못함
     }
 
     @Transactional
     public Long add(Member member,Place place){
-        //add되어 있는지 확인
-        Myplace check = findByMemberAndName(member, place.getName());
-        if (check!=null){
-            //예외처리 하기
-            throw new DatabaseException("이미 저장되어 있는 PLACE입니다!");
-        }
+
         List<MyplaceCourse> myplace_courseList=new ArrayList<>();
            Myplace myplace = Myplace.createMyplace(
                    place.getName(),
@@ -41,7 +37,12 @@ public class MyplaceService {
                    place.getAddress(),
                    member
            );
-
+        //add되어 있는지 확인
+        Myplace check = findByMemberAndName(member, place.getName());
+        if (check!=null){
+            //예외처리 하기
+            throw new DatabaseException("이미 저장되어 있는 PLACE입니다!");
+        }
         Myplace saved = myplaceRepository.save(myplace);
 
        return saved.getId();

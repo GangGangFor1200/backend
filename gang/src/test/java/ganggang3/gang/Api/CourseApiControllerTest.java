@@ -6,7 +6,6 @@ import ganggang3.gang.Service.MemberService;
 import ganggang3.gang.Service.MyplaceService;
 import ganggang3.gang.domain.Member;
 import ganggang3.gang.domain.Myplace;
-import ganggang3.gang.dto.CourseRequestDto;
 import ganggang3.gang.dto.MyplaceDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -53,9 +52,10 @@ public class CourseApiControllerTest {
         //given
 
         //when
-        mockMvc.perform(get("/api/course/findmycourse/{member}"))
+        mockMvc.perform(get("/api/course/findAll/1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.data[0].myplace_courseList.get(0).getName()").value("순천만습지1"))
+                .andExpect(jsonPath("$.data.length()").value(1))
+                .andExpect(jsonPath("$.data[0].name").value("순천만습지1"))
                 .andDo(print());
         //then
     }
@@ -77,13 +77,16 @@ public class CourseApiControllerTest {
         //given
         Member member= memberService.findById(1);
         List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
+        Map<String,Object> map=new HashMap<>();
+        map.put("name","course2");
+        map.put("myplaceList",myplaceList);
 
 
         //when ,then
         //1번 2,3번 myplace 넣기
-        String content = objectMapper.writeValueAsString(new CourseRequestDto(member.getName(),myplaceList));
+        String content = objectMapper.writeValueAsString(map);
         System.out.println(content);
-        mockMvc.perform(post("/api/course/add/1")
+        mockMvc.perform(post("/api/course/add/{member}",1)
                 .content(content)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -91,12 +94,12 @@ public class CourseApiControllerTest {
                 .andExpect(status().isOk());
                 //.andDo(print());
 
-        //findallmycourse하기
-        mockMvc.perform(get("/api/course/findmycourse/1"))
-                .andExpect(status().isOk())
-                //첫번째코스의 첫번째 장소
-                .andExpect(jsonPath("$.data[0].myplace_courseList[0].name").value("순천만습지1"))
-                .andDo(print());
+//        //findallmycourse하기
+//            mockMvc.perform(get("/api/course/findAll/1"))
+//                .andExpect(status().isOk())
+//                //첫번째코스의 첫번째 장소
+//                .andExpect(jsonPath("$.data[0].name").value("순천만습지1"))
+//                .andDo(print());
     }
 
 

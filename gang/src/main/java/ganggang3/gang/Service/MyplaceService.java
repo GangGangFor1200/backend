@@ -8,10 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Transactional(readOnly = true)
@@ -68,5 +65,14 @@ public class MyplaceService {
         return myplaceRepository.findById(myplaceId).get();
     }
 
+    public List<Myplace> convertMyplace(List<Map<String,Object>> list,Member member) {
+        List<Myplace> myplaceList=new ArrayList<>();
+        for(int i=0;i<list.size();i++){
+            Map<String,Object> map=list.get(i);
+            Myplace myplace=myplaceRepository.findByName(map.get("name").toString());
+            myplaceList.add(myplace);
+        }
+        return myplaceList;
+    }
 }
 

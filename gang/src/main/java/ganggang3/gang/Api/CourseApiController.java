@@ -8,7 +8,6 @@ import ganggang3.gang.domain.Course;
 import ganggang3.gang.domain.Member;
 import ganggang3.gang.domain.Myplace;
 import ganggang3.gang.dto.CourseDto;
-import ganggang3.gang.dto.CourseRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
@@ -19,6 +18,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,10 +29,11 @@ public class CourseApiController {
 
     @PostMapping("/api/course/add/{member}")
     public void addCourse(@PathVariable("member") Long member_id,
-                         @RequestBody CourseRequestDto request){
+                          @RequestBody Map<String,Object> map){
         Member member= memberService.findById(member_id);
-        System.out.println("------\n" + request.toString());
-        courseService.addCourse(member,request.getMyplaceList(),request.getName());
+        String name=map.get("name").toString();
+        List<Myplace> myplaceList= myplaceService.convertMyplace((List<Map<String, Object>>) map.get("myplaceList"),member);
+        courseService.addCourse(member,myplaceList,name);
     }
 
 
@@ -40,7 +41,7 @@ public class CourseApiController {
 //    public Long updateCourse()
 
 
-    @GetMapping("api/course/findAll/{member}")
+    @GetMapping("/api/course/findAll/{member}")
     public Result findAllByMember(@PathVariable("member") Long member_id){
         Member member = memberService.findById(member_id);
         List<Course> allByMember = courseService.findAllByMember(member);

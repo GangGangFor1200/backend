@@ -55,11 +55,11 @@ public class CourseServiceTest {
 
         List<Myplace> myplaces = newArrayList(myplaceList.subList(1,2));
 
-        Long id = courseService.updateCourse(member,course.get(),myplaces,"ㄴ");
+        //Long id = courseService.updateCourse(member,course.get(),myplaces,"ㄴ");
 
-        Optional<Course> byId = courseService.findById(id);
+        //Optional<Course> byId = courseService.findById(id);
 
-        assertEquals(byId.get().getName(),"ㄴ");
+       // assertEquals(byId.get().getName(),"ㄴ");
 
 
 

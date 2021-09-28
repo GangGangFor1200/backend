@@ -27,9 +27,9 @@ public class CourseApiController {
     private final MyplaceService myplaceService;
     private final MemberService memberService;
 
-    @PostMapping(value = "/api/course/add/{member}")
+    @PostMapping("/api/course/add/{member}")
     public void addCourse(@PathVariable("member") Long member_id,
-                         @RequestBody @Valid CourseRequestDto request){
+                         @RequestBody CourseRequestDto request){
         Member member= memberService.findById(member_id);
         System.out.println("------\n" + request.toString());
         courseService.addCourse(member,request.getMyplaceList(),request.getName());

@@ -16,7 +16,7 @@ public class MemberApiController {
 
     @PostMapping("/api/savemember")
     public String signup(@RequestBody Map<String,String> map) { // 회원 추가
-        memberService.createMember(map.get("name"),map.get("password"));
+        memberService.createMember(map.get("username"),map.get("password"));
         return "redirect:/login";
     }
 }

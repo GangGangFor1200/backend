@@ -58,14 +58,14 @@ public class MemberApiControllerTest {
     public void 회원가입()throws Exception{
         //Given
         Map<String,String> map=new HashMap<>();
-        map.put("name","jurl");
+        map.put("username","주으리");
         map.put("password","1234");
         String content=objectMapper.writeValueAsString(map);
 
         //Then
         mockMvc.perform(post("/api/savemember")
                 .content(content)
-                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print());

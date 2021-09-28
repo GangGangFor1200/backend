@@ -72,7 +72,7 @@ public class CourseApiControllerTest {
 
     @Test
     @Transactional
-    //@Rollback(false)
+    @Rollback(false)
     public void addCourse() throws Exception {
         //given
         Member member= memberService.findById(1);
@@ -86,7 +86,7 @@ public class CourseApiControllerTest {
         mockMvc.perform(post("/api/course/add/1")
                 .content(content)
                 .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.MULTIPART_FORM_DATA))
+                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
                 //.andDo(print());

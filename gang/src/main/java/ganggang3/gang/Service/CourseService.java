@@ -40,6 +40,7 @@ public class CourseService {
 
         //courseList.add(course); -> 왜 하는거지?
         Course save = courseRepository.save(course);
+
         return save.getId();
 
     }

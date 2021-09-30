@@ -31,12 +31,13 @@ public class CourseApiController {
     public void addCourse(@PathVariable("member") Long member_id,
                           @RequestBody Map<String,Object> map){
         Member member= memberService.findById(member_id);
+
         String name=map.get("name").toString();
+
         List<Myplace> myplaceList= myplaceService.convertMyplace((List<Map<String, Object>>) map.get("myplaceList"),member);
+
         courseService.addCourse(member,myplaceList,name);
     }
-
-
 //    @PutMapping("api/course/update/{member}/")
 //    public Long updateCourse()
 

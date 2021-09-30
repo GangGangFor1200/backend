@@ -49,56 +49,41 @@ public class MyplaceApiControllerTest {
             mockMvc.perform(get("/api/myplace/findallmyplace/{memberid}","1"))
                     .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data[0].name").value("순천만습지1"))
-                .andExpect(jsonPath("$.data[1].name").value("순천만습지2"))
-                .andDo(print());
-    }
-    @Test
-    @Transactional
-    //@Rollback(false)
-    public void add() throws Exception{
-
-        //When
-        mockMvc.perform(post("/api/myplace/addmyplace/1/3")
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andDo(print());
-        //Then
-        //mockMvc.perform(get("/api/myplace/findallmyplace/1"))
-        //        .andExpect(status().isOk())
-        //        .andExpect(jsonPath("$.data[0].name").value("순천만습지1"))
-        //        .andDo(print());
-    }
-    @Test
-    @Transactional
-    //@Rollback(false)
-    public void deleteByplace() throws Exception{
-        //When
-        mockMvc.perform(put("/api/myplace/deletemyplacebyplace/1/2")
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andDo(print());
-        //Then
-        mockMvc.perform(get("/api/myplace/findallmyplace/{memberid}","1"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.data.length()").value(1))
+                .andExpect(jsonPath("$.data[1].name").value("순천만습지4"))
                 .andDo(print());
     }
     @Test
     @Transactional
     @Rollback(false)
-    public void deleteBymyplace() throws Exception{
+    public void add() throws Exception{
+
         //When
-        mockMvc.perform(put("/api/myplace/deletemyplacebyplace/1/2")
+        mockMvc.perform(post("/api/myplace/addmyplace/4/6")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print());
         //Then
-        mockMvc.perform(get("/api/myplace/findallmyplace/{memberid}","1"))
+        mockMvc.perform(get("/api/myplace/findallmyplace/4"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data[-1].name").value("순천만습지6"))
+                .andDo(print());
+    }
+    @Test
+    @Transactional
+    @Rollback(false)
+    public void  deleteByplace() throws Exception{
+        //When
+        mockMvc.perform(put("/api/myplace/deletemyplacebyplace/4/6")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(print());
+        //Then
+        mockMvc.perform(get("/api/myplace/findallmyplace/{memberid}","4"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data.length()").value(1))
                 .andDo(print());
     }
+
 }

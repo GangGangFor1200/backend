@@ -67,9 +67,10 @@ public class MyplaceService {
 
     public List<Myplace> convertMyplace(List<Map<String,Object>> list,Member member) {
         List<Myplace> myplaceList=new ArrayList<>();
+
         for(int i=0;i<list.size();i++){
             Map<String,Object> map=list.get(i);
-            Myplace myplace=myplaceRepository.findByName(map.get("name").toString());
+            Myplace myplace=myplaceRepository.findByMemberAndName(member,map.get("name").toString());
             myplaceList.add(myplace);
         }
         return myplaceList;

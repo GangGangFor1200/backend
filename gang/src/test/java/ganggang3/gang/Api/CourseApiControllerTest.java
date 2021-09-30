@@ -48,14 +48,14 @@ public class CourseApiControllerTest {
 
 
     @Test
-    public void findAllMyCourse() throws Exception {
+    public void findALlByMember() throws Exception {
         //given
 
         //when
         mockMvc.perform(get("/api/course/findAll/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data.length()").value(1))
-                .andExpect(jsonPath("$.data[0].name").value("순천만습지1"))
+                .andExpect(jsonPath("$.data[0]..name").value("순천만습지1"))
                 .andDo(print());
         //then
     }
@@ -90,16 +90,15 @@ public class CourseApiControllerTest {
                 .content(content)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isOk());
-                //.andDo(print());
+                .andExpect(status().isOk())
+                .andDo(print());
 
-//        //findallmycourse하기
-//            mockMvc.perform(get("/api/course/findAll/1"))
-//                .andExpect(status().isOk())
-//                //첫번째코스의 첫번째 장소
-//                .andExpect(jsonPath("$.data[0].name").value("순천만습지1"))
-//                .andDo(print());
+        //findallmycourse하기
+        mockMvc.perform(get("/api/course/findAll/1"))
+            .andExpect(status().isOk())
+            //첫번째코스의 첫번째 장소
+            .andExpect(jsonPath("$.data[0].name").value("순천만습지1"))
+            .andDo(print());
     }
 
 

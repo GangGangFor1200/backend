@@ -13,12 +13,12 @@ import java.util.List;
 public class CourseDto {
 
     private String name;
-    private Member member;
+    private long memberid;
 
     public static CourseDto of (Course C){
         return new CourseDto(
                 C.getName(),
-                C.getMember()
+                C.getMember().getId()
         );
     }
 }

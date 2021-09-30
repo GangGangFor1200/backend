@@ -10,9 +10,10 @@ import ganggang3.gang.domain.Myplace;
 import ganggang3.gang.dto.CourseDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.method.support.ModelAndViewContainer;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.validation.Valid;
@@ -45,20 +46,18 @@ public class CourseApiController {
 
 
     @GetMapping("/api/course/findAll/{member}")
-    public Result findAllByMember(@PathVariable("member") Long member_id){
+    public Result findAllByMember(@PathVariable("member") long member_id){
         Member member = memberService.findById(member_id);
-        List<Course> allByMember = courseService.findAllByMember(member);
+        List<Course> courseList = courseService.findAllByMember(member);
 
         List<CourseDto> courseDtoList=new ArrayList<>();
-
-        if (allByMember!=null)
-        allByMember.forEach(
+        if (courseList!=null)
+        courseList.forEach(
                 course -> {
                     CourseDto cd= CourseDto.of(course);
                     courseDtoList.add(cd);
                 }
         );
-
         return new Result(courseDtoList);
     }
 

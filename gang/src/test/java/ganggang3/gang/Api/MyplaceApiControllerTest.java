@@ -45,13 +45,12 @@ public class MyplaceApiControllerTest {
     ObjectMapper objectMapper;
 
     @Test
-    @WithMockUser(username = "주리링1")
+ //   @WithMockUser(username = "주리링1")
     public void findAllMyplace() throws Exception{
             //Given
-            mockMvc.perform(get("/api/myplace/findallmyplace"))
+            mockMvc.perform(get("/api/myplace/findallmyplace/1"))
                     .andExpect(status().isOk())
-                .andExpect(jsonPath("$.data[0].name").value("순천만습지1"))
-                .andExpect(jsonPath("$.data[1].name").value("순천만습지2"))
+                .andExpect(jsonPath("$.data[0].name").value("순천만습지2"))
                 .andDo(print());
     }
     @Test

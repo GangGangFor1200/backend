@@ -43,7 +43,7 @@ public class MyplaceApiController {
                 myplaceDtoList.add(md);
             });
         }
-
+        System.out.println("주리링");
         return new Result(myplaceDtoList);
 
     }

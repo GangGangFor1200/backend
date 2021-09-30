@@ -49,14 +49,14 @@ public class CourseApiControllerTest {
 
 
     @Test
-    public void findALlByMember() throws Exception {
+    public void findAllByMember() throws Exception {
         //given
 
         //when
         mockMvc.perform(get("/api/course/findAll/1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.data.length()").value(1))
-                .andExpect(jsonPath("$.data[0]..name").value("순천만습지1"))
+                .andExpect(jsonPath("$.data.length()").value(4))
+                .andExpect(jsonPath("$.data[0].name").value("course1"))
                 .andDo(print());
         //then
     }
@@ -74,7 +74,7 @@ public class CourseApiControllerTest {
     @Test
     @Transactional
     @Rollback(false)
-    @WithMockUser(username = "주리링1")
+//    @WithMockUser(username = "주리링1")
     public void addCourse() throws Exception {
         //given
         Member member= memberService.findByName("주리링1");

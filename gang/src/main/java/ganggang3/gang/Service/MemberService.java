@@ -22,38 +22,36 @@ import java.util.Optional;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class MemberService implements UserDetailsService {
+public class MemberService  {
 
 
     private final MemberRepository memberRepository;
-
-    private final PasswordEncoder passwordEncoder;
 
     public Member findById(long memberId){
         Optional<Member> member=memberRepository.findById(memberId);
         return member.orElseThrow(()->new NoSuchElementException("멤버가 존재하지 않습니다"));
     }
 
-    @Transactional
-    public Member createMember(String name,String password){
-        Member member=new Member();
-        member.setName(name);
-        member.setPassword(passwordEncoder.encode(password));//encoding하여 password저장
-        return memberRepository.save(member);
-    }
+//    @Transactional
+//    public Member createMember(String name,String password){
+//        Member member=new Member();
+//        member.setName(name);
+//        member.setPassword(passwordEncoder.encode(password));//encoding하여 password저장
+//        return memberRepository.save(member);
+//    }
+//
+//    //로그인 할 때 입력한 정보가 여기서 들어옴
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        Optional<Member> Loginmember=memberRepository.findByName(username);
+//        Member member = Loginmember.orElseThrow(() -> new UsernameNotFoundException(username));
+//        return new User(member.getName(),member.getPassword(),authorities());
+//    }
 
-    //로그인 할 때 입력한 정보가 여기서 들어옴
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Member> Loginmember=memberRepository.findByName(username);
-        Member member = Loginmember.orElseThrow(() -> new UsernameNotFoundException(username));
-        return new User(member.getName(),member.getPassword(),authorities());
-    }
-
-    private Collection<? extends GrantedAuthority> authorities() {
-        //ROLE_USER라는 권한을 리턴
-        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
-    }
+//    private Collection<? extends GrantedAuthority> authorities() {
+//        //ROLE_USER라는 권한을 리턴
+//        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+//    }
 
     public Member findByName(String name) {
         Optional<Member> member=memberRepository.findByName(name);

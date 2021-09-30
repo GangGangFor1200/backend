@@ -28,9 +28,10 @@ public class CourseApiController {
     private final MyplaceService myplaceService;
     private final MemberService memberService;
 
-    @PostMapping("/api/course/add")
-    public void addCourse(@RequestBody Map<String,Object> map, Principal principal){
-        Member member= memberService.findByName(principal.getName());
+    @PostMapping("/api/course/add/{member}")
+    public void addCourse(@PathVariable("member") Long member_id,
+                          @RequestBody Map<String,Object> map){
+        Member member= memberService.findById(member_id);
 
         String name=map.get("name").toString();
 

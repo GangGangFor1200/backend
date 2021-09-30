@@ -37,7 +37,7 @@ public class MemberApiControllerTest {
     ObjectMapper objectMapper;
 
     @Test
-    @WithMockUser
+    @WithMockUser()
     public void 로그인() throws Exception{
         //Given
         mockMvc.perform(get("/login"))
@@ -49,7 +49,7 @@ public class MemberApiControllerTest {
     public void mypage() throws Exception{
         //Given
         mockMvc.perform(get("/mypage"))
-                .andExpect(status().is4xxClientError())
+                .andExpect(status().isOk())
                 .andDo(print());
     }
     @Test

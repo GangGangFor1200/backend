@@ -14,9 +14,14 @@ public class MemberApiController {
 
     private final MemberService memberService;
 
-    @PostMapping("/api/savemember")
-    public String signup(@RequestBody Map<String,String> map) { // 회원 추가
-        memberService.createMember(map.get("username"),map.get("password"));
-        return "redirect:/login";
-    }
+//    @PostMapping("/api/savemember")
+//    public String signup(@RequestBody Map<String,String> map) { // 회원 추가
+//        memberService.createMember(map.get("username"),map.get("password"));
+//        return "redirect:/login";
+//    }
+//    @PostMapping("/api/login")
+//    public String login(@RequestBody Map<String,String> map) { // 회원 추가
+//        memberService.loadUserByUsername(map.get("username"));
+//        return "redirect:/login";
+//    }
 }

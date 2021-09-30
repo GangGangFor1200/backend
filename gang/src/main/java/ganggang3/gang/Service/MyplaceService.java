@@ -1,8 +1,8 @@
 package ganggang3.gang.Service;
 
+import ganggang3.gang.Repository.MemberRepository;
 import ganggang3.gang.Repository.MyplaceRepository;
 import ganggang3.gang.domain.*;
-import ganggang3.gang.dto.MyplaceDto;
 import ganggang3.gang.exception.DatabaseException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +16,7 @@ import java.util.*;
 public class MyplaceService {
 
     private final MyplaceRepository myplaceRepository;
+
     public Myplace findByMemberAndName(Member member, String name){
         Myplace myplace=myplaceRepository.findByMemberAndName(member,name);
         return myplace;
@@ -62,7 +63,8 @@ public class MyplaceService {
         return myplaceRepository.findAllByMember(member);
     }
     public Myplace findById(long myplaceId) {
-        return myplaceRepository.findById(myplaceId).get();
+        Optional<Myplace> myplace=myplaceRepository.findById(myplaceId);
+        return myplace.orElseThrow(()->new NoSuchElementException("myplace가 존재하지 않습니다"));
     }
 
     public List<Myplace> convertMyplace(List<Map<String,Object>> list,Member member) {
@@ -74,6 +76,10 @@ public class MyplaceService {
             myplaceList.add(myplace);
         }
         return myplaceList;
+    }
+
+    public Myplace findByIdAndMember(long myplace_id, Member member) {
+        return myplaceRepository.findByIdAndMember(myplace_id,member);
     }
 }
 

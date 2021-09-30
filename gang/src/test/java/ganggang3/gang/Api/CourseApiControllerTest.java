@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -73,20 +74,19 @@ public class CourseApiControllerTest {
     @Test
     @Transactional
     @Rollback(false)
+    @WithMockUser(username = "주리링1")
     public void addCourse() throws Exception {
         //given
-        Member member= memberService.findById(1);
+        Member member= memberService.findByName("주리링1");
         List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
         Map<String,Object> map=new HashMap<>();
-        map.put("name","course2");
+        map.put("name","course3");
         map.put("myplaceList",myplaceList);
 
-
         //when ,then
-        //1번 2,3번 myplace 넣기
         String content = objectMapper.writeValueAsString(map);
         System.out.println(content);
-        mockMvc.perform(post("/api/course/add/{member}",1)
+        mockMvc.perform(post("/api/course/add")
                 .content(content)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -94,11 +94,11 @@ public class CourseApiControllerTest {
                 .andDo(print());
 
         //findallmycourse하기
-        mockMvc.perform(get("/api/course/findAll/1"))
-            .andExpect(status().isOk())
-            //첫번째코스의 첫번째 장소
-            .andExpect(jsonPath("$.data[0].name").value("순천만습지1"))
-            .andDo(print());
+//        mockMvc.perform(get("/api/course/findAll/1"))
+//            .andExpect(status().isOk())
+//            //첫번째코스의 첫번째 장소
+//            .andExpect(jsonPath("$.data[0].name").value("순천만습지1"))
+//            .andDo(print());
     }
 
 

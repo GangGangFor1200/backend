@@ -60,16 +60,16 @@ public class MyplaceServiceTest {
         myplaceList.forEach(p-> System.out.println(p.getName()));
 
         //then
-        assertEquals(0,myplaceList.size(),0);
+        assertEquals(4,myplaceList.size(),0);
     }
 
     @Test
     @Transactional
-    @Rollback(false)
+    //@Rollback(false)
     public void addMyplace(){
         //given
-        Member member = memberService.findById(1);
-        Place place= placeService.findById(2);
+        Member member = memberService.findById(2);
+        Place place= placeService.findById(1);
         //when
         long id=myplaceService.add(member,place);
         //then
@@ -78,15 +78,14 @@ public class MyplaceServiceTest {
 
     @Test
     @Transactional
-//    @Rollback(false)
+    //@Rollback(false)
     public void deleteMyplace(){
         //given
-        addMyplace();
         Member member = memberService.findById(1);
-        Place place= placeService.findById(8);
+        Place place= placeService.findById(3);
         //원래 있는 데이터인지 확인
         //이게 없다면 원래 없는데이터여서 그냥 통과할 수 있음
-        assertNotNull(myplaceService.findByMemberAndName(member,place.getName()));
+        //assertNotNull(myplaceService.findByMemberAndName(member,place.getName()));
 
         //when
         myplaceService.deleteByPlace(member,place);

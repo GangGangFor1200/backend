@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -27,13 +28,13 @@ public class CourseApiController {
     private final MyplaceService myplaceService;
     private final MemberService memberService;
 
-    @PostMapping("/api/course/add/{member}")
-    public void addCourse(@PathVariable("member") Long member_id,
-                          @RequestBody Map<String,Object> map){
-        Member member= memberService.findById(member_id);
+    @PostMapping("/api/course/add")
+    public void addCourse(@RequestBody Map<String,Object> map, Principal principal){
+        Member member= memberService.findByName(principal.getName());
 
         String name=map.get("name").toString();
 
+        //Map에서 받은 HashMapList를 Myplace로 변환
         List<Myplace> myplaceList= myplaceService.convertMyplace((List<Map<String, Object>>) map.get("myplaceList"),member);
 
         courseService.addCourse(member,myplaceList,name);

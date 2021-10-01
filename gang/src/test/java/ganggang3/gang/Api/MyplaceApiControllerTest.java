@@ -56,19 +56,19 @@ public class MyplaceApiControllerTest {
     @Test
     @Transactional
     @Rollback(false)
-    @WithMockUser(username = "주리링1")
+    //@WithMockUser(username = "주리링1")
     public void add() throws Exception{
 
         //When
-        mockMvc.perform(post("/api/myplace/addmyplace/6")
+        mockMvc.perform(post("/api/myplace/addmyplace/1/5")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print());
         //Then
-        mockMvc.perform(get("/api/myplace/findallmyplace"))
+        mockMvc.perform(get("/api/myplace/findallmyplace/1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.data[-1].name").value("순천만습지6"))
+                .andExpect(jsonPath("$.data[-1].name").value("순천만습지5"))
                 .andDo(print());
     }
     @Test

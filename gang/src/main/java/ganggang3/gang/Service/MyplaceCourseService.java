@@ -18,4 +18,8 @@ public class MyplaceCourseService {
     public List<MyplaceCourse> findAllByCourse(Course course){
         return myplaceCourseRepository.findAllByCourse(course);
     }
+
+    public List<MyplaceCourse> findAllByCourseId(long courseid) {
+        return myplaceCourseRepository.findAllByCourseId(courseid);
+    }
 }

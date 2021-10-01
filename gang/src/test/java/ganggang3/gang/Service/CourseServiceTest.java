@@ -29,6 +29,25 @@ public class CourseServiceTest {
     MemberService memberService;
     @Autowired
     MyplaceService myplaceService;
+    @Autowired
+    MyplaceCourseService myplaceCourseService;
+
+
+
+    @Test
+    @Transactional
+    @Rollback(false)
+    public void DeleteCourse(){
+        //given-> course 삭제할 때 프론트에서 courseid를 보냄
+        long courseid=60;
+
+        //when
+        courseService.deleteCourse(courseid);
+
+        //then
+        assertEquals(courseService.findById(courseid),Optional.empty());
+        assertEquals(myplaceCourseService.findAllByCourseId(courseid).size(),0,0);
+    }
 
 
     //add course 로직은 잘 돌아감 하지만 영속성콘텍스트 문제인지

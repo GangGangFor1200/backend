@@ -51,6 +51,7 @@ public class CourseService {
         Optional<Course> byId = courseRepository.findById(course.getId());
         byId.orElseThrow(()->new NoSuchElementException("코스가 존재하지 않습니다"));
         myplaceCourseRepository.deleteAllByCourse(byId.get());
+        List<MyplaceCourse> myplaceCourseList=myplaceCourseRepository.findAllByCourse(course);
 
 
         addmyplaceCourse(course, myplaceList);
@@ -82,4 +83,11 @@ public class CourseService {
         return courseRepository.findById(id);
     }
 
+    @Transactional
+    public void deleteCourse(long courseid) {
+        Optional<Course> ById = courseRepository.findById(courseid);
+        Course course=ById.orElseThrow(()->new NoSuchElementException("코스가 존재하지 않습니다"));
+        //course지우면 해당 course의 MyplaceCourseList까지 다 지워짐
+        courseRepository.delete(course);
+    }
 }

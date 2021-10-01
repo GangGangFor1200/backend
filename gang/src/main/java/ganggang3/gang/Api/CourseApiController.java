@@ -21,6 +21,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -41,8 +42,20 @@ public class CourseApiController {
 
         courseService.addCourse(member,myplaceList,name);
     }
-//    @PutMapping("api/course/update/{member}/")
-//    public Long updateCourse()
+    @PutMapping("api/cours`e/update/{member}/{course}")
+    public void updateCourse(@PathVariable("member") Long member_id,
+                          @PathVariable("course") Long course_id,
+                          @RequestBody Map<String,Object> map){
+        Member member= memberService.findById(member_id);
+        Optional<Course> course = courseService.findById(course_id);
+        String name=map.get("name").toString();
+
+        //Map에서 받은 HashMapList를 Myplace로 변환
+        List<Myplace> myplaceList= myplaceService.convertMyplace((List<Map<String, Object>>) map.get("myplaceList"),member);
+
+        courseService.updateCourse(member,course.get(),myplaceList,name);
+    }
+
 
 
     @GetMapping("/api/course/findAll/{member}")

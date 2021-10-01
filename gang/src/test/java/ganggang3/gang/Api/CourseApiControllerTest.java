@@ -73,8 +73,7 @@ public class CourseApiControllerTest {
 
     @Test
     @Transactional
-    @Rollback(false)
-//    @WithMockUser(username = "주리링1")
+//    @Rollback(false)
     public void addCourse() throws Exception {
         //given
         Member member= memberService.findByName("주리링1");
@@ -86,19 +85,19 @@ public class CourseApiControllerTest {
         //when ,then
         String content = objectMapper.writeValueAsString(map);
         System.out.println(content);
-        mockMvc.perform(post("/api/course/add")
+        mockMvc.perform(post("/api/course/add/1")
                 .content(content)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print());
 
-        //findallmycourse하기
-//        mockMvc.perform(get("/api/course/findAll/1"))
-//            .andExpect(status().isOk())
-//            //첫번째코스의 첫번째 장소
-//            .andExpect(jsonPath("$.data[0].name").value("순천만습지1"))
-//            .andDo(print());
+//        findallmycourse하기
+        mockMvc.perform(get("/api/course/findAll/1"))
+            .andExpect(status().isOk())
+            //첫번째코스의 첫번째 장소
+            .andExpect(jsonPath("$.data[-1].name").value("course3"))
+            .andDo(print());
     }
 
 

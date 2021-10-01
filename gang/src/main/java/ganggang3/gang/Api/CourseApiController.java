@@ -42,7 +42,7 @@ public class CourseApiController {
 
         courseService.addCourse(member,myplaceList,name);
     }
-    @PutMapping("api/cours`e/update/{member}/{course}")
+    @PutMapping("api/course/update/{member}/{course}")
     public void updateCourse(@PathVariable("member") Long member_id,
                           @PathVariable("course") Long course_id,
                           @RequestBody Map<String,Object> map){

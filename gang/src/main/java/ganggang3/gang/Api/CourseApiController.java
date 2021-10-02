@@ -71,6 +71,7 @@ public class CourseApiController {
                     courseDtoList.add(cd);
                 }
         );
+
         return new Result(courseDtoList);
     }
     @DeleteMapping("/api/course/delete/{courseid}")

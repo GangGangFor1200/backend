@@ -46,6 +46,8 @@ public class CourseService {
     }
 
     @Transactional
+    //지금은 업데이트할때 현재 코스안에 있는거 모두 지우고 다시 넣는데
+    //추후 바뀐거만 개선하기 - 순서까지 다 고려해야함
     public Long updateCourse(Member member, Course course, List<Myplace> myplaceList, String name){
 
         Optional<Course> byId = courseRepository.findById(course.getId());

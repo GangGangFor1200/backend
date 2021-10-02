@@ -88,14 +88,20 @@ public class CourseApiControllerTest {
         Member member= memberService.findByName("주리링1");
         //test는 member가 가진 모든 myplace를 가져오지만, 프론트에서 추가할 course에 넣을 myplaceList 넘겨줄거임
         List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
+        //실제 프론트에서는 myplaceDto가 넘어올거임
+        List<MyplaceDto> myplaceDtoList = new ArrayList<>();
+        myplaceList.forEach(myplace -> {
+            myplaceDtoList.add(MyplaceDto.of(myplace));
+        });
         Map<String,Object> map=new HashMap<>();
-        map.put("name","course1");
-        map.put("myplaceList",myplaceList);
+        String name = "course333";
+        map.put("name",name);
+        map.put("myplaceList",myplaceDtoList);
 
         //when ,then
         String content = objectMapper.writeValueAsString(map);
         System.out.println(content);
-        mockMvc.perform(post("/api/course/add/1")
+        mockMvc.perform(post("/api/course/add/{memer}",member.getId())
                 .content(content)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -103,9 +109,9 @@ public class CourseApiControllerTest {
                 .andDo(print());
 
 //        findallmycourse하기
-        mockMvc.perform(get("/api/course/findAll/1"))
+        mockMvc.perform(get("/api/course/findAll/{member}",member.getId()))
             .andExpect(status().isOk())
-            .andExpect(jsonPath("$.data[-1].name").value("course1"))
+            .andExpect(jsonPath("$.data[-1].name").value(name))
             .andDo(print());
     }
 
@@ -115,18 +121,26 @@ public class CourseApiControllerTest {
     @Rollback(false)
     //course save버튼
     public void updateCourse() throws Exception {
+        //테스트할 때 맴버이름하고 코스이름만 바꾸면 됨
         Member member= memberService.findByName("주리링1");
         //memberid 로 member, course id로 course가 누구인지 알아오지않나?-> 이름이 더 직관적이긴하지
-        Optional<Course> course = courseService.findByNameAndMember("course2", member);
+        Optional<Course> course = courseService.findByNameAndMember("course333", member);
         Long id = course.get().getId();
         System.out.println(id);
+        //이게 실제 페이지 상에서는 myplaceDTO로 넘어옴 그래서 DTD로 테스트해야함
         List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
+        List<MyplaceDto> myplaceDtoList = new ArrayList<>();
+        myplaceList.forEach(myplace -> {
+            myplaceDtoList.add(MyplaceDto.of(myplace));
+        });
         //when
         //프론트에서 주는 수정된 myplaceList로 변경 , 일단 test에선 member의 myplace중 일부를 가져옴
-        myplaceList=new ArrayList(myplaceList.subList(0,1));
+        List<MyplaceDto> newDtoList=new ArrayList(myplaceDtoList.subList(3,6));
+        int size= newDtoList.size();
         Map<String,Object> map=new HashMap<>();
-        map.put("name","courseChanged2");
-        map.put("myplaceList",myplaceList);
+        String changeedName = "courseChanged1";
+        map.put("name",changeedName);
+        map.put("myplaceList",newDtoList);
         //then
         String content = objectMapper.writeValueAsString(map);
         System.out.println(content);
@@ -139,19 +153,20 @@ public class CourseApiControllerTest {
 
         //findallmycourse하기
         //이름 바뀐건지 확인
-        mockMvc.perform(get("/api/course/findAll/1"))
+        mockMvc.perform(get("/api/course/findAll/{member}",member.getId()))
                 .andExpect(status().isOk())
                 //바뀐 이름 체크
-                .andExpect(jsonPath("$.data[-1].name").value("courseChanged2"))
+                .andExpect(jsonPath("$.data[-1].name").value(changeedName))
                 .andDo(print());
         //myplaceList update됐는지 확인
         mockMvc.perform(get("/api/myplacecourse/findall/{course}",id))
                 .andExpect(status().isOk())
                 //바뀐 이름 체크
-                .andExpect(jsonPath("$.data.length()").value(1))
-                .andExpect(jsonPath("$.data[0].name").value("순천만습지1"))
+                .andExpect(jsonPath("$.data.length()").value(size))
+                .andExpect(jsonPath("$.data[0].myplaceDto.name").value(newDtoList.get(0).getName()))
                 .andDo(print());
     }
+    //이거 코스dto관련해서 다시 생각
     @Test
     @Transactional
     @Rollback(false)

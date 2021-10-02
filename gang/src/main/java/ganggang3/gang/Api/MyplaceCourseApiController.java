@@ -28,7 +28,7 @@ public class MyplaceCourseApiController {
     private final CourseService courseService;
 
     @GetMapping("/api/myplacecourse/findall/{course}")
-    public Result findMyplaceAllByCourse(@PathVariable("course") long course_id){
+    public Result findMyplaceCourseAllByCourse(@PathVariable("course") long course_id){
         Optional<Course> course = courseService.findById(course_id);
         List<MyplaceCourse> allByCourse = MyplaceCourseService.findAllByCourse(course.get());
         List<MyplaceCourseDto> myplaceCourseDtoList =new ArrayList<>();

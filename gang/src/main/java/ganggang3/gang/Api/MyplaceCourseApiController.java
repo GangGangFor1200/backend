@@ -27,8 +27,8 @@ public class MyplaceCourseApiController {
     private final ganggang3.gang.Service.MyplaceCourseService MyplaceCourseService;
     private final CourseService courseService;
 
-    @GetMapping("/api/myplacecourse/findall/{course}")
-    public Result findMyplaceCourseAllByCourse(@PathVariable("course") long course_id){
+    @GetMapping("/api/myplacecourse/findall/{courseid}")
+    public Result findMyplaceCourseAllByCourse(@PathVariable("courseid") long course_id){
         Optional<Course> course = courseService.findById(course_id);
         List<MyplaceCourse> allByCourse = MyplaceCourseService.findAllByCourse(course.get());
         List<MyplaceCourseDto> myplaceCourseDtoList =new ArrayList<>();

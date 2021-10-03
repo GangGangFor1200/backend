@@ -22,4 +22,9 @@ public class MyplaceCourseService {
     public List<MyplaceCourse> findAllByCourseId(long courseid) {
         return myplaceCourseRepository.findAllByCourseId(courseid);
     }
+
+    @Transactional
+    public void deleteAllByCourse(Course course) {
+        myplaceCourseRepository.deleteAllByCourse(course);
+    }
 }

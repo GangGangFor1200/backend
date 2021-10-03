@@ -30,6 +30,23 @@ public class CourseApiController {
     private final MyplaceService myplaceService;
     private final MemberService memberService;
 
+    @GetMapping("/api/course/findAll/{memberid}")
+    public Result findAllCourse(@PathVariable("memberid") long member_id){
+        Member member = memberService.findById(member_id);
+        List<Course> courseList = courseService.findAllByMember(member);
+
+        List<CourseDto> courseDtoList=new ArrayList<>();
+        if (courseList!=null)
+            courseList.forEach(
+                    course -> {
+                        CourseDto cd= CourseDto.of(course);
+                        courseDtoList.add(cd);
+                    }
+            );
+
+        return new Result(courseDtoList);
+    }
+
     @PostMapping("/api/course/add/{memberid}")
     public void addCourse(@PathVariable("memberid") long member_id,
                           @RequestBody Map<String,Object> map){
@@ -42,7 +59,7 @@ public class CourseApiController {
 
         courseService.addCourse(member,myplaceList,name);
     }
-    @PutMapping("api/course/update/{memberid}/{courseid}")
+    @PutMapping("/api/course/update/{memberid}/{courseid}")
     public void updateCourse(@PathVariable("memberid") long member_id,
                           @PathVariable("courseid") long course_id,
                           @RequestBody Map<String,Object> map){
@@ -57,23 +74,6 @@ public class CourseApiController {
     }
 
 
-
-    @GetMapping("/api/course/findAll/{memberid}")
-    public Result findAllByMember(@PathVariable("memberid") long member_id){
-        Member member = memberService.findById(member_id);
-        List<Course> courseList = courseService.findAllByMember(member);
-
-        List<CourseDto> courseDtoList=new ArrayList<>();
-        if (courseList!=null)
-        courseList.forEach(
-                course -> {
-                    CourseDto cd= CourseDto.of(course);
-                    courseDtoList.add(cd);
-                }
-        );
-
-        return new Result(courseDtoList);
-    }
     @DeleteMapping("/api/course/delete/{courseid}")
     public void deleteCourse(@PathVariable("courseid") long course_id){
         courseService.deleteCourse(course_id);

@@ -94,9 +94,10 @@ public class CourseApiControllerTest {
             myplaceDtoList.add(MyplaceDto.of(myplace));
         });
         Map<String,Object> map=new HashMap<>();
-        String name = "course333";
+        String name = "course1";
         map.put("name",name);
         map.put("myplaceList",myplaceDtoList);
+        System.out.println(map);
 
         //when ,then
         String content = objectMapper.writeValueAsString(map);
@@ -124,7 +125,7 @@ public class CourseApiControllerTest {
         //테스트할 때 맴버이름하고 코스이름만 바꾸면 됨
         Member member= memberService.findByName("주리링1");
         //memberid 로 member, course id로 course가 누구인지 알아오지않나?-> 이름이 더 직관적이긴하지
-        Optional<Course> course = courseService.findByNameAndMember("course333", member);
+        Optional<Course> course = courseService.findByNameAndMember("course1", member);
         Long id = course.get().getId();
         System.out.println(id);
         //이게 실제 페이지 상에서는 myplaceDTO로 넘어옴 그래서 DTD로 테스트해야함
@@ -135,7 +136,7 @@ public class CourseApiControllerTest {
         });
         //when
         //프론트에서 주는 수정된 myplaceList로 변경 , 일단 test에선 member의 myplace중 일부를 가져옴
-        List<MyplaceDto> newDtoList=new ArrayList(myplaceDtoList.subList(3,6));
+        List<MyplaceDto> newDtoList=new ArrayList(myplaceDtoList.subList(0,2));
         int size= newDtoList.size();
         Map<String,Object> map=new HashMap<>();
         String changeedName = "courseChanged1";
@@ -172,7 +173,7 @@ public class CourseApiControllerTest {
     @Rollback(false)
     public void deleteCourse() throws Exception{
         //given
-        long courseid=71;
+        long courseid=23;
         //when
         mockMvc.perform(delete("/api/course/delete/{courseid}",courseid))
                 .andExpect(status().isOk())

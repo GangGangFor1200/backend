@@ -33,10 +33,12 @@ public class MyplaceCourseApiController {
         List<MyplaceCourse> allByCourse = MyplaceCourseService.findAllByCourse(course.get());
         List<MyplaceCourseDto> myplaceCourseDtoList =new ArrayList<>();
 
-        allByCourse.forEach(mc->{
-            MyplaceCourseDto myplaceCourseDto = MyplaceCourseDto.of(mc,course.get().getName());
-            myplaceCourseDtoList.add(myplaceCourseDto);
-        });
+        if (allByCourse!=null) {
+            allByCourse.forEach(mc -> {
+                MyplaceCourseDto myplaceCourseDto = MyplaceCourseDto.of(mc, course.get().getName());
+                myplaceCourseDtoList.add(myplaceCourseDto);
+            });
+        }
 
         return new Result(myplaceCourseDtoList);
     }

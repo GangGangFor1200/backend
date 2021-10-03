@@ -38,7 +38,6 @@ public class CourseService {
         Course course= Course.createCourse(name, member);
         addmyplaceCourse(course, myplaceList);
 
-        //courseList.add(course); -> 왜 하는거지?
         Course save = courseRepository.save(course);
 
         return save.getId();
@@ -53,12 +52,9 @@ public class CourseService {
         Optional<Course> byId = courseRepository.findById(course.getId());
         byId.orElseThrow(()->new NoSuchElementException("코스가 존재하지 않습니다"));
         myplaceCourseRepository.deleteAllByCourse(byId.get());
-        List<MyplaceCourse> myplaceCourseList=myplaceCourseRepository.findAllByCourse(course);
-
-
         addmyplaceCourse(course, myplaceList);
-
-        byId.get().setName(name);
+        if (!byId.get().getName().equals(name))
+            byId.get().setName(name);
 
         Course save = courseRepository.save(course);
         return save.getId();

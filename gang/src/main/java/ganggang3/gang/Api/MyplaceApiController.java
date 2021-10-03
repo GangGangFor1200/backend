@@ -43,7 +43,6 @@ public class MyplaceApiController {
                 myplaceDtoList.add(md);
             });
         }
-        System.out.println("주리링");
         return new Result(myplaceDtoList);
 
     }
@@ -53,13 +52,13 @@ public class MyplaceApiController {
         Place place=placeService.findById(place_id);
         myplaceService.add(member,place);
     }
-    @PutMapping("/api/myplace/deletemyplacebyplace/{memberid}/{placeid}")
+    @DeleteMapping("/api/myplace/deletemyplacebyplace/{memberid}/{placeid}")
     public void deleteMyplaceByPlace(@PathVariable("memberid") long member_id,@PathVariable("placeid") long place_id){
         Member member=memberService.findById(member_id);
         Place place=placeService.findById(place_id);
         myplaceService.deleteByPlace(member,place);
     }
-    @PutMapping("/api/myplace/deletemyplacebymyplace/{memberid}/{myplaceid}")
+    @DeleteMapping("/api/myplace/deletemyplacebymyplace/{memberid}/{myplaceid}")
     public void deleteMyplaceByMyplace(@PathVariable("memberid") long member_id,@PathVariable("myplaceid") long myplace_id){
         Member member=memberService.findById(member_id);
         Myplace myplace=myplaceService.findById(myplace_id);

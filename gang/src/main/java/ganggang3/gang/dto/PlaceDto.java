@@ -13,8 +13,10 @@ public class PlaceDto {
     private String name;
     private double location_x;
     private double location_y;
-    private String explanation;
     private String address;
+    private String phone;
+    private String category_name;
+    private String placeUrl;
     private List<VlogDto> vlog_list;
 
 
@@ -24,8 +26,10 @@ public class PlaceDto {
                 P.getName(),
                 P.getLocation_x(),
                 P.getLocation_y(),
-                P.getExplanation(),
+                P.getPhone(),
                 P.getAddress(),
+                P.getPlaceUrl(),
+                P.getCategory_name(),
                 vlogList // 위에서 만들어준 place_vlog_dto
         );
     }

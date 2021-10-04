@@ -33,7 +33,9 @@ public class Place {
     private double location_x;
     private double location_y;
 
-    private String explanation;
+    private String phone;
+
+    private String category_name;
 
     private String placeUrl;
 

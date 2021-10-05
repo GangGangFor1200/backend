@@ -173,7 +173,7 @@ public class CourseApiControllerTest {
     @Rollback(false)
     public void deleteCourse() throws Exception{
         //given
-        long courseid=23;
+        long courseid=46;
         //when
         mockMvc.perform(delete("/api/course/delete/{courseid}",courseid))
                 .andExpect(status().isOk())

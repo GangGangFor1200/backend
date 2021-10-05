@@ -22,8 +22,8 @@ public class ProvinceApiController {
     private final ProvinceService provinceService;
 
 
-    @GetMapping("/api/province/findprovince")
-    public Result findProvince(){
+    @GetMapping("/api/province/findAll")
+    public Result findAllProvince(){
         List<Province> provinceList= provinceService.findAll();
 
         // Province Dto 만들기

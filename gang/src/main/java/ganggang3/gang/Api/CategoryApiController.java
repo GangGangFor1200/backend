@@ -16,8 +16,8 @@ public class CategoryApiController {
 
     private final CategoryService categoryService;
 
-    @GetMapping("/api/category/findcategory")
-    public Result findCategory() {
+    @GetMapping("/api/category/findAll")
+    public Result findAllCategory() {
 
         List<Category> categoryList =categoryService.findAll();
 

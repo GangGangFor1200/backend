@@ -11,14 +11,14 @@ public class PlaceDtoVlog {
     private String name;
     private double location_x;
     private double location_y;
-    private Category category;
+    private long categoryid;
 
     public static PlaceDtoVlog of (Place P){
         return new PlaceDtoVlog(
                 P.getName(),
                 P.getLocation_x(),
                 P.getLocation_y(),
-                P.getCategory()
+                P.getCategory().getId()
         );
     }
 }

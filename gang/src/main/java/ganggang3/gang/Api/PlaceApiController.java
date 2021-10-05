@@ -1,9 +1,6 @@
 package ganggang3.gang.Api;
 
 import ganggang3.gang.Service.PlaceService;
-import ganggang3.gang.domain.PlaceVlog;
-import ganggang3.gang.domain.Vlog;
-import ganggang3.gang.dto.VlogDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +17,8 @@ public class PlaceApiController {
 
     private final PlaceService placeService;
 
-    @GetMapping("/api/place/findtop5/{city}/{categoryid}")
-    public Result findTop5(@PathVariable("city") long city_id, @PathVariable("categoryid") long category_id){
+    @GetMapping("/api/place/findtop5/{cityid}/{categoryid}")
+    public Result findTop5(@PathVariable("cityid") long city_id, @PathVariable("categoryid") long category_id){
         return new Result(placeService.getTop5(city_id, category_id));
     }
 

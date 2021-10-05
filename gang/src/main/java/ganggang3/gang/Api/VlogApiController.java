@@ -20,9 +20,9 @@ public class VlogApiController {
 
     private final VlogService vlogService;
 
-    @GetMapping("/api/vlog/findplace/{vlogid}")
-    public Result findPlace(@PathVariable("vlogid") long vlogid){
-        List<Place> placeList=vlogService.findPlaceList(vlogid);
+    @GetMapping("/api/vlog/findplace/{vlogurl}")
+    public Result findPlace(@PathVariable("vlogurl") String vlogurl){
+        List<Place> placeList=vlogService.findPlaceList(vlogurl);
         List<PlaceDtoVlog> placeDtoList=new ArrayList<>();
         //place Dto로  변환
         if (placeList!=null) {

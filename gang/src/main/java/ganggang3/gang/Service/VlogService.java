@@ -20,8 +20,8 @@ public class VlogService {
 
     private final VlogRepository vlogRepository;
 
-    public List<Place> findPlaceList(long vlogId) {
-        Optional<Vlog> vlog=vlogRepository.findById(vlogId);
+    public List<Place> findPlaceList(String vlogurl) {
+        Optional<Vlog> vlog=vlogRepository.findByUrl(vlogurl);
         List<PlaceVlog> placeVlogList=vlog.orElseThrow(()->new NoSuchElementException("vlog가 존재하지 않습니다")).getPlace_vlogList();
         List<Place> placeList=new ArrayList<>();
         // placeVlogList 에 아무것도 없으면 null이 되므로 null 체크해야한다

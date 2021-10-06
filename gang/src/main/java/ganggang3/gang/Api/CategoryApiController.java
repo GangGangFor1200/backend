@@ -1,13 +1,17 @@
 package ganggang3.gang.Api;
 
 import ganggang3.gang.Service.CategoryService;
+import ganggang3.gang.Service.MemberService;
 import ganggang3.gang.domain.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 @RestController
@@ -15,9 +19,11 @@ import java.util.stream.Collectors;
 public class CategoryApiController {
 
     private final CategoryService categoryService;
+    private final MemberService memberService;
 
     @GetMapping("/api/category/findAll")
     public Result findAllCategory() {
+
 
         List<Category> categoryList =categoryService.findAll();
 

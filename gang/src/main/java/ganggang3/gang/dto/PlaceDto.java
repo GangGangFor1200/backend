@@ -31,7 +31,7 @@ public class PlaceDto {
                 P.getPhone(),
                 P.getAddress(),
                 P.getPlaceUrl(),
-                P.getCategory().getName(),
+                P.getCategory_name(),
                 vlogList // 위에서 만들어준 place_vlog_dto
         );
     }

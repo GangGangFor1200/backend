@@ -53,9 +53,10 @@ public class MemberService  {
 //        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
 //    }
 
-    public Member findByName(String name) {
-        Optional<Member> member=memberRepository.findByName(name);
-        return member.orElseThrow(()->new NoSuchElementException("멤버가 존재하지 않습니다"));
-    }
 
+    @Transactional
+    public void addMember(String ip) {
+        Member member=Member.createMember(ip);
+        memberRepository.save(member);
+    }
 }

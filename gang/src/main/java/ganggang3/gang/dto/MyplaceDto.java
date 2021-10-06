@@ -11,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 public class MyplaceDto {
 
+    private long id;
     private String name;
     private String category;
     private double location_x;
@@ -20,6 +21,7 @@ public class MyplaceDto {
 
     public static MyplaceDto of (Myplace M){
         return new MyplaceDto(
+                M.getId(),
                 M.getName(),
                 M.getCategory(),
                 M.getLocation_x(),

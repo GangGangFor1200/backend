@@ -18,5 +18,5 @@ public interface MyplaceRepository  extends JpaRepository<Myplace,Long> {
 
     Optional<Myplace> findByName(String name);
 
-    Myplace findByIdAndMember(long myplace_id, Member member);
+    Myplace findByIdAndMember(Long myplace_id, Member member);
 }

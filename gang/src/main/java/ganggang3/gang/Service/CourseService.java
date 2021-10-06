@@ -82,7 +82,7 @@ public class CourseService {
     }
 
     @Transactional
-    public void deleteCourse(long courseid) {
+    public void deleteCourse(Long courseid) {
         Optional<Course> ById = courseRepository.findById(courseid);
         Course course=ById.orElseThrow(()->new NoSuchElementException("코스가 존재하지 않습니다"));
         //course지우면 해당 course의 MyplaceCourseList까지 다 지워짐

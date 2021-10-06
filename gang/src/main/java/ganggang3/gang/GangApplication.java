@@ -12,9 +12,7 @@ public class GangApplication {
 
     public static void main(String[] args) {
 
-
         SpringApplication.run(GangApplication.class, args);
-
 
     }
 

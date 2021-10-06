@@ -18,7 +18,9 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-    private String ip;
+    private String name;
+
+    private String password;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
@@ -27,14 +29,5 @@ public class Member {
     @JsonManagedReference
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<Myplace> myplaceList = new ArrayList<>();
-
-    public static Member createMember(String ip) {
-
-        Member member=new Member();
-        member.setIp(ip);
-
-        return member;
-
-    }
 
 }

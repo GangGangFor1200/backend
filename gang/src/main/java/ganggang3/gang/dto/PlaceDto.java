@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class PlaceDto {
-    private long id;
+    private Long id;
     private String name;
     private double location_x;
     private double location_y;

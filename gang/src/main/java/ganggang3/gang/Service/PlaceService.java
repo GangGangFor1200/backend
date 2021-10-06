@@ -22,13 +22,13 @@ public class PlaceService {
     private final CategoryRepository categoryRepository;
     private final CityRepository cityRepository;
 
-    public Place findById(long placeId){
+    public Place findById(Long placeId){
         Optional<Place> place=placeRepository.findById(placeId);
         return place.orElseThrow(()->new NoSuchElementException("place가 존재하지 않습니다"));
     }
 
 
-    public List<Place> findTop5FromDb(long cityId, long categoryId) {
+    public List<Place> findTop5FromDb(Long cityId, Long categoryId) {
         Optional<City> city=cityRepository.findById(cityId);
         Optional<Category> category=categoryRepository.findById(categoryId);
         City city1=city.orElseThrow(()->new NoSuchElementException("city가 존재하지 않습니다"));
@@ -44,7 +44,7 @@ public class PlaceService {
     }
 
 
-    public List<PlaceDto> getTop5(long city_id, long category_id) {
+    public List<PlaceDto> getTop5(Long city_id, Long category_id) {
         List<Place> findTop5 = findTop5FromDb(city_id, category_id);
         List<PlaceDto> placeDtoList = new ArrayList<>();
         findTop5.forEach(p -> {
@@ -60,6 +60,7 @@ public class PlaceService {
     }
 
     private List<VlogDto> getVlogList(List<PlaceVlog> p_v_list) {
+
         List<VlogDto> list = new ArrayList<>();
         for(int j = 0; j< p_v_list.size(); j++){
             PlaceVlog pv = p_v_list.get(j);

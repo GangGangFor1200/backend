@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 public interface VlogRepository extends JpaRepository<Vlog,Long> {
 
-    Optional<Vlog> findById(long id);
+    Optional<Vlog> findById(Long id);
 
     Optional<Vlog> findByUrl(String vlogurl);
 }

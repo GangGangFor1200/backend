@@ -48,11 +48,12 @@ public class MyplaceApiControllerTest {
  //   @WithMockUser(username = "주리링1")
     public void findAllMyplace() throws Exception{
             //Given
-            mockMvc.perform(get("/api/myplace/findallmyplace/1"))
-                    .andExpect(status().isOk())
-                .andExpect(jsonPath("$.data[0].name").value("순천만습지2"))
+            mockMvc.perform(get("/api/myplace/findAll/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data[0].name").value("순천만습지1"))
                 .andDo(print());
     }
+
     @Test
     @Transactional
     @Rollback(false)
@@ -60,40 +61,37 @@ public class MyplaceApiControllerTest {
     public void add() throws Exception{
 
         //When
-        mockMvc.perform(post("/api/myplace/addmyplace/1/3")
+        mockMvc.perform(post("/api/myplace/add/2/4")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print());
-        //Then
-//        mockMvc.perform(get("/api/myplace/findallmyplace/1"))
-//                .andExpect(status().isOk())
-//                .andExpect(jsonPath("$.data[-1].name").value("순천만습지5"))
-//                .andDo(print());
     }
     @Test
     @Transactional
-    @Rollback(false)
+//    @Rollback(false)
     public void  deleteMyplaceByPlace() throws Exception{
         //When
-        mockMvc.perform(put("/api/myplace/deletemyplacebyplace/4")
+        mockMvc.perform(delete("/api/myplace/deletebyplace/2/1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print());
         //Then
-        mockMvc.perform(get("/api/myplace/findallmyplace"))
+
+        mockMvc.perform(get("/api/myplace/findAll/2"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.data.length()").value(2))
+                .andExpect(jsonPath("$.data.length()").value(1))
                 .andDo(print());
     }
+
     @Test
     @Transactional
     @Rollback(false)
     @WithMockUser(username = "주리링1")
     public void  deleteMyplaceByMyplace() throws Exception{
         //When
-        mockMvc.perform(put("/api/myplace/deletemyplacebymyplace/33")
+        mockMvc.perform(put("/api/myplace/deletebymyplace/33")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

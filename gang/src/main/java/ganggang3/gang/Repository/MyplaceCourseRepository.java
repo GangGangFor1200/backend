@@ -10,5 +10,5 @@ public interface MyplaceCourseRepository extends JpaRepository<MyplaceCourse, Lo
     void deleteAllByCourse(Course course);
     List<MyplaceCourse> findAllByCourse(Course course);
 
-    List<MyplaceCourse> findAllByCourseId(long courseid);
+    List<MyplaceCourse> findAllByCourseId(Long courseid);
 }

@@ -31,7 +31,7 @@ public class MyplaceApiController {
 
     //security 넣기 전에는 미리 넣어 둔 member의 memberid로 myplace찾으면 됨
     @GetMapping("/api/myplace/findAll/{memberid}")
-    public Result findAllMyplace(@PathVariable("memberid") long member_id){
+    public Result findAllMyplace(@PathVariable("memberid") Long member_id){
         Member member=memberService.findById(member_id);
         List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
 

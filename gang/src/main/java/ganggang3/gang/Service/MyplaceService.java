@@ -62,7 +62,7 @@ public class MyplaceService {
     public List<Myplace> findMyplaceList(Member member){
         return myplaceRepository.findAllByMember(member);
     }
-    public Myplace findById(long myplaceId) {
+    public Myplace findById(Long myplaceId) {
         Optional<Myplace> myplace=myplaceRepository.findById(myplaceId);
         return myplace.orElseThrow(()->new NoSuchElementException("myplace가 존재하지 않습니다"));
     }
@@ -78,7 +78,7 @@ public class MyplaceService {
         return myplaceList;
     }
 
-    public Myplace findByIdAndMember(long myplace_id, Member member) {
+    public Myplace findByIdAndMember(Long myplace_id, Member member) {
         return myplaceRepository.findByIdAndMember(myplace_id,member);
     }
 }

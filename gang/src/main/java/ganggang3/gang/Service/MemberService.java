@@ -27,11 +27,14 @@ public class MemberService  {
 
     private final MemberRepository memberRepository;
 
-    public Member findById(long memberId){
+    public Member findById(Long memberId){
         Optional<Member> member=memberRepository.findById(memberId);
         return member.orElseThrow(()->new NoSuchElementException("멤버가 존재하지 않습니다"));
     }
-
+    public Member findByName(String name){
+        Optional<Member> member = memberRepository.findByName(name);
+        return member.orElseThrow(()->new NoSuchElementException("멤버가 존재하지 않습니다"));
+    }
 //    @Transactional
 //    public Member createMember(String name,String password){
 //        Member member=new Member();
@@ -54,9 +57,5 @@ public class MemberService  {
 //    }
 
 
-    @Transactional
-    public void addMember(String ip) {
-        Member member=Member.createMember(ip);
-        memberRepository.save(member);
-    }
+
 }

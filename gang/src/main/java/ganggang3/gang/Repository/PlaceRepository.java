@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public interface PlaceRepository extends JpaRepository<Place,Long> {
 
-    Optional<Place> findById(long id);
+    Optional<Place> findById(Long id);
     List<Place>  findByCityAndCategory(City city, Category category);
 
 }

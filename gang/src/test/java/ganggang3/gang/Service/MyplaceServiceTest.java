@@ -65,11 +65,12 @@ public class MyplaceServiceTest {
 
     @Test
     @Transactional
-    //@Rollback(false)
+    @Rollback(false)
     public void addMyplace(){
         //given
-        Member member = memberService.findById(2);
-        Place place= placeService.findById(1);
+
+        Member member = memberService.findById(2L);
+        Place place= placeService.findById(5L);
         //when
         long id=myplaceService.add(member,place);
         //then
@@ -81,8 +82,8 @@ public class MyplaceServiceTest {
     //@Rollback(false)
     public void deleteMyplace(){
         //given
-        Member member = memberService.findById(1);
-        Place place= placeService.findById(3);
+        Member member = memberService.findById(1L);
+        Place place= placeService.findById(3L);
         //원래 있는 데이터인지 확인
         //이게 없다면 원래 없는데이터여서 그냥 통과할 수 있음
         //assertNotNull(myplaceService.findByMemberAndName(member,place.getName()));

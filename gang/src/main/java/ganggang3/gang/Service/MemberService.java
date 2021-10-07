@@ -29,8 +29,8 @@ public class MemberService  {
 
     }
     @Transactional
-    public void saveMember(Long kakaoid){
-        Member member=Member.createMember(kakaoid);
+    public void saveMember(Long id){
+        Member member=Member.createMember(id);
         memberRepository.save(member);
     }
 

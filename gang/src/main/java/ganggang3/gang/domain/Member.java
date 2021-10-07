@@ -16,8 +16,6 @@ public class Member {
     @Id
     @Column(name = "member_id")
     private Long id;
-
-    private Long Kakaoid;
 //    private String name;
 //
 //    private String password;
@@ -32,9 +30,9 @@ public class Member {
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<Myplace> myplaceList = new ArrayList<>();
 
-    public static Member createMember(long kakaoid) {
+    public static Member createMember(long id) {
         Member member=new Member();
-        member.setKakaoid(kakaoid);
+        member.setId(id);
         return member;
     }
 }

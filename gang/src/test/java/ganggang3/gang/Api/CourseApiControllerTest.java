@@ -19,7 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -85,7 +84,7 @@ public class CourseApiControllerTest {
     @Rollback(false)
     public void addCourse() throws Exception {
         //given
-        Member member= memberService.findByName("주리링1");
+        Member member= memberService.findById(0L);
         //test는 member가 가진 모든 myplace를 가져오지만, 프론트에서 추가할 course에 넣을 myplaceList 넘겨줄거임
         List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
         //실제 프론트에서는 myplaceDto가 넘어올거임
@@ -123,7 +122,7 @@ public class CourseApiControllerTest {
     //course save버튼
     public void updateCourse() throws Exception {
         //테스트할 때 맴버이름하고 코스이름만 바꾸면 됨
-        Member member= memberService.findByName("주리링1");
+        Member member= memberService.findById(0L);
         //memberid 로 member, course id로 course가 누구인지 알아오지않나?-> 이름이 더 직관적이긴하지
         Optional<Course> course = courseService.findByNameAndMember("course1", member);
         Long id = course.get().getId();

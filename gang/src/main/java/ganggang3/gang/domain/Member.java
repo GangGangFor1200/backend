@@ -14,10 +14,10 @@ import java.util.List;
 public class Member {
 
     @Id
-    @GeneratedValue
     @Column(name = "member_id")
     private Long id;
 
+    private Long Kakaoid;
 //    private String name;
 //
 //    private String password;
@@ -32,11 +32,9 @@ public class Member {
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<Myplace> myplaceList = new ArrayList<>();
 
-    public Member(long id) {
-        this.id=id;
-    }
-
-    public Member() {
-
+    public static Member createMember(long kakaoid) {
+        Member member=new Member();
+        member.setKakaoid(kakaoid);
+        return member;
     }
 }

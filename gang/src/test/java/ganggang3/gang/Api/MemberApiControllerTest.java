@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -37,7 +36,6 @@ public class MemberApiControllerTest {
     ObjectMapper objectMapper;
 
     @Test
-    @WithMockUser()
     public void 로그인() throws Exception{
         //Given
         mockMvc.perform(get("/login"))
@@ -45,7 +43,6 @@ public class MemberApiControllerTest {
                 .andDo(print());
     }
     @Test
-    @WithMockUser
     public void mypage() throws Exception{
         //Given
         mockMvc.perform(get("/mypage"))
@@ -58,8 +55,6 @@ public class MemberApiControllerTest {
     public void 회원가입()throws Exception{
         //Given
         Map<String,String> map=new HashMap<>();
-        map.put("username","주으리");
-        map.put("password","1234");
         String content=objectMapper.writeValueAsString(map);
 
         //Then

@@ -23,14 +23,14 @@ public class MemberService  {
         String userInfoFromKakao = kakaoService.callGetUserByAccessToken(authorization.getAccess_token());
         System.out.println("userInfoFromKakao = " + userInfoFromKakao);
         String [] arr=userInfoFromKakao.split(",");
-        Long memberid= Long.parseLong(arr[0].substring(6,arr[0].length()));
-        addMember(memberid);
+        Long memberid= Long.parseLong(arr[0].substring(6));
+        saveMember(memberid);
         return memberid;
 
     }
     @Transactional
-    public void addMember(Long id){
-        Member member=new Member(id);
+    public void saveMember(Long kakaoid){
+        Member member=Member.createMember(kakaoid);
         memberRepository.save(member);
     }
 

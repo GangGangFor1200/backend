@@ -2,13 +2,9 @@ package ganggang3.gang.Service;
 
 import ganggang3.gang.Repository.MemberRepository;
 import ganggang3.gang.Repository.PlaceRepository;
-import ganggang3.gang.Service.MemberService;
-import ganggang3.gang.Service.MyplaceService;
-import ganggang3.gang.Service.PlaceService;
 import ganggang3.gang.domain.Member;
 import ganggang3.gang.domain.Myplace;
 import ganggang3.gang.domain.Place;
-import ganggang3.gang.dto.MyplaceDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +49,6 @@ public class MyplaceServiceTest {
         long memberId=1;
 
         Member member=memberService.findById(memberId);
-        System.out.println(member.getName());
 
         //when
         List<Myplace> myplaceList=myplaceService.findMyplaceList(member);

@@ -19,6 +19,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -66,6 +69,34 @@ public class MyplaceApiControllerTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print());
+    }
+    @Test
+    @Transactional
+    @Rollback(false)
+    public void addFromApi() throws Exception{
+        //given
+        Member member =memberService.findById(1L);
+        Map<String,Object> map=new HashMap<>();
+        String name="어린이대공원";
+        map.put("name",name);
+        map.put("category","관광명소");
+        map.put("location_x",123.23);
+        map.put("location_y",37.32);
+        map.put("address","서울시 광진구 군자로 98");
+        String content=objectMapper.writeValueAsString(map);
+        //원래는 api로 받아와야한다
+        //when
+        mockMvc.perform(post("/api/myplace/addfromapi/1")
+                    .content(content)
+                    .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(print());
+        //then
+        mockMvc.perform(get("/api/myplace/findall/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data[-1].name").value(name))
+                .andDo(print());
+
     }
     @Test
     @Transactional

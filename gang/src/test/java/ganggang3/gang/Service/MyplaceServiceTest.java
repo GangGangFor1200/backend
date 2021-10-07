@@ -77,6 +77,7 @@ public class MyplaceServiceTest {
         assertNotNull(myplaceService.findByMemberAndName(member,place.getName()));
     }
 
+
     @Test
     @Transactional
     //@Rollback(false)

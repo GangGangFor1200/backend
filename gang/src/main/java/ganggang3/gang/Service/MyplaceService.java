@@ -39,12 +39,37 @@ public class MyplaceService {
         Myplace check = findByMemberAndName(member, place.getName());
         if (check!=null){
             //예외처리 하기
-            throw new DatabaseException("이미 저장되어 있는 PLACE입니다!");
+            throw new DatabaseException("이미 저장되어 있는 MYPLACE입니다!");
         }
         Myplace saved = myplaceRepository.save(myplace);
 
        return saved.getId();
     }
+    @Transactional
+    public Long addFromApi(Member member,Map<String,Object> map) {
+        List<Myplace> myplaceList=new ArrayList<>();
+        Myplace myplace = Myplace.createMyplace(
+                map.get("name").toString(),
+                map.get("category").toString(),
+                //double 인데?!!?!?!
+                Double.valueOf(map.get("location_x").toString()),
+                Double.valueOf(map.get("location_y").toString()),
+                map.get("address").toString(),
+                member
+        );
+
+
+        Myplace check = findByMemberAndName(member, myplace.getName());
+        if (check!=null){
+            //예외처리 하기
+            throw new DatabaseException("이미 저장되어 있는 MYPLACE입니다!");
+        }
+        Myplace saved = myplaceRepository.save(myplace);
+
+        return saved.getId();
+
+    }
+
     @Transactional
     public void deleteByPlace(Member member, Place place){//place로 지우기
         Myplace rep = findByMemberAndName(member, place.getName());
@@ -67,7 +92,7 @@ public class MyplaceService {
         return myplace.orElseThrow(()->new NoSuchElementException("myplace가 존재하지 않습니다"));
     }
 
-    public List<Myplace> convertMyplace(List<Map<String,Object>> list,Member member) {
+    public List<Myplace> convertMyplaceList(List<Map<String,Object>> list, Member member) {
         List<Myplace> myplaceList=new ArrayList<>();
 
         for(int i=0;i<list.size();i++){
@@ -77,6 +102,7 @@ public class MyplaceService {
         }
         return myplaceList;
     }
+
 
     public Myplace findByIdAndMember(Long myplace_id, Member member) {
         return myplaceRepository.findByIdAndMember(myplace_id,member);

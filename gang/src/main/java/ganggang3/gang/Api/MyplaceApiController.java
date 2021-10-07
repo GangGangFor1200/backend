@@ -9,7 +9,9 @@ import ganggang3.gang.domain.MyplaceCourse;
 import ganggang3.gang.domain.Place;
 
 import ganggang3.gang.dto.MyplaceDto;
+import ganggang3.gang.dto.PlaceDto;
 import ganggang3.gang.dto.PlaceDtoVlog;
+import ganggang3.gang.dto.VlogDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -51,6 +54,12 @@ public class MyplaceApiController {
         Member member=memberService.findById(member_id);
         Place place=placeService.findById(place_id);
         myplaceService.add(member,place);
+    }
+    @PostMapping("/api/myplace/addfromapi/{memberid}")
+    public void addMyplaceFromapi(@PathVariable("memberid") long member_id,@RequestBody Map<String,Object> map) {
+        Member member=memberService.findById(member_id);
+        myplaceService.addFromApi(member,map);
+
     }
     @DeleteMapping("/api/myplace/deletebyplace/{memberid}/{placeid}")
     public void deleteMyplaceByPlace(@PathVariable("memberid") long member_id,@PathVariable("placeid") long place_id){

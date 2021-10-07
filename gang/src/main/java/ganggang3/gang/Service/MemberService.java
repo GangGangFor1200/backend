@@ -1,5 +1,6 @@
 package ganggang3.gang.Service;
 
+import ganggang3.gang.AuthorizationKakao;
 import ganggang3.gang.Repository.MemberRepository;
 import ganggang3.gang.domain.Member;
 import lombok.RequiredArgsConstructor;
@@ -24,17 +25,34 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class MemberService  {
 
+    private final KakaoService kakaoService;
 
     private final MemberRepository memberRepository;
+
+    public Long oauth2AuthorizationKakao(String code) throws Exception {
+        AuthorizationKakao authorization = kakaoService.callTokenApi(code);
+        String userInfoFromKakao = kakaoService.callGetUserByAccessToken(authorization.getAccess_token());
+        System.out.println("userInfoFromKakao = " + userInfoFromKakao);
+        String [] arr=userInfoFromKakao.split(",");
+        Long memberid= Long.parseLong(arr[0].substring(6,arr[0].length()));
+        addMember(memberid);
+        return memberid;
+
+    }
+    @Transactional
+    public void addMember(Long id){
+        Member member=new Member(id);
+        memberRepository.save(member);
+    }
 
     public Member findById(Long memberId){
         Optional<Member> member=memberRepository.findById(memberId);
         return member.orElseThrow(()->new NoSuchElementException("멤버가 존재하지 않습니다"));
     }
-    public Member findByName(String name){
-        Optional<Member> member = memberRepository.findByName(name);
-        return member.orElseThrow(()->new NoSuchElementException("멤버가 존재하지 않습니다"));
-    }
+//    public Member findByName(String name){
+//        Optional<Member> member = memberRepository.findByName(name);
+//        return member.orElseThrow(()->new NoSuchElementException("멤버가 존재하지 않습니다"));
+//    }
 //    @Transactional
 //    public Member createMember(String name,String password){
 //        Member member=new Member();

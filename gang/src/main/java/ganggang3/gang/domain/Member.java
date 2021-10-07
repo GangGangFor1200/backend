@@ -18,9 +18,11 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-    private String name;
+//    private String name;
+//
+//    private String password;
 
-    private String password;
+
 
     @JsonManagedReference
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
@@ -30,4 +32,7 @@ public class Member {
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<Myplace> myplaceList = new ArrayList<>();
 
+    public Member(long id) {
+        this.id=id;
+    }
 }

@@ -35,4 +35,8 @@ public class Member {
     public Member(long id) {
         this.id=id;
     }
+
+    public Member() {
+
+    }
 }

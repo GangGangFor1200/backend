@@ -18,25 +18,32 @@ public class MemberService  {
 
     private final MemberRepository memberRepository;
 
+    @Transactional
     public Long oauth2AuthorizationKakao(String code) throws Exception {
         AuthorizationKakao authorization = kakaoService.callTokenApi(code);
         String userInfoFromKakao = kakaoService.callGetUserByAccessToken(authorization.getAccess_token());
         System.out.println("userInfoFromKakao = " + userInfoFromKakao);
         String [] arr=userInfoFromKakao.split(",");
         Long memberid= Long.parseLong(arr[0].substring(6));
-        saveMember(memberid);
+        saveMember(memberid, authorization.getAccess_token());
         return memberid;
 
     }
     @Transactional
-    public void saveMember(Long id){
-        Member member=Member.createMember(id);
+    public void saveMember(Long id,String access_token){
+        Member member=Member.createMember(id,access_token);
         memberRepository.save(member);
     }
 
     public Member findById(Long memberId){
         Optional<Member> member=memberRepository.findById(memberId);
         return member.orElseThrow(()->new NoSuchElementException("멤버가 존재하지 않습니다"));
+    }
+
+    public void delete(Long id) {
+        Optional<Member> member=memberRepository.findById(id);
+        Member ById=member.orElseThrow(()->new NoSuchElementException("member가 존재하지 않습니다"));
+        memberRepository.delete(ById);
     }
 //    public Member findByName(String name){
 //        Optional<Member> member = memberRepository.findByName(name);

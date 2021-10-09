@@ -38,8 +38,9 @@ public class MemberServiceTest {
     public void saveMember(){
         //given
         Long kakaoId=1940703666L;
+        String access_token ="AwYsMqfvkQdn8YcwxBA9jP7-i46-l5lkOqapDAo9dJcAAAF8Y1pzdg";
         //when
-        memberService.saveMember(kakaoId);
+        memberService.saveMember(kakaoId,access_token);
         //then
     }
 

@@ -35,7 +35,6 @@
 //
 //        for (int i=0; i<5;i++) {
 //            Member member = memberRepository.findById((i+1L));
-//            System.out.println(member.getName());
 //            Place place = placeRepository.findById(1L).get();
 //            System.out.println(place.getName());
 //            long id = myplaceService.add(member, place);
@@ -43,7 +42,6 @@
 //        }
 //        for (int i=0; i<4;i++) {
 //            Member member = memberRepository.findById((i+1L));
-//            System.out.println(member.getName());
 //            Place place = placeRepository.findById((i+2L)).get();
 //            System.out.println(place.getName());
 //            long id = myplaceService.add(member, place);

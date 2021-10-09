@@ -16,11 +16,8 @@ public class Member {
     @Id
     @Column(name = "member_id")
     private Long id;
-//    private String name;
-//
-//    private String password;
 
-
+    private String access_token;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
@@ -30,9 +27,10 @@ public class Member {
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<Myplace> myplaceList = new ArrayList<>();
 
-    public static Member createMember(long id) {
+    public static Member createMember(long id,String access_token) {
         Member member=new Member();
         member.setId(id);
+        member.setAccess_token(access_token);
         return member;
     }
 }

@@ -3,6 +3,7 @@ package ganggang3.gang.Service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ganggang3.gang.AuthorizationKakao;
+import ganggang3.gang.exception.DatabaseException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -49,7 +50,7 @@ public class KakaoService {
             return authorization;
         } catch (RestClientException | JsonProcessingException ex) {
             ex.printStackTrace();
-            throw new Exception();
+            throw new DatabaseException("로그인을 할 수 없습니다!");
         }
     }
 
@@ -73,8 +74,27 @@ public class KakaoService {
             return response.getBody();
         }catch (RestClientException ex) {
             ex.printStackTrace();
-            throw new Exception();
+            throw new DatabaseException("로그인을 할 수 없습니다!");
         }
+    }
+
+    public void logoutByAccessToken(String accessToken) throws Exception{
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + accessToken);
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
+
+        String url = "https://kapi.kakao.com/v1/user/logout";
+        try {
+            ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
+            // 값 리턴
+        }catch (RestClientException ex) {
+            ex.printStackTrace();
+            throw new DatabaseException("이미 로그아웃 되었습니다!");
+        }
+
     }
 
 }

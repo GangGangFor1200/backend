@@ -3,9 +3,13 @@ package ganggang3.gang.Service;
 import ganggang3.gang.AuthorizationKakao;
 import ganggang3.gang.Repository.MemberRepository;
 import ganggang3.gang.domain.Member;
+import ganggang3.gang.exception.DatabaseException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -19,14 +23,17 @@ public class MemberService  {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public Long oauth2AuthorizationKakao(String code) throws Exception {
+    public Map<String,String> oauth2AuthorizationKakao(String code) throws Exception {
         AuthorizationKakao authorization = kakaoService.callTokenApi(code);
         String userInfoFromKakao = kakaoService.callGetUserByAccessToken(authorization.getAccess_token());
         System.out.println("userInfoFromKakao = " + userInfoFromKakao);
         String [] arr=userInfoFromKakao.split(",");
         Long memberid= Long.parseLong(arr[0].substring(6));
         saveMember(memberid, authorization.getAccess_token());
-        return memberid;
+        Map<String, String> map=new HashMap<>();
+        map.put("memberid",""+memberid);
+        map.put("accessToken",authorization.getAccess_token());
+        return map;
 
     }
     @Transactional
@@ -42,7 +49,7 @@ public class MemberService  {
 
     public void delete(Long id) {
         Optional<Member> member=memberRepository.findById(id);
-        Member ById=member.orElseThrow(()->new NoSuchElementException("member가 존재하지 않습니다"));
+        Member ById=member.orElseThrow(()->new DatabaseException("member가 존재하지 않습니다"));
         memberRepository.delete(ById);
     }
 //    public Member findByName(String name){

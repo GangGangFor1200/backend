@@ -21,10 +21,7 @@ public class MemberApiController {
     //인가코드 받아서 멤버 아이디 보내기
     @GetMapping("/api/oauth2/authorization/kakao")
     public Map<String,String> oauth2AuthorizationKakao(@RequestParam("code") String code) throws Exception {
-        Long memberid=memberService.oauth2AuthorizationKakao(code);
-        Map<String,String> map=new HashMap<>();
-        map.put("memberid",""+memberid);
-        return map;
+        return memberService.oauth2AuthorizationKakao(code);
     }
 
     @GetMapping("/api/kakaoLogout")

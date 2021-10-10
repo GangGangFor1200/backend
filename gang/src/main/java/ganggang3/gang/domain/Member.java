@@ -15,9 +15,10 @@ public class Member {
 
     @Id
     @Column(name = "member_id")
-    private Long id;
+    private String id;
 
-    private String access_token;
+    private String refresh_token;
+
 
     @JsonManagedReference
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
@@ -27,10 +28,10 @@ public class Member {
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<Myplace> myplaceList = new ArrayList<>();
 
-    public static Member createMember(long id,String access_token) {
+    public static Member createMember(String member_id,String refresh_token) {
         Member member=new Member();
-        member.setId(id);
-        member.setAccess_token(access_token);
+        member.setId(member_id);
+        member.setRefresh_token(refresh_token);
         return member;
     }
 }

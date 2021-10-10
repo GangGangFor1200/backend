@@ -21,4 +21,3 @@ logging:
     org.hibernate.type: trace
     org.springframework: INFO
     org.springframework.web: DEBUG
-

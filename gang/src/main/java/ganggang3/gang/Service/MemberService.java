@@ -25,57 +25,34 @@ public class MemberService  {
     @Transactional
     public Map<String,String> oauth2AuthorizationKakao(String code) throws Exception {
         AuthorizationKakao authorization = kakaoService.callTokenApi(code);
-        String userInfoFromKakao = kakaoService.callGetUserByAccessToken(authorization.getAccess_token());
-        System.out.println("userInfoFromKakao = " + userInfoFromKakao);
-        String [] arr=userInfoFromKakao.split(",");
-        Long memberid= Long.parseLong(arr[0].substring(6));
-        saveMember(memberid, authorization.getAccess_token());
+        //String userInfoFromKakao = kakaoService.callGetUserByAccessToken(authorization.getAccess_token());
+        //System.out.println("userInfoFromKakao = " + userInfoFromKakao);
+        //String [] arr=userInfoFromKakao.split(",");
+        //Long memberid= Long.parseLong(arr[0].substring(6));
+        saveMember(authorization.getAccess_token(),authorization.getRefresh_token());
         Map<String, String> map=new HashMap<>();
-        map.put("memberid",""+memberid);
-        map.put("accessToken",authorization.getAccess_token());
+        //map.put("memberid",""+memberid);
+        map.put("memberid",authorization.getAccess_token());
         return map;
 
     }
     @Transactional
-    public void saveMember(Long id,String access_token){
-        Member member=Member.createMember(id,access_token);
+    public void saveMember(String member_id,String refresh_token){
+        Member member=Member.createMember(member_id,refresh_token);
         memberRepository.save(member);
     }
 
-    public Member findById(Long memberId){
-        Optional<Member> member=memberRepository.findById(memberId);
+    public Member findById(String member_id){
+        Optional<Member> member=memberRepository.findById(member_id);
         return member.orElseThrow(()->new NoSuchElementException("멤버가 존재하지 않습니다"));
     }
 
-    public void delete(Long id) {
-        Optional<Member> member=memberRepository.findById(id);
+    public void delete(String member_id) {
+        Optional<Member> member=memberRepository.findById(member_id);
         Member ById=member.orElseThrow(()->new DatabaseException("member가 존재하지 않습니다"));
         memberRepository.delete(ById);
     }
-//    public Member findByName(String name){
-//        Optional<Member> member = memberRepository.findByName(name);
-//        return member.orElseThrow(()->new NoSuchElementException("멤버가 존재하지 않습니다"));
-//    }
-//    @Transactional
-//    public Member createMember(String name,String password){
-//        Member member=new Member();
-//        member.setName(name);
-//        member.setPassword(passwordEncoder.encode(password));//encoding하여 password저장
-//        return memberRepository.save(member);
-//    }
-//
-//    //로그인 할 때 입력한 정보가 여기서 들어옴
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        Optional<Member> Loginmember=memberRepository.findByName(username);
-//        Member member = Loginmember.orElseThrow(() -> new UsernameNotFoundException(username));
-//        return new User(member.getName(),member.getPassword(),authorities());
-//    }
 
-//    private Collection<? extends GrantedAuthority> authorities() {
-//        //ROLE_USER라는 권한을 리턴
-//        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
-//    }
 
 
 

@@ -161,8 +161,8 @@ public class PageApiTest {
 //                .andDo(print());
 
         //3 -> course add
-        long member_id=1;
-        Member member=memberService.findById(member_id);
+        String access="jPDl5c7aAbAlVmxCz-CYlJ8qpj6OorCgZZPA4AopcJ8AAAF8Y3LQQQ";
+        Member member=memberService.findById(access);
         //일단 test는 member가 가진 myplaceList로
         List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
         //실제 프론트에서는 myplaceDto가 넘어올거임
@@ -176,7 +176,7 @@ public class PageApiTest {
         addmap.put("myplaceList",myplaceDtoList);
 
         String content = objectMapper.writeValueAsString(addmap);
-        mockMvc.perform(post("/api/course/add/{member_id}",member_id)
+        mockMvc.perform(post("/api/course/add/{member_id}",access)
                 .content(content)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -184,7 +184,7 @@ public class PageApiTest {
                 .andDo(print());
 
         //5 -> course findAll
-        mockMvc.perform(get("/api/course/findAll/{member}",member.getId()))
+        mockMvc.perform(get("/api/course/findAll/{member}",access))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data[-1].name").value(course_name))
                 .andDo(print());
@@ -210,14 +210,14 @@ public class PageApiTest {
         //then
         content = objectMapper.writeValueAsString(updatemap);
         System.out.println("jurl : "+content);
-        mockMvc.perform(put("/api/course/update/{member}/{course}",member_id,id)
+        mockMvc.perform(put("/api/course/update/{member}/{course}",access,id)
                 .content(content)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print());
 
-        mockMvc.perform(get("/api/course/findAll/{member}",member.getId()))
+        mockMvc.perform(get("/api/course/findAll/{member}",access))
                 .andExpect(status().isOk())
                 //바뀐 이름 체크
                 .andExpect(jsonPath("$.data[-1].name").value(changeedName))
@@ -240,7 +240,7 @@ public class PageApiTest {
         //then
         content = objectMapper.writeValueAsString(newupdatemap);
         System.out.println(content);
-        mockMvc.perform(put("/api/course/update/{member}/{course}",member_id,id)
+        mockMvc.perform(put("/api/course/update/{member}/{course}",access,id)
                 .content(content)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))

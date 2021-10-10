@@ -14,7 +14,7 @@ public class CourseDto {
 
     private long courseid;
     private String name;
-    private long memberid;
+    private String memberid;
 
     public static CourseDto of (Course C){
         return new CourseDto(

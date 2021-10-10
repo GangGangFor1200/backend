@@ -22,13 +22,13 @@ public class MemberServiceTest {
     @Test
     public void findMember(){
         //given
-        long memberId=2;
+        String access="jPDl5c7aAbAlVmxCz-CYlJ8qpj6OorCgZZPA4AopcJ8AAAF8Y3LQQQ";
 
         //when
-        Member member=memberService.findById(memberId);
+        Member member=memberService.findById(access);
 
         //then
-        assertEquals(memberId,member.getId(),0);
+        assertEquals(access,member.getId());
 
     }
 
@@ -37,10 +37,10 @@ public class MemberServiceTest {
     @Rollback(false)
     public void saveMember(){
         //given
-        Long kakaoId=1940703666L;
         String access_token ="AwYsMqfvkQdn8YcwxBA9jP7-i46-l5lkOqapDAo9dJcAAAF8Y1pzdg";
+        String refresh_token="1234";
         //when
-        memberService.saveMember(kakaoId,access_token);
+        memberService.saveMember(access_token,refresh_token);
         //then
     }
 

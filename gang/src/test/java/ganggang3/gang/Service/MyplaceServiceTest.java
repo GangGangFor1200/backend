@@ -46,9 +46,9 @@ public class MyplaceServiceTest {
     @Test
     public void findAllMyplace(){
         //given
-        long memberId=1;
+        String access="jPDl5c7aAbAlVmxCz-CYlJ8qpj6OorCgZZPA4AopcJ8AAAF8Y3LQQQ";
 
-        Member member=memberService.findById(memberId);
+        Member member=memberService.findById(access);
 
         //when
         List<Myplace> myplaceList=myplaceService.findMyplaceList(member);
@@ -63,8 +63,8 @@ public class MyplaceServiceTest {
     @Rollback(false)
     public void addMyplace(){
         //given
-
-        Member member = memberService.findById(2L);
+        String access="jPDl5c7aAbAlVmxCz-CYlJ8qpj6OorCgZZPA4AopcJ8AAAF8Y3LQQQ";
+        Member member = memberService.findById(access);
         Place place= placeService.findById(5L);
         //when
         long id=myplaceService.add(member,place);
@@ -78,7 +78,8 @@ public class MyplaceServiceTest {
     //@Rollback(false)
     public void deleteMyplace(){
         //given
-        Member member = memberService.findById(1L);
+        String access="jPDl5c7aAbAlVmxCz-CYlJ8qpj6OorCgZZPA4AopcJ8AAAF8Y3LQQQ";
+        Member member = memberService.findById(access);
         Place place= placeService.findById(3L);
         //원래 있는 데이터인지 확인
         //이게 없다면 원래 없는데이터여서 그냥 통과할 수 있음

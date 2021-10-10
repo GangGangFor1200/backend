@@ -25,9 +25,8 @@ public class MemberApiController {
     }
 
     @GetMapping("/api/kakaoLogout")
-    public void kakaoLogout(@RequestParam("id") Long id) throws Exception {
-        String access_token=memberService.findById(id).getAccess_token();
-        memberService.delete(id);
-        kakaoService.logoutByAccessToken(access_token);
+    public void kakaoLogout(@RequestParam("memberid") String member_id) throws Exception {
+        memberService.delete(member_id);
+        kakaoService.logoutByAccessToken(member_id);
     }
 }

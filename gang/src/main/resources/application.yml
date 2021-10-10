@@ -1,16 +1,12 @@
-
 spring:
-  h2:
-    console:
-      enabled=true:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/gang
+    url: jdbc:mysql://172.31.5.157:3306/gang
     username: gang
     password: gang1200
     driver-class-name: org.mariadb.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     properties:
       hibernate:
         show_sql: true
@@ -21,3 +17,5 @@ logging:
     org.hibernate.type: trace
     org.springframework: INFO
     org.springframework.web: DEBUG
+server:
+  port: 80

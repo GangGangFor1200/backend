@@ -24,8 +24,8 @@ public class CourseApiController {
     private final MyplaceService myplaceService;
     private final MemberService memberService;
 
-    @GetMapping("/api/course/findAll/{memberid}")
-    public Result findAllCourse(@PathVariable("memberid") String member_id){
+    @GetMapping("/api/course/findall/{memberid}")
+    public Result findAllCourse(@PathVariable("memberid") Long member_id){
         Member member = memberService.findById(member_id);
         List<Course> courseList = courseService.findAllByMember(member);
 
@@ -42,7 +42,7 @@ public class CourseApiController {
     }
 
     @PostMapping("/api/course/add/{memberid}")
-    public void addCourse(@PathVariable("memberid") String member_id,
+    public void addCourse(@PathVariable("memberid") Long member_id,
                           @RequestBody Map<String,Object> map){
         Member member= memberService.findById(member_id);
 
@@ -54,8 +54,8 @@ public class CourseApiController {
         courseService.addCourse(member,myplaceList,name);
     }
     @PutMapping("/api/course/update/{memberid}/{courseid}")
-    public void updateCourse(@PathVariable("memberid") String member_id,
-                          @PathVariable("courseid") long course_id,
+    public void updateCourse(@PathVariable("memberid") Long member_id,
+                          @PathVariable("courseid") Long course_id,
                           @RequestBody Map<String,Object> map){
         Member member= memberService.findById(member_id);
         Optional<Course> course = courseService.findById(course_id);
@@ -69,7 +69,7 @@ public class CourseApiController {
 
 
     @DeleteMapping("/api/course/delete/{courseid}")
-    public void deleteCourse(@PathVariable("courseid") long course_id){
+    public void deleteCourse(@PathVariable("courseid") Long course_id){
         courseService.deleteCourse(course_id);
     }
 

@@ -34,7 +34,7 @@ public class MyplaceApiController {
 
     //security 넣기 전에는 미리 넣어 둔 member의 memberid로 myplace찾으면 됨
     @GetMapping("/api/myplace/findall/{memberid}")
-    public Result findAllMyplace(@PathVariable("memberid") String member_id){
+    public Result findAllMyplace(@PathVariable("memberid") Long member_id){
         Member member=memberService.findById(member_id);
         List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
 
@@ -50,25 +50,25 @@ public class MyplaceApiController {
 
     }
     @PostMapping("/api/myplace/add/{memberid}/{placeid}")
-    public void addMyplace(@PathVariable("memberid") String member_id,@PathVariable("placeid") long place_id) {
+    public void addMyplace(@PathVariable("memberid") Long member_id,@PathVariable("placeid") Long place_id) {
         Member member=memberService.findById(member_id);
         Place place=placeService.findById(place_id);
         myplaceService.add(member,place);
     }
     @PostMapping("/api/myplace/addfromapi/{memberid}")
-    public void addMyplaceFromapi(@PathVariable("memberid") String member_id,@RequestBody Map<String,Object> map) {
+    public void addMyplaceFromapi(@PathVariable("memberid") Long member_id,@RequestBody Map<String,Object> map) {
         Member member=memberService.findById(member_id);
         myplaceService.addFromApi(member,map);
 
     }
     @DeleteMapping("/api/myplace/deletebyplace/{memberid}/{placeid}")
-    public void deleteMyplaceByPlace(@PathVariable("memberid") String member_id,@PathVariable("placeid") long place_id){
+    public void deleteMyplaceByPlace(@PathVariable("memberid") Long member_id,@PathVariable("placeid") Long place_id){
         Member member=memberService.findById(member_id);
         Place place=placeService.findById(place_id);
         myplaceService.deleteByPlace(member,place);
     }
     @DeleteMapping("/api/myplace/deletebymyplace/{memberid}/{myplaceid}")
-    public void deleteMyplaceByMyplace(@PathVariable("memberid") String member_id,@PathVariable("myplaceid") long myplace_id){
+    public void deleteMyplaceByMyplace(@PathVariable("memberid") Long member_id,@PathVariable("myplaceid") Long myplace_id){
         Member member=memberService.findById(member_id);
         Myplace myplace=myplaceService.findById(myplace_id);
         myplaceService.deleteByMyplace(member,myplace);

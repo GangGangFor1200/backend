@@ -56,9 +56,10 @@ public class CourseApiControllerTest {
     @Test
     public void findAllByMember() throws Exception {
         //given
-        String accesstoken="jPDl5c7aAbAlVmxCz-CYlJ8qpj6OorCgZZPA4AopcJ8AAAF8Y3LQQQ";
+        Long member_id=1234L;
+        Member member=memberService.findById(member_id);
         //when
-        mockMvc.perform(get("/api/course/findAll/{accesstoken}",accesstoken))
+        mockMvc.perform(get("/api/course/findall/{memberid}",member_id))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data.length()").value(2))
                 .andExpect(jsonPath("$.data[0].name").value("course2"))
@@ -68,9 +69,9 @@ public class CourseApiControllerTest {
     @Test
     public void findMyplaceAllByCourse() throws Exception {
         //given
-        String access="jPDl5c7aAbAlVmxCz-CYlJ8qpj6OorCgZZPA4AopcJ8AAAF8Y3LQQQ";
+        Long course_id=1234L;
         //when
-        mockMvc.perform(get("/api/myplacecourse/findall/{course}",access))
+        mockMvc.perform(get("/api/myplacecourse/findall/{course}",course_id))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data.length()").value(11))
                 .andDo(print());
@@ -84,8 +85,8 @@ public class CourseApiControllerTest {
     @Rollback(false)
     public void addCourse() throws Exception {
         //given
-        String access="jPDl5c7aAbAlVmxCz-CYlJ8qpj6OorCgZZPA4AopcJ8AAAF8Y3LQQQ";
-        Member member= memberService.findById("jPDl5c7aAbAlVmxCz-CYlJ8qpj6OorCgZZPA4AopcJ8AAAF8Y3LQQQ");
+        Long member_id=1234L;
+        Member member=memberService.findById(member_id);
         //test는 member가 가진 모든 myplace를 가져오지만, 프론트에서 추가할 course에 넣을 myplaceList 넘겨줄거임
         List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
         //실제 프론트에서는 myplaceDto가 넘어올거임
@@ -102,7 +103,7 @@ public class CourseApiControllerTest {
         //when ,then
         String content = objectMapper.writeValueAsString(map);
         System.out.println(content);
-        mockMvc.perform(post("/api/course/add/{member}",access)
+        mockMvc.perform(post("/api/course/add/{member}",member_id)
                 .content(content)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -110,7 +111,7 @@ public class CourseApiControllerTest {
                 .andDo(print());
 
 //        findallmycourse하기
-        mockMvc.perform(get("/api/course/findAll/{member}",access))
+        mockMvc.perform(get("/api/course/findall/{member}",member_id))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.data[-1].name").value(name))
             .andDo(print());
@@ -123,8 +124,8 @@ public class CourseApiControllerTest {
     //course save버튼
     public void updateCourse() throws Exception {
         //테스트할 때 맴버이름하고 코스이름만 바꾸면 됨
-        String access="jPDl5c7aAbAlVmxCz-CYlJ8qpj6OorCgZZPA4AopcJ8AAAF8Y3LQQQ";
-        Member member= memberService.findById("jPDl5c7aAbAlVmxCz-CYlJ8qpj6OorCgZZPA4AopcJ8AAAF8Y3LQQQ");
+        Long member_id=1234L;
+        Member member=memberService.findById(member_id);
         Optional<Course> course = courseService.findByNameAndMember("course1", member);
         Long id = course.get().getId();
         System.out.println(id);
@@ -145,7 +146,7 @@ public class CourseApiControllerTest {
         //then
         String content = objectMapper.writeValueAsString(map);
         System.out.println(content);
-        mockMvc.perform(put("/api/course/update/{member}/{course}",access,id)
+        mockMvc.perform(put("/api/course/update/{member}/{course}",member_id,id)
                 .content(content)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -154,7 +155,7 @@ public class CourseApiControllerTest {
 
         //findallmycourse하기
         //이름 바뀐건지 확인
-        mockMvc.perform(get("/api/course/findAll/{member}",access))
+        mockMvc.perform(get("/api/course/findall/{member}",member_id))
                 .andExpect(status().isOk())
                 //바뀐 이름 체크
                 .andExpect(jsonPath("$.data[-1].name").value(changeedName))

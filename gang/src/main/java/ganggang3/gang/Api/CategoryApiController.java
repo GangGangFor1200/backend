@@ -21,7 +21,7 @@ public class CategoryApiController {
     private final CategoryService categoryService;
     private final MemberService memberService;
 
-    @GetMapping("/api/category/findAll")
+    @GetMapping("/api/category/findall")
     public Result findAllCategory() {
 
 

@@ -126,17 +126,7 @@ public class PageApiTest {
 
     }
 
-//    1. myplace list up → findAllMyplace
-//    memberid이용,일단 멤버고정으로 할거니까 1로
-//2. deleteMyplaceByMyplace
-//3. add course → addCourse
-//            coursename, myplaceList받아서
-//4. update course → updateCourse
-//    줄여서, 늘려서, 싹 다 바꿔서
-//5. course list up → findAllByMember
-//    memberid이용,일단 멤버고정으로 할거니까 1로
-//6. myplace by course list up → findMyplaceCourseAllByCourse
-//7. delete course → deleteCourse
+
     @Test
     //@Transactional
     //@Rollback(false)
@@ -161,8 +151,8 @@ public class PageApiTest {
 //                .andDo(print());
 
         //3 -> course add
-        String access="jPDl5c7aAbAlVmxCz-CYlJ8qpj6OorCgZZPA4AopcJ8AAAF8Y3LQQQ";
-        Member member=memberService.findById(access);
+        Long member_id=1234L;
+        Member member=memberService.findById(member_id);
         //일단 test는 member가 가진 myplaceList로
         List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
         //실제 프론트에서는 myplaceDto가 넘어올거임
@@ -176,7 +166,7 @@ public class PageApiTest {
         addmap.put("myplaceList",myplaceDtoList);
 
         String content = objectMapper.writeValueAsString(addmap);
-        mockMvc.perform(post("/api/course/add/{member_id}",access)
+        mockMvc.perform(post("/api/course/add/{member_id}",member_id)
                 .content(content)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
@@ -184,7 +174,7 @@ public class PageApiTest {
                 .andDo(print());
 
         //5 -> course findAll
-        mockMvc.perform(get("/api/course/findAll/{member}",access))
+        mockMvc.perform(get("/api/course/findall/{member}",member_id))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data[-1].name").value(course_name))
                 .andDo(print());
@@ -210,14 +200,14 @@ public class PageApiTest {
         //then
         content = objectMapper.writeValueAsString(updatemap);
         System.out.println("jurl : "+content);
-        mockMvc.perform(put("/api/course/update/{member}/{course}",access,id)
+        mockMvc.perform(put("/api/course/update/{member}/{course}",member_id,id)
                 .content(content)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print());
 
-        mockMvc.perform(get("/api/course/findAll/{member}",access))
+        mockMvc.perform(get("/api/course/findall/{member}",member_id))
                 .andExpect(status().isOk())
                 //바뀐 이름 체크
                 .andExpect(jsonPath("$.data[-1].name").value(changeedName))
@@ -240,7 +230,7 @@ public class PageApiTest {
         //then
         content = objectMapper.writeValueAsString(newupdatemap);
         System.out.println(content);
-        mockMvc.perform(put("/api/course/update/{member}/{course}",access,id)
+        mockMvc.perform(put("/api/course/update/{member}/{course}",member_id,id)
                 .content(content)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))

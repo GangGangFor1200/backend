@@ -23,31 +23,35 @@ public class MemberService  {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public Map<String,String> oauth2AuthorizationKakao(String code) throws Exception {
+    public Map<String,String> oauth2AuthorizationKakao(String code) {
         AuthorizationKakao authorization = kakaoService.callTokenApi(code);
-        //String userInfoFromKakao = kakaoService.callGetUserByAccessToken(authorization.getAccess_token());
-        //System.out.println("userInfoFromKakao = " + userInfoFromKakao);
-        //String [] arr=userInfoFromKakao.split(",");
-        //Long memberid= Long.parseLong(arr[0].substring(6));
-        saveMember(authorization.getAccess_token(),authorization.getRefresh_token());
+        String userInfoFromKakao = kakaoService.callGetUserByAccessToken(authorization.getAccess_token());
+        String [] arr=userInfoFromKakao.split(",");
+        Long memberid= Long.parseLong(arr[0].substring(6));
+        Optional<Member> byId = memberRepository.findById(memberid);
+        if (byId.isEmpty())
+            saveMember(memberid,authorization.getAccess_token());
+        else
+            byId.get().setAccess_token(authorization.getAccess_token());
         Map<String, String> map=new HashMap<>();
-        //map.put("memberid",""+memberid);
-        map.put("memberid",authorization.getAccess_token());
+        map.put("memberid",""+memberid);
+        map.put("access_token",authorization.getAccess_token());
         return map;
 
     }
+
     @Transactional
-    public void saveMember(String member_id,String refresh_token){
-        Member member=Member.createMember(member_id,refresh_token);
+    public void saveMember(Long member_id,String access_token){
+        Member member=Member.createMember(member_id,access_token);
         memberRepository.save(member);
     }
 
-    public Member findById(String member_id){
+    public Member findById(Long member_id){
         Optional<Member> member=memberRepository.findById(member_id);
         return member.orElseThrow(()->new NoSuchElementException("멤버가 존재하지 않습니다"));
     }
 
-    public void delete(String member_id) {
+    public void delete(Long member_id) {
         Optional<Member> member=memberRepository.findById(member_id);
         Member ById=member.orElseThrow(()->new DatabaseException("member가 존재하지 않습니다"));
         memberRepository.delete(ById);

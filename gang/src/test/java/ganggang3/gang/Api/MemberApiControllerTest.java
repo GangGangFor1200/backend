@@ -35,35 +35,6 @@ public class MemberApiControllerTest {
     @Autowired
     ObjectMapper objectMapper;
 
-    @Test
-    public void 로그인() throws Exception{
-        //Given
-        mockMvc.perform(get("/login"))
-                .andExpect(status().isOk())
-                .andDo(print());
-    }
-    @Test
-    public void mypage() throws Exception{
-        //Given
-        mockMvc.perform(get("/mypage"))
-                .andExpect(status().isOk())
-                .andDo(print());
-    }
-    @Test
-    @Transactional
-    @Rollback(false)
-    public void 회원가입()throws Exception{
-        //Given
-        Map<String,String> map=new HashMap<>();
-        String content=objectMapper.writeValueAsString(map);
 
-        //Then
-        mockMvc.perform(post("/api/savemember")
-                .content(content)
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andDo(print());
-    }
 
 }

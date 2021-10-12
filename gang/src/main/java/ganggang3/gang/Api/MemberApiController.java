@@ -3,11 +3,8 @@ package ganggang3.gang.Api;
 import ganggang3.gang.Service.KakaoService;
 import ganggang3.gang.Service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpEntity;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -24,9 +21,10 @@ public class MemberApiController {
         return memberService.oauth2AuthorizationKakao(code);
     }
 
-    @GetMapping("/api/kakaoLogout")
-    public void kakaoLogout(@RequestParam("memberid") String member_id) throws Exception {
-        memberService.delete(member_id);
-        kakaoService.logoutByAccessToken(member_id);
+    //로그인 해제
+    @GetMapping("/api/kakaologout")
+    public void kakaoLogout(@RequestParam("memberid") Long member_id) throws Exception {
+        String access_token=memberService.findById(member_id).getAccess_token();
+        kakaoService.logoutByAccessToken(access_token);
     }
 }

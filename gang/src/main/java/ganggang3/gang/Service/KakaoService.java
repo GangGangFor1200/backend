@@ -27,7 +27,7 @@ public class KakaoService {
     private final String frontendRedirectUrl = "http://localhost:8090";
 
     //Token 받는 메소드
-    public AuthorizationKakao callTokenApi(String code) throws Exception {
+    public AuthorizationKakao callTokenApi(String code) {
         String grantType = "authorization_code";
 
         HttpHeaders headers = new HttpHeaders();
@@ -56,7 +56,7 @@ public class KakaoService {
     }
 
     //유저정보 가져오는 메소드
-    public String callGetUserByAccessToken(String access_token) throws Exception {
+    public String callGetUserByAccessToken(String access_token) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + access_token);
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -76,7 +76,7 @@ public class KakaoService {
     }
 
     //로그아웃 요청하는 메소드
-    public void logoutByAccessToken(String access_token) throws Exception{
+    public void logoutByAccessToken(String access_token) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + access_token);
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -96,57 +96,57 @@ public class KakaoService {
     }
 
     //토큰 유효한지 확인하는 메소드
-    public String isEnableToken(String access_token) throws Exception{
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", "Bearer " + access_token);
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-
-        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
-
-        String url = "https://kapi.kakao.com/v1/user/access_token_info";
-        try {
-            ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET,request,String.class);
-            return access_token;
-            // 값 리턴
-        }catch (RestClientException ex) {
-            ex.printStackTrace();
-            //만료된 경우 다시 recall
-            return recallTokenApi(access_token);
-        }
-    }
+//    public String isEnableToken(String access_token) throws Exception{
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.set("Authorization", "Bearer " + access_token);
+//        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+//
+//        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+//        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
+//
+//        String url = "https://kapi.kakao.com/v1/user/access_token_info";
+//        try {
+//            ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET,request,String.class);
+//            return access_token;
+//            // 값 리턴
+//        }catch (RestClientException ex) {
+//            ex.printStackTrace();
+//            //만료된 경우 다시 recall
+//            return recallTokenApi(access_token);
+//        }
+//    }
 
     //토큰 갱신하는 메소드
-    public String recallTokenApi(String access_token) throws Exception{
-        Member member=memberService.findById(access_token);
-        String refresh_token=member.getRefresh_token();
-        String grantType = "refresh_token";
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-
-        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        params.add("grant_type", grantType);
-        params.add("client_id", kakaoOauth2ClinetId);
-        params.add("refresh_token", refresh_token);
-
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
-
-        String url = "https://kauth.kakao.com/oauth/token";
-        try {
-            //토큰 요청
-            ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
-            //받은 Auth -> AuthorizationKakao에 연결
-            //AuthorizationKakao랑 필드가 좀 다른디 괜찮은가?
-            AuthorizationKakao authorization = objectMapper.readValue(response.getBody(), AuthorizationKakao.class);
-            //set을 하던가 아님 다시 createMember하면 아마 다시 저장될거임 일단 set으로
-            member.setId(authorization.getAccess_token());
-            member.setRefresh_token(authorization.getRefresh_token());
-            return authorization.getAccess_token();
-        } catch (RestClientException | JsonProcessingException ex) {
-            ex.printStackTrace();
-            throw new DatabaseException("토큰을 갱신할 수 없습니다!");
-        }
-    }
+//    public String recallTokenApi(String access_token) throws Exception{
+//        Member member=memberService.findById(access_token);
+//        String refresh_token=member.getRefresh_token();
+//        String grantType = "refresh_token";
+//
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+//
+//        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+//        params.add("grant_type", grantType);
+//        params.add("client_id", kakaoOauth2ClinetId);
+//        params.add("refresh_token", refresh_token);
+//
+//        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
+//
+//        String url = "https://kauth.kakao.com/oauth/token";
+//        try {
+//            //토큰 요청
+//            ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
+//            //받은 Auth -> AuthorizationKakao에 연결
+//            //AuthorizationKakao랑 필드가 좀 다른디 괜찮은가?
+//            AuthorizationKakao authorization = objectMapper.readValue(response.getBody(), AuthorizationKakao.class);
+//            //set을 하던가 아님 다시 createMember하면 아마 다시 저장될거임 일단 set으로
+//            member.setId(authorization.getAccess_token());
+//            member.setRefresh_token(authorization.getRefresh_token());
+//            return authorization.getAccess_token();
+//        } catch (RestClientException | JsonProcessingException ex) {
+//            ex.printStackTrace();
+//            throw new DatabaseException("토큰을 갱신할 수 없습니다!");
+//        }
+//    }
 
 }

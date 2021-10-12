@@ -48,9 +48,9 @@ public class MyplaceApiControllerTest {
 
     @Test
     public void findAllMyplace() throws Exception{
-        String access="jPDl5c7aAbAlVmxCz-CYlJ8qpj6OorCgZZPA4AopcJ8AAAF8Y3LQQQ";
+        Long member_id=1234L;
             //Given
-            mockMvc.perform(get("/api/myplace/findAll/{access}",access))
+            mockMvc.perform(get("/api/myplace/findall/{member}",member_id))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data[0].name").value("순천만습지1"))
                 .andDo(print());
@@ -60,9 +60,9 @@ public class MyplaceApiControllerTest {
     @Transactional
     @Rollback(false)
     public void add() throws Exception{
-        String access="jPDl5c7aAbAlVmxCz-CYlJ8qpj6OorCgZZPA4AopcJ8AAAF8Y3LQQQ";
+        Long member_id=1234L;
         //When
-        mockMvc.perform(post("/api/myplace/add/{access}/4",access)
+        mockMvc.perform(post("/api/myplace/add/{member}/4",member_id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -72,9 +72,9 @@ public class MyplaceApiControllerTest {
     @Transactional
     @Rollback(false)
     public void addFromApi() throws Exception{
-        String access="jPDl5c7aAbAlVmxCz-CYlJ8qpj6OorCgZZPA4AopcJ8AAAF8Y3LQQQ";
+        Long member_id=1234L;
         //given
-        Member member =memberService.findById(access);
+        Member member =memberService.findById(member_id);
         Map<String,Object> map=new HashMap<>();
         String name="어린이대공원";
         map.put("name",name);
@@ -85,13 +85,13 @@ public class MyplaceApiControllerTest {
         String content=objectMapper.writeValueAsString(map);
         //원래는 api로 받아와야한다
         //when
-        mockMvc.perform(post("/api/myplace/addfromapi/{access}",access)
+        mockMvc.perform(post("/api/myplace/addfromapi/{member}",member_id)
                     .content(content)
                     .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print());
         //then
-        mockMvc.perform(get("/api/myplace/findall/{access}",access))
+        mockMvc.perform(get("/api/myplace/findall/{member}",member_id))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data[-1].name").value(name))
                 .andDo(print());
@@ -101,16 +101,16 @@ public class MyplaceApiControllerTest {
     @Transactional
 //    @Rollback(false)
     public void  deleteMyplaceByPlace() throws Exception{
-        String access="jPDl5c7aAbAlVmxCz-CYlJ8qpj6OorCgZZPA4AopcJ8AAAF8Y3LQQQ";
+        Long member_id=1234L;
         //When
-        mockMvc.perform(delete("/api/myplace/deletebyplace/{access}/1",access)
+        mockMvc.perform(delete("/api/myplace/deletebyplace/{member}/1",member_id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print());
         //Then
 
-        mockMvc.perform(get("/api/myplace/findAll/{access}",access))
+        mockMvc.perform(get("/api/myplace/findAll/{member}",member_id))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data.length()").value(1))
                 .andDo(print());

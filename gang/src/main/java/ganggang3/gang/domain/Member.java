@@ -14,10 +14,15 @@ import java.util.List;
 public class Member {
 
     @Id
+    @GeneratedValue
     @Column(name = "member_id")
     private Long id;
 
-    private String access_token;
+    private String username;
+
+    private String password;
+
+    //private String access_token;
 
 
     @JsonManagedReference
@@ -28,10 +33,17 @@ public class Member {
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<Myplace> myplaceList = new ArrayList<>();
 
-    public static Member createMember(Long member_id,String access_token) {
+    public static Member createMember(String username, String password){
         Member member=new Member();
-        member.setId(member_id);
-        member.setAccess_token(access_token);
+        member.setUsername(username);
+        member.setPassword(password);
         return member;
     }
+
+//    public static Member createMember(Long member_id,String access_token) {
+//        Member member=new Member();
+//        member.setId(member_id);
+//        member.setAccess_token(access_token);
+//        return member;
+//    }
 }

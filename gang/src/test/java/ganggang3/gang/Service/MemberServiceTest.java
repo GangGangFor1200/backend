@@ -22,13 +22,13 @@ public class MemberServiceTest {
     @Test
     public void findMember(){
         //given
-        Long member_id=1234L;
+        String member_name="jurl";
 
         //when
-        Member member=memberService.findById(member_id);
+        Member member=memberService.findByUsername(member_name);
 
         //then
-        assertEquals(member_id,member.getId(),0);
+        assertEquals(member_name,member.getUsername());
 
     }
 
@@ -37,10 +37,10 @@ public class MemberServiceTest {
     @Rollback(false)
     public void saveMember(){
         //given
-        long member_id=1234;
-        String access_token ="AwYsMqfvkQdn8YcwxBA9jP7-i46-l5lkOqapDAo9dJcAAAF8Y1pzdg";
+        String username="jurl";
+        String password="1234";
         //when
-        memberService.saveMember(member_id,access_token);
+        memberService.saveMember(username,password);
         //then
     }
 

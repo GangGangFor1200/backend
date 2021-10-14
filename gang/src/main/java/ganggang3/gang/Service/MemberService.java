@@ -8,8 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -22,27 +20,27 @@ public class MemberService  {
 
     private final MemberRepository memberRepository;
 
-    @Transactional
-    public Map<String,String> oauth2AuthorizationKakao(String code) {
-        AuthorizationKakao authorization = kakaoService.callTokenApi(code);
-        String userInfoFromKakao = kakaoService.callGetUserByAccessToken(authorization.getAccess_token());
-        String [] arr=userInfoFromKakao.split(",");
-        Long memberid= Long.parseLong(arr[0].substring(6));
-        Optional<Member> byId = memberRepository.findById(memberid);
-        if (byId.isEmpty())
-            saveMember(memberid,authorization.getAccess_token());
-        else
-            byId.get().setAccess_token(authorization.getAccess_token());
-        Map<String, String> map=new HashMap<>();
-        map.put("memberid",""+memberid);
-        map.put("access_token",authorization.getAccess_token());
-        return map;
+//    @Transactional
+//    public Map<String,String> oauth2AuthorizationKakao(String code) {
+//        AuthorizationKakao authorization = kakaoService.callTokenApi(code);
+//        String userInfoFromKakao = kakaoService.callGetUserByAccessToken(authorization.getAccess_token());
+//        String [] arr=userInfoFromKakao.split(",");
+//        Long memberid= Long.parseLong(arr[0].substring(6));
+//        Optional<Member> byId = memberRepository.findById(memberid);
+//        if (byId.isEmpty())
+//            saveMember(memberid,authorization.getAccess_token());
+//        else
+//            byId.get().setAccess_token(authorization.getAccess_token());
+//        Map<String, String> map=new HashMap<>();
+//        map.put("memberid",""+memberid);
+//        map.put("access_token",authorization.getAccess_token());
+//        return map;
+//
+//    }
 
-    }
-
     @Transactional
-    public void saveMember(Long member_id,String access_token){
-        Member member=Member.createMember(member_id,access_token);
+    public void saveMember(String username,String password){
+        Member member=Member.createMember(username,password);
         memberRepository.save(member);
     }
 
@@ -57,7 +55,13 @@ public class MemberService  {
         memberRepository.delete(ById);
     }
 
+    public Member findByUsernameAndPassword(String username,String password){
+        Optional<Member> byUsernameAndPassword = memberRepository.findByUsernameAndPassword(username, password);
+        return byUsernameAndPassword.orElseThrow(()->new DatabaseException("가입된 회원이 아닙니다!"));
+    }
 
-
-
+    public Member findByUsername(String member_name) {
+        Optional<Member> byUsername = memberRepository.findByUsername(member_name);
+        return byUsername.orElseThrow(()->new DatabaseException("member가 존재하지 않습니다"));
+    }
 }

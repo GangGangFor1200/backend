@@ -383,12 +383,12 @@ INSERT INTO place_vlog VALUES(7,1,3);
 INSERT INTO place_vlog VALUES(8,3,3);
 INSERT INTO place_vlog VALUES(9,5,3);
 INSERT INTO place_vlog VALUES(10,2,3);
-
-INSERT INTO member VALUES(1,'주리링1','1234');
-INSERT INTO member VALUES(2,'주리링2','1234');
-INSERT INTO member VALUES(3,'주리링3','1234');
-INSERT INTO member VALUES(4,'주리링4','1234');
-INSERT INTO member VALUES(5,'주리링5','1234');
+#
+# INSERT INTO member VALUES(1,'주리링1','1234');
+# INSERT INTO member VALUES(2,'주리링2','1234');
+# INSERT INTO member VALUES(3,'주리링3','1234');
+# INSERT INTO member VALUES(4,'주리링4','1234');
+# INSERT INTO member VALUES(5,'주리링5','1234');
 
 #
 # INSERT INTO myplace VALUES(1,'주소',1,123.12,36.16,'순천만습지1',1);

@@ -23,7 +23,7 @@ public class ProvinceEn {
     private String provinceLink;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "province_en",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "province",cascade = CascadeType.ALL)
     private List<CityEn> cityList =new ArrayList<>();
 
 

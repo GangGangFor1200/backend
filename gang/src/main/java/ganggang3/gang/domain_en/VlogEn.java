@@ -23,7 +23,7 @@ public class VlogEn {
     private String url;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "vlog_en",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "vlog",cascade = CascadeType.ALL)
     private List<PlaceVlogEn> place_vlogList=new ArrayList<>();
 
 

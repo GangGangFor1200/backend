@@ -32,7 +32,7 @@ public class MyplaceEn {
     private String address;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "myplace_en",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "myplace",cascade = CascadeType.ALL)
     private List<MyplaceCourseEn> myplace_courseList=new ArrayList<>();
 
     @JsonBackReference

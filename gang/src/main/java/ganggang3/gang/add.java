@@ -1,38 +1,41 @@
-package ganggang3.gang;
-
-import ganggang3.gang.Repository.PlaceRepository;
-import ganggang3.gang.Service.MemberService;
-import ganggang3.gang.Service.MyplaceService;
-import ganggang3.gang.domain.Member;
-import ganggang3.gang.domain.Place;
-import ganggang3.gang.dto.MyplaceDto;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-
-@Component
-public class add implements ApplicationRunner {
-    @Autowired
-    MemberService memberService;
-    @Autowired
-    MyplaceService myplaceService;
-    @Autowired
-    PlaceRepository placeRepository;
-    @Autowired
-    MemberService memberRepository;
-
-    @Override
-    @Transactional
-    public void run(ApplicationArguments args) throws Exception {
-        memberService.saveMember("gang","gang1200");
-//        System.out.println("Myplace data 넣음!");
+//package ganggang3.gang;
+//
+//import ganggang3.gang.Repository.PlaceRepository;
+//import ganggang3.gang.Service.MemberService;
+//import ganggang3.gang.Service.MyplaceService;
+//import ganggang3.gang.domain.Member;
+//import ganggang3.gang.domain.Place;
+//import ganggang3.gang.dto.MyplaceDto;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.ApplicationArguments;
+//import org.springframework.boot.ApplicationRunner;
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.stereotype.Component;
+//import org.springframework.transaction.annotation.Transactional;
+//
+//import java.util.List;
+//
+//import static org.junit.Assert.assertEquals;
+//
+//@Component
+//public class add implements ApplicationRunner {
+//    @Autowired
+//    MemberService memberService;
+//    @Autowired
+//    MyplaceService myplaceService;
+//    @Autowired
+//    PlaceRepository placeRepository;
+//    @Autowired
+//    MemberService memberRepository;
+//
+//    @Override
+//    @Transactional
+//    public void run(ApplicationArguments args) throws Exception {
+//        memberService.saveMember("11gang","1111");
+//        memberService.saveMember("22dfhsdf","2222");
+//        memberService.saveMember("33yjj","3333");
+//        memberService.saveMember("441asd","4444");
+//        memberService.saveMember("551asd","5555");
 //
 //        for (int i=0; i<5;i++) {
 //            Member member = memberRepository.findById((i+1L));
@@ -49,6 +52,6 @@ public class add implements ApplicationRunner {
 //            System.out.println(id);
 //        }
 //
-    }
-
-}
+//    }
+//
+//}

@@ -29,7 +29,7 @@ public class CourseEn {
     private Member member;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "course_en",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "course",cascade = CascadeType.ALL)
     private List<MyplaceCourseEn> myplace_courseList=new ArrayList<>();
 
 

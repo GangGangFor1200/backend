@@ -41,7 +41,7 @@ public class PlaceEn {
 
     private String address;
 
-    @OneToMany(mappedBy = "place_en",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "place",cascade = CascadeType.ALL)
     private List<PlaceVlogEn> place_vlogList=new ArrayList<>();
 
     //category와 station에도 추가되도록 setter만들기

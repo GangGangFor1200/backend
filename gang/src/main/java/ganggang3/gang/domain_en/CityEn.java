@@ -24,7 +24,7 @@ public class CityEn {
     private String cityLink;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "city_en",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "city",cascade = CascadeType.ALL)
     private List<PlaceEn> placeList=new ArrayList<>();
 
     @JsonBackReference
@@ -33,7 +33,7 @@ public class CityEn {
     private ProvinceEn province;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "city_en",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "city",cascade = CascadeType.ALL)
     private List<StationEn> stationList =new ArrayList<>();
 
 

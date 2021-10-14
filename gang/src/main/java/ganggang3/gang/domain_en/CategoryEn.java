@@ -21,6 +21,6 @@ public class CategoryEn {
     private String name;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "category_en",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
     private List<PlaceEn> placeList=new ArrayList<>();
 }

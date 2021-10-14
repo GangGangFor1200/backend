@@ -20,11 +20,13 @@ import java.util.stream.Collectors;
 public class VlogApiController {
 
     private final VlogService vlogService;
-    private double x=0.0;
-    private double y=0.0;
+    private double x;
+    private double y;
 
     @GetMapping("/api/vlog/findplace/{vlogurl}")
     public Result findPlace(@PathVariable("vlogurl") String vlogurl){
+        x=0.0;
+        y=0.0;
         List<Place> placeList=vlogService.findPlaceList(vlogurl);
         List<PlaceDtoVlog> placeDtoList=new ArrayList<>();
         //place Dto로  변환
@@ -33,9 +35,12 @@ public class VlogApiController {
                 placeDtoList.add(PlaceDtoVlog.of(place));
                 x+=place.getLocation_x();
                 y+=place.getLocation_y();
+                System.out.println(x);
             });
             x/=placeList.size();
             y/=placeList.size();
+
+            System.out.println(placeList.size());
         }
         return new Result(placeDtoList,x,y);
     }

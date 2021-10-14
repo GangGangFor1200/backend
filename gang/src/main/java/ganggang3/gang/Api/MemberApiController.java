@@ -24,13 +24,14 @@ public class MemberApiController {
         memberService.saveMember(username,password);
     }
     //로그인
-    @GetMapping("/api/member/login")
-    public Map<String,Long> findMember(@RequestBody Map<String,String> map){
+    @PostMapping("/api/member/login")
+    public Map<String,String> findMember(@RequestBody Map<String,String> map){
         String username=map.get("username");
         String password=map.get("password");
         Member member=memberService.findByUsernameAndPassword(username,password);
-        Map<String,Long> map1=new HashMap<>();
-        map1.put("memberid",member.getId());
+        Map<String,String> map1=new HashMap<>();
+        map1.put("memberid",member.getId().toString());
+        System.out.println(map1);
         return map1;
     }
 

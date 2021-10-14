@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -56,8 +57,10 @@ public class MemberService  {
     }
 
     public Member findByUsernameAndPassword(String username,String password){
-        Optional<Member> byUsernameAndPassword = memberRepository.findByUsernameAndPassword(username, password);
-        return byUsernameAndPassword.orElseThrow(()->new DatabaseException("가입된 회원이 아닙니다!"));
+        List<Member> byUsernameAndPassword = memberRepository.findByUsernameAndPassword(username, password);
+        Optional<Member> Optionalmember= Optional.ofNullable(byUsernameAndPassword.get(0));
+        Member member=Optionalmember.orElseThrow(()->new DatabaseException("가입된 회원이 아닙니다!"));
+        return member;
     }
 
     public Member findByUsername(String member_name) {

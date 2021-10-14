@@ -39,9 +39,11 @@ public class MemberApiControllerTest {
     @Rollback(false)
     public void 회원가입() throws Exception {
         Map<String,String> map=new HashMap<>();
-        map.put("username","jurl");
+
         map.put("password","1234");
+        map.put("username","jurl");
         String content = objectMapper.writeValueAsString(map);
+        System.out.println(content);
         mockMvc.perform(post("/api/member/add")
                 .content(content)
                 .accept(MediaType.APPLICATION_JSON)

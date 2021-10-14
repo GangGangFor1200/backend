@@ -107,5 +107,10 @@ public class MyplaceService {
     public Myplace findByIdAndMember(Long myplace_id, Member member) {
         return myplaceRepository.findByIdAndMember(myplace_id,member);
     }
+
+    public Myplace findByName(String myplace_name) {
+        Optional<Myplace> byName = myplaceRepository.findByName(myplace_name);
+        return byName.orElseThrow(()->new NoSuchElementException("myplace가 존재하지 않습니다"));
+    }
 }
 

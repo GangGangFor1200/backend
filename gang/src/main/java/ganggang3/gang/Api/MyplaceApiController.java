@@ -66,10 +66,10 @@ public class MyplaceApiController {
         Place place=placeService.findById(place_id);
         myplaceService.deleteByPlace(member,place);
     }
-    @DeleteMapping("/api/myplace/deletebymyplace/{memberid}/{myplaceid}")
-    public void deleteMyplaceByMyplace(@PathVariable("memberid") Long member_id,@PathVariable("myplaceid") Long myplace_id){
+    @DeleteMapping("/api/myplace/deletebymyplace/{memberid}/{myplacename}")
+    public void deleteMyplaceByMyplace(@PathVariable("memberid") Long member_id,@PathVariable("myplacename") String myplace_name){
         Member member=memberService.findById(member_id);
-        Myplace myplace=myplaceService.findById(myplace_id);
+        Myplace myplace=myplaceService.findByName(myplace_name);
         myplaceService.deleteByMyplace(member,myplace);
     }
 

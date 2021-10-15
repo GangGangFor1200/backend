@@ -35,4 +35,5 @@ public class PlaceDto {
                 vlogList // 위에서 만들어준 place_vlog_dto
         );
     }
+
 }

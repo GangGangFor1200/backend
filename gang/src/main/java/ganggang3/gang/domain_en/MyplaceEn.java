@@ -2,7 +2,7 @@ package ganggang3.gang.domain_en;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import ganggang3.gang.domain.MemberEn;
+import ganggang3.gang.domain.Member;
 import lombok.*;
 
 import javax.persistence.*;
@@ -38,10 +38,10 @@ public class MyplaceEn {
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
-    private MemberEn member;
+    private Member member;
 
     public static MyplaceEn createMyplace(String name, String category, double location_x,
-                                          double location_y, String address, MemberEn member) {
+                                          double location_y, String address, Member member) {
 
         MyplaceEn myplace = new MyplaceEn();
 //        myplace.setId(Long.valueOf(id));

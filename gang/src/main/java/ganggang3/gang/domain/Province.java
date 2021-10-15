@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class ProvinceEn {
+public class Province {
     @Id
     @GeneratedValue
     @Column(name="province_id")

@@ -4,8 +4,6 @@ import ganggang3.gang.domain.MyplaceCourse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 //프론트에서 코스 선택했을 때 관련된 마이플레이스 보여주는 것
@@ -16,7 +14,7 @@ public class MyplaceCourseDto {
     private MyplaceDto myplaceDto;
 
 
-    public static MyplaceCourseDto of (MyplaceCourse mc,String name){
+    public static MyplaceCourseDto of (MyplaceCourse mc, String name){
         return new MyplaceCourseDto(
                 mc.getId(),
                 name,

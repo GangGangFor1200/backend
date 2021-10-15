@@ -16,17 +16,17 @@ public class MyplaceService {
 
     private final MyplaceRepository myplaceRepository;
 
-    public MyplaceEn findByMemberAndName(MemberEn member, String name){
-        MyplaceEn myplace=myplaceRepository.findByMemberAndName(member,name);
+    public Myplace findByMemberAndName(Member member, String name){
+        Myplace myplace=myplaceRepository.findByMemberAndName(member,name);
         return myplace;
         //return myplace.orElseThrow(()->new NoSuchElementException("myplace가 존재하지 않습니다"));-> 이거 추가하면 아래에서 add되어 있는지 확인을 못함
     }
 
     @Transactional
-    public Long add(MemberEn member, PlaceEn place){
+    public Long add(Member member, PlaceEn place){
 
         List<MyplaceCourse> myplace_courseList=new ArrayList<>();
-           MyplaceEn myplace = MyplaceEn.createMyplace(
+           Myplace myplace = Myplace.createMyplace(
                    place.getName(),
                    place.getCategory().getName(),
                    place.getLocation_x(),
@@ -35,19 +35,19 @@ public class MyplaceService {
                    member
            );
         //add되어 있는지 확인
-        MyplaceEn check = findByMemberAndName(member, place.getName());
+        Myplace check = findByMemberAndName(member, place.getName());
         if (check!=null){
             //예외처리 하기
             throw new DatabaseException("이미 저장되어 있는 MYPLACE입니다!");
         }
-        MyplaceEn saved = myplaceRepository.save(myplace);
+        Myplace saved = myplaceRepository.save(myplace);
 
        return saved.getId();
     }
     @Transactional
-    public Long addFromApi(MemberEn member, Map<String,Object> map) {
-        List<MyplaceEn> myplaceList=new ArrayList<>();
-        MyplaceEn myplace = MyplaceEn.createMyplace(
+    public Long addFromApi(Member member, Map<String,Object> map) {
+        List<Myplace> myplaceList=new ArrayList<>();
+        Myplace myplace = Myplace.createMyplace(
                 map.get("name").toString(),
                 map.get("category").toString(),
                 //double 인데?!!?!?!
@@ -58,20 +58,20 @@ public class MyplaceService {
         );
 
 
-        MyplaceEn check = findByMemberAndName(member, myplace.getName());
+        Myplace check = findByMemberAndName(member, myplace.getName());
         if (check!=null){
             //예외처리 하기
             throw new DatabaseException("이미 저장되어 있는 MYPLACE입니다!");
         }
-        MyplaceEn saved = myplaceRepository.save(myplace);
+        Myplace saved = myplaceRepository.save(myplace);
 
         return saved.getId();
 
     }
 
     @Transactional
-    public void deleteByPlace(MemberEn member, PlaceEn place){//place로 지우기
-        MyplaceEn rep = findByMemberAndName(member, place.getName());
+    public void deleteByPlace(Member member, PlaceEn place){//place로 지우기
+        Myplace rep = findByMemberAndName(member, place.getName());
         if (rep==null){
             //예외처리 하기
             throw new DatabaseException("저장되지 않는 PLACE입니다!");
@@ -79,36 +79,36 @@ public class MyplaceService {
         myplaceRepository.deleteByMemberAndName(member, place.getName());
     }
     @Transactional
-    public void deleteByMyplace(MemberEn member, MyplaceEn myplace){//myplace로 지우기
+    public void deleteByMyplace(Member member, Myplace myplace){//myplace로 지우기
         myplaceRepository.deleteByMemberAndName(member, myplace.getName());
     }
 
-    public List<MyplaceEn> findMyplaceList(MemberEn member){
+    public List<Myplace> findMyplaceList(Member member){
         return myplaceRepository.findAllByMember(member);
     }
-    public MyplaceEn findById(Long myplaceId) {
-        Optional<MyplaceEn> myplace=myplaceRepository.findById(myplaceId);
+    public Myplace findById(Long myplaceId) {
+        Optional<Myplace> myplace=myplaceRepository.findById(myplaceId);
         return myplace.orElseThrow(()->new NoSuchElementException("myplace가 존재하지 않습니다"));
     }
 
-    public List<MyplaceEn> convertMyplaceList(List<Map<String,Object>> list, MemberEn member) {
-        List<MyplaceEn> myplaceList=new ArrayList<>();
+    public List<Myplace> convertMyplaceList(List<Map<String,Object>> list, Member member) {
+        List<Myplace> myplaceList=new ArrayList<>();
 
         for(int i=0;i<list.size();i++){
             Map<String,Object> map=list.get(i);
-            MyplaceEn myplace=myplaceRepository.findByMemberAndName(member,map.get("name").toString());
+            Myplace myplace=myplaceRepository.findByMemberAndName(member,map.get("name").toString());
             myplaceList.add(myplace);
         }
         return myplaceList;
     }
 
 
-    public MyplaceEn findByIdAndMember(Long myplace_id, MemberEn member) {
+    public Myplace findByIdAndMember(Long myplace_id, Member member) {
         return myplaceRepository.findByIdAndMember(myplace_id,member);
     }
 
-    public MyplaceEn findByName(String myplace_name) {
-        Optional<MyplaceEn> byName = myplaceRepository.findByName(myplace_name);
+    public Myplace findByName(String myplace_name) {
+        Optional<Myplace> byName = myplaceRepository.findByName(myplace_name);
         return byName.orElseThrow(()->new NoSuchElementException("myplace가 존재하지 않습니다"));
     }
 }

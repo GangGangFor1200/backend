@@ -1,15 +1,15 @@
 package ganggang3.gang.Repository;
 
-import ganggang3.gang.domain.MemberEn;
+import ganggang3.gang.domain.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface MemberRepository extends JpaRepository<MemberEn,Long> {
-    Optional<MemberEn> findById(Long id);
+public interface MemberRepository extends JpaRepository<Member,Long> {
+    Optional<Member> findById(Long id);
 
-    Optional<MemberEn> findByUsername(String member_name);
+    Optional<Member> findByUsername(String member_name);
 
-    List<MemberEn> findByUsernameAndPassword(String username, String password);
+    List<Member> findByUsernameAndPassword(String username, String password);
 }

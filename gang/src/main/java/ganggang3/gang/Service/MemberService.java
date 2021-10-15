@@ -1,7 +1,7 @@
 package ganggang3.gang.Service;
 
 import ganggang3.gang.Repository.MemberRepository;
-import ganggang3.gang.domain.MemberEn;
+import ganggang3.gang.domain.Member;
 import ganggang3.gang.exception.DatabaseException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -40,30 +40,30 @@ public class MemberService  {
 
     @Transactional
     public void saveMember(String username,String password){
-        MemberEn member= MemberEn.createMember(username,password);
+        Member member= Member.createMember(username,password);
         memberRepository.save(member);
     }
 
-    public MemberEn findById(Long member_id){
-        Optional<MemberEn> member=memberRepository.findById(member_id);
+    public Member findById(Long member_id){
+        Optional<Member> member=memberRepository.findById(member_id);
         return member.orElseThrow(()->new NoSuchElementException("멤버가 존재하지 않습니다"));
     }
 
     public void delete(Long member_id) {
-        Optional<MemberEn> member=memberRepository.findById(member_id);
-        MemberEn ById=member.orElseThrow(()->new DatabaseException("member가 존재하지 않습니다"));
+        Optional<Member> member=memberRepository.findById(member_id);
+        Member ById=member.orElseThrow(()->new DatabaseException("member가 존재하지 않습니다"));
         memberRepository.delete(ById);
     }
 
-    public MemberEn findByUsernameAndPassword(String username, String password){
-        List<MemberEn> byUsernameAndPassword = memberRepository.findByUsernameAndPassword(username, password);
-        Optional<MemberEn> Optionalmember= Optional.ofNullable(byUsernameAndPassword.get(0));
-        MemberEn member=Optionalmember.orElseThrow(()->new DatabaseException("가입된 회원이 아닙니다!"));
+    public Member findByUsernameAndPassword(String username, String password){
+        List<Member> byUsernameAndPassword = memberRepository.findByUsernameAndPassword(username, password);
+        Optional<Member> Optionalmember= Optional.ofNullable(byUsernameAndPassword.get(0));
+        Member member=Optionalmember.orElseThrow(()->new DatabaseException("가입된 회원이 아닙니다!"));
         return member;
     }
 
-    public MemberEn findByUsername(String member_name) {
-        Optional<MemberEn> byUsername = memberRepository.findByUsername(member_name);
+    public Member findByUsername(String member_name) {
+        Optional<Member> byUsername = memberRepository.findByUsername(member_name);
         return byUsername.orElseThrow(()->new DatabaseException("member가 존재하지 않습니다"));
     }
 }

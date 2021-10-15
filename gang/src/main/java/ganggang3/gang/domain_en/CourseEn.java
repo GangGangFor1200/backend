@@ -2,7 +2,7 @@ package ganggang3.gang.domain_en;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import ganggang3.gang.domain.MemberEn;
+import ganggang3.gang.domain.Member;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,14 +25,14 @@ public class CourseEn {
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
-    private MemberEn member;
+    private Member member;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "course",cascade = CascadeType.ALL)
     private List<MyplaceCourseEn> myplace_courseList=new ArrayList<>();
 
 
-    public static CourseEn createCourse(String name, MemberEn member){
+    public static CourseEn createCourse(String name, Member member){
         CourseEn courseEn = new CourseEn();
         courseEn.setName(name);
         courseEn.setMember(member);

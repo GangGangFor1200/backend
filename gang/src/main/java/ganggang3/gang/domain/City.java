@@ -30,7 +30,7 @@ public class City {
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "province_id")
-    private ProvinceEn province;
+    private Province province;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "city",cascade = CascadeType.ALL)

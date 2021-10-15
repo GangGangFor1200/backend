@@ -24,14 +24,14 @@ public class CourseEn {
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
-    private MemberEn member;
+    private Member member;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "course",cascade = CascadeType.ALL)
     private List<MyplaceCourse> myplace_courseList=new ArrayList<>();
 
 
-    public static CourseEn createCourse(String name, MemberEn member){
+    public static CourseEn createCourse(String name, Member member){
         CourseEn course = new CourseEn();
         course.setName(name);
         course.setMember(member);

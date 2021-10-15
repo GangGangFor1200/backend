@@ -1,6 +1,6 @@
 package ganggang3.gang.Service;
 
-import ganggang3.gang.domain.MemberEn;
+import ganggang3.gang.domain.Member;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class MemberServiceTest {
         String member_name="jurl";
 
         //when
-        MemberEn member=memberService.findByUsername(member_name);
+        Member member=memberService.findByUsername(member_name);
 
         //then
         assertEquals(member_name,member.getUsername());

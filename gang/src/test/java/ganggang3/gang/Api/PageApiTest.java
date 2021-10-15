@@ -7,8 +7,8 @@ import ganggang3.gang.Service.CourseService;
 import ganggang3.gang.Service.MemberService;
 import ganggang3.gang.Service.MyplaceService;
 import ganggang3.gang.domain.CourseEn;
-import ganggang3.gang.domain.MemberEn;
-import ganggang3.gang.domain.MyplaceEn;
+import ganggang3.gang.domain.Member;
+import ganggang3.gang.domain.Myplace;
 import ganggang3.gang.dto.MyplaceDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -150,9 +150,9 @@ public class PageApiTest {
 
         //3 -> course add
         Long member_id=1234L;
-        MemberEn member=memberService.findById(member_id);
+        Member member=memberService.findById(member_id);
         //일단 test는 member가 가진 myplaceList로
-        List<MyplaceEn> myplaceList = myplaceService.findMyplaceList(member);
+        List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
         //실제 프론트에서는 myplaceDto가 넘어올거임
         List<MyplaceDto> myplaceDtoList = new ArrayList<>();
         myplaceList.forEach(myplace -> {

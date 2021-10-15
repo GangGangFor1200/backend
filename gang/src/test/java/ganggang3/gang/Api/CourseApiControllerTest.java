@@ -6,8 +6,8 @@ import ganggang3.gang.Service.MemberService;
 import ganggang3.gang.Service.MyplaceCourseService;
 import ganggang3.gang.Service.MyplaceService;
 import ganggang3.gang.domain.CourseEn;
-import ganggang3.gang.domain.MemberEn;
-import ganggang3.gang.domain.MyplaceEn;
+import ganggang3.gang.domain.Member;
+import ganggang3.gang.domain.Myplace;
 import ganggang3.gang.dto.MyplaceDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -52,7 +52,7 @@ public class CourseApiControllerTest {
     public void findAllByMember() throws Exception {
         //given
         Long member_id=1234L;
-        MemberEn member=memberService.findById(member_id);
+        Member member=memberService.findById(member_id);
         //when
         mockMvc.perform(get("/api/course/findall/{memberid}",member_id))
                 .andExpect(status().isOk())
@@ -81,9 +81,9 @@ public class CourseApiControllerTest {
     public void addCourse() throws Exception {
         //given
         Long member_id=1234L;
-        MemberEn member=memberService.findById(member_id);
+        Member member=memberService.findById(member_id);
         //test는 member가 가진 모든 myplace를 가져오지만, 프론트에서 추가할 course에 넣을 myplaceList 넘겨줄거임
-        List<MyplaceEn> myplaceList = myplaceService.findMyplaceList(member);
+        List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
         //실제 프론트에서는 myplaceDto가 넘어올거임
         List<MyplaceDto> myplaceDtoList = new ArrayList<>();
         myplaceList.forEach(myplace -> {
@@ -120,12 +120,12 @@ public class CourseApiControllerTest {
     public void updateCourse() throws Exception {
         //테스트할 때 맴버이름하고 코스이름만 바꾸면 됨
         Long member_id=1234L;
-        MemberEn member=memberService.findById(member_id);
+        Member member=memberService.findById(member_id);
         Optional<CourseEn> course = courseService.findByNameAndMember("course1", member);
         Long id = course.get().getId();
         System.out.println(id);
         //이게 실제 페이지 상에서는 myplaceDTO로 넘어옴 그래서 DTD로 테스트해야함
-        List<MyplaceEn> myplaceList = myplaceService.findMyplaceList(member);
+        List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
         List<MyplaceDto> myplaceDtoList = new ArrayList<>();
         myplaceList.forEach(myplace -> {
             myplaceDtoList.add(MyplaceDto.of(myplace));

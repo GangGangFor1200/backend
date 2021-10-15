@@ -1,6 +1,6 @@
 package ganggang3.gang.dto;
 
-import ganggang3.gang.domain.MyplaceEn;
+import ganggang3.gang.domain.Myplace;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -16,7 +16,7 @@ public class MyplaceDto {
     private String address;
 
 
-    public static MyplaceDto of (MyplaceEn M){
+    public static MyplaceDto of (Myplace M){
         return new MyplaceDto(
                 M.getId(),
                 M.getName(),

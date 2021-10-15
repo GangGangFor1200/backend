@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 
 //밖에서 생성자 못쓰게 하는거 createOrderitem만 쓰도록하는거 롬복
-public class MyplaceEn {
+public class Myplace {
     @Id
     @GeneratedValue
     @Column(name = "myplace_id")
@@ -37,12 +37,12 @@ public class MyplaceEn {
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
-    private MemberEn member;
+    private Member member;
 
-    public static MyplaceEn createMyplace(String name, String category, double location_x,
-                                          double location_y, String address, MemberEn member) {
+    public static Myplace createMyplace(String name, String category, double location_x,
+                                        double location_y, String address, Member member) {
 
-        MyplaceEn myplace = new MyplaceEn();
+        Myplace myplace = new Myplace();
 //        myplace.setId(Long.valueOf(id));
         myplace.setName(name);
         myplace.setCategory(category);

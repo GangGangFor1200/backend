@@ -1,6 +1,6 @@
 package ganggang3.gang.dto;
 
-import ganggang3.gang.domain.PlaceEn;
+import ganggang3.gang.domain.Place;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -12,7 +12,7 @@ public class PlaceDtoVlog {
     private double location_y;
     private long categoryid;
 
-    public static PlaceDtoVlog of (PlaceEn P){
+    public static PlaceDtoVlog of (Place P){
         return new PlaceDtoVlog(
                 P.getName(),
                 P.getLocation_x(),

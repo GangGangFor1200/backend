@@ -25,7 +25,7 @@ public class City {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "city",cascade = CascadeType.ALL)
-    private List<PlaceEn> placeList=new ArrayList<>();
+    private List<Place> placeList=new ArrayList<>();
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)

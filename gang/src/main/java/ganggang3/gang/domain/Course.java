@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class CourseEn {
+public class Course {
 
     @Id
     @GeneratedValue
@@ -31,8 +31,8 @@ public class CourseEn {
     private List<MyplaceCourse> myplace_courseList=new ArrayList<>();
 
 
-    public static CourseEn createCourse(String name, Member member){
-        CourseEn course = new CourseEn();
+    public static Course createCourse(String name, Member member){
+        Course course = new Course();
         course.setName(name);
         course.setMember(member);
         return course;

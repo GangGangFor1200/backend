@@ -1,7 +1,7 @@
 package ganggang3.gang.Api_en;
 
 import ganggang3.gang.Service.VlogService;
-import ganggang3.gang.domain.PlaceEn;
+import ganggang3.gang.domain.Place;
 import ganggang3.gang.dto.PlaceDtoVlog;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,7 +26,7 @@ public class VlogApiController {
     public Result findPlace(@PathVariable("vlogurl") String vlogurl){
         x=0.0;
         y=0.0;
-        List<PlaceEn> placeList=vlogService.findPlaceList(vlogurl);
+        List<Place> placeList=vlogService.findPlaceList(vlogurl);
         List<PlaceDtoVlog> placeDtoList=new ArrayList<>();
         //place Dto로  변환
         if (placeList!=null) {

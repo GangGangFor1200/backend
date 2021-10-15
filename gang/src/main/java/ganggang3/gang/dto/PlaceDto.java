@@ -1,7 +1,7 @@
 package ganggang3.gang.dto;
 
 
-import ganggang3.gang.domain.PlaceEn;
+import ganggang3.gang.domain.Place;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -22,7 +22,7 @@ public class PlaceDto {
 
 
 
-    public static PlaceDto of (PlaceEn P, List<VlogDto> vlogList){
+    public static PlaceDto of (Place P, List<VlogDto> vlogList){
         return new PlaceDto(
                 P.getId(),
                 P.getName(),

@@ -1,6 +1,6 @@
 package ganggang3.gang.dto;
 
-import ganggang3.gang.domain.CourseEn;
+import ganggang3.gang.domain.Course;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -12,7 +12,7 @@ public class CourseDto {
     private String name;
     private long memberid;
 
-    public static CourseDto of (CourseEn C){
+    public static CourseDto of (Course C){
         return new CourseDto(
                 C.getId(),
                 C.getName(),

@@ -3,7 +3,7 @@ package ganggang3.gang.Api;
 import ganggang3.gang.Service.CourseService;
 import ganggang3.gang.Service.MemberService;
 import ganggang3.gang.Service.MyplaceService;
-import ganggang3.gang.domain.CourseEn;
+import ganggang3.gang.domain.Course;
 import ganggang3.gang.domain.Member;
 import ganggang3.gang.domain.Myplace;
 import ganggang3.gang.dto.CourseDto;
@@ -27,7 +27,7 @@ public class CourseApiController {
     @GetMapping("/api/course/findall/{memberid}")
     public Result findAllCourse(@PathVariable("memberid") Long member_id){
         Member member = memberService.findById(member_id);
-        List<CourseEn> courseList = courseService.findAllByMember(member);
+        List<Course> courseList = courseService.findAllByMember(member);
 
         List<CourseDto> courseDtoList=new ArrayList<>();
         if (courseList!=null)
@@ -58,7 +58,7 @@ public class CourseApiController {
                           @PathVariable("courseid") Long course_id,
                           @RequestBody Map<String,Object> map){
         Member member= memberService.findById(member_id);
-        Optional<CourseEn> course = courseService.findById(course_id);
+        Optional<Course> course = courseService.findById(course_id);
         String name=map.get("name").toString();
 
         //Map에서 받은 HashMapList를 Myplace로 변환

@@ -2,7 +2,7 @@ package ganggang3.gang.Api;
 
 import ganggang3.gang.Service.CategoryService;
 import ganggang3.gang.Service.MemberService;
-import ganggang3.gang.domain.CategoryEn;
+import ganggang3.gang.domain.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ public class CategoryApiController {
     public Result findAllCategory() {
 
 
-        List<CategoryEn> categoryList =categoryService.findAll();
+        List<Category> categoryList =categoryService.findAll();
 
         //Categoey Dto 만들기
         List<CategoryDto> categoryDtoList = categoryList.stream()

@@ -22,7 +22,7 @@ public class MyplaceService {
     }
 
     @Transactional
-    public Long add(Member member, PlaceEn place){
+    public Long add(Member member, Place place){
 
         List<MyplaceCourse> myplace_courseList=new ArrayList<>();
            Myplace myplace = Myplace.createMyplace(
@@ -69,7 +69,7 @@ public class MyplaceService {
     }
 
     @Transactional
-    public void deleteByPlace(Member member, PlaceEn place){//place로 지우기
+    public void deleteByPlace(Member member, Place place){//place로 지우기
         Myplace rep = findByMemberAndName(member, place.getName());
         if (rep==null){
             //예외처리 하기

@@ -5,7 +5,7 @@ import ganggang3.gang.Service.MyplaceService;
 import ganggang3.gang.Service.PlaceService;
 import ganggang3.gang.domain.Member;
 import ganggang3.gang.domain.Myplace;
-import ganggang3.gang.domain.PlaceEn;
+import ganggang3.gang.domain.Place;
 
 import ganggang3.gang.dto.MyplaceDto;
 import lombok.AllArgsConstructor;
@@ -45,7 +45,7 @@ public class MyplaceApiController {
     @PostMapping("/api/myplace/add/{memberid}/{placeid}")
     public void addMyplace(@PathVariable("memberid") Long member_id,@PathVariable("placeid") Long place_id) {
         Member member=memberService.findById(member_id);
-        PlaceEn place=placeService.findById(place_id);
+        Place place=placeService.findById(place_id);
         myplaceService.add(member,place);
     }
     @PostMapping("/api/myplace/addfromapi/{memberid}")
@@ -57,7 +57,7 @@ public class MyplaceApiController {
     @DeleteMapping("/api/myplace/deletebyplace/{memberid}/{placeid}")
     public void deleteMyplaceByPlace(@PathVariable("memberid") Long member_id,@PathVariable("placeid") Long place_id){
         Member member=memberService.findById(member_id);
-        PlaceEn place=placeService.findById(place_id);
+        Place place=placeService.findById(place_id);
         myplaceService.deleteByPlace(member,place);
     }
     @DeleteMapping("/api/myplace/deletebymyplace/{memberid}/{myplacename}")

@@ -6,7 +6,7 @@ import ganggang3.gang.Service.CategoryService;
 import ganggang3.gang.Service.CourseService;
 import ganggang3.gang.Service.MemberService;
 import ganggang3.gang.Service.MyplaceService;
-import ganggang3.gang.domain.CourseEn;
+import ganggang3.gang.domain.Course;
 import ganggang3.gang.domain.Member;
 import ganggang3.gang.domain.Myplace;
 import ganggang3.gang.dto.MyplaceDto;
@@ -178,7 +178,7 @@ public class PageApiTest {
                 .andDo(print());
 
         //4 -> course update
-        Optional<CourseEn> course = courseService.findByNameAndMember(course_name, member);
+        Optional<Course> course = courseService.findByNameAndMember(course_name, member);
         Long id = course.get().getId();
         myplaceList = myplaceService.findMyplaceList(member);
         List<MyplaceDto> updateMyplaceDtoList = new ArrayList<>();

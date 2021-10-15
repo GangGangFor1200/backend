@@ -4,7 +4,7 @@ import ganggang3.gang.Repository.MemberRepository;
 import ganggang3.gang.Repository.PlaceRepository;
 import ganggang3.gang.domain.Member;
 import ganggang3.gang.domain.Myplace;
-import ganggang3.gang.domain.PlaceEn;
+import ganggang3.gang.domain.Place;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +64,7 @@ public class MyplaceServiceTest {
         //given
         Long member_id=1234L;
         Member member=memberService.findById(member_id);
-        PlaceEn place= placeService.findById(5L);
+        Place place= placeService.findById(5L);
         //when
         long id=myplaceService.add(member,place);
         //then
@@ -79,7 +79,7 @@ public class MyplaceServiceTest {
         //given
         Long member_id=1234L;
         Member member=memberService.findById(member_id);
-        PlaceEn place= placeService.findById(3L);
+        Place place= placeService.findById(3L);
         //원래 있는 데이터인지 확인
         //이게 없다면 원래 없는데이터여서 그냥 통과할 수 있음
         //assertNotNull(myplaceService.findByMemberAndName(member,place.getName()));

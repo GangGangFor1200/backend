@@ -1,7 +1,7 @@
 package ganggang3.gang.Api;
 
 import ganggang3.gang.Service.CourseService;
-import ganggang3.gang.domain.CourseEn;
+import ganggang3.gang.domain.Course;
 import ganggang3.gang.domain.MyplaceCourse;
 import ganggang3.gang.dto.MyplaceCourseDto;
 import lombok.AllArgsConstructor;
@@ -24,7 +24,7 @@ public class MyplaceCourseApiController {
 
     @GetMapping("/api/myplacecourse/findall/{courseid}")
     public Result findMyplaceCourseAllByCourse(@PathVariable("courseid") long course_id){
-        Optional<CourseEn> course = courseService.findById(course_id);
+        Optional<Course> course = courseService.findById(course_id);
         List<MyplaceCourse> allByCourse = MyplaceCourseService.findAllByCourse(course.get());
         List<MyplaceCourseDto> myplaceCourseDtoList =new ArrayList<>();
 

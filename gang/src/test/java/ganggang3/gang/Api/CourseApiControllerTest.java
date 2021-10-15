@@ -5,7 +5,7 @@ import ganggang3.gang.Service.CourseService;
 import ganggang3.gang.Service.MemberService;
 import ganggang3.gang.Service.MyplaceCourseService;
 import ganggang3.gang.Service.MyplaceService;
-import ganggang3.gang.domain.CourseEn;
+import ganggang3.gang.domain.Course;
 import ganggang3.gang.domain.Member;
 import ganggang3.gang.domain.Myplace;
 import ganggang3.gang.dto.MyplaceDto;
@@ -121,7 +121,7 @@ public class CourseApiControllerTest {
         //테스트할 때 맴버이름하고 코스이름만 바꾸면 됨
         Long member_id=1234L;
         Member member=memberService.findById(member_id);
-        Optional<CourseEn> course = courseService.findByNameAndMember("course1", member);
+        Optional<Course> course = courseService.findByNameAndMember("course1", member);
         Long id = course.get().getId();
         System.out.println(id);
         //이게 실제 페이지 상에서는 myplaceDTO로 넘어옴 그래서 DTD로 테스트해야함

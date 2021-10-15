@@ -1,6 +1,6 @@
 package ganggang3.gang.dto;
 
-import ganggang3.gang.domain.VlogEn;
+import ganggang3.gang.domain.Vlog;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -11,7 +11,7 @@ public class VlogDto {
     private String name;
     private String url;
 
-    public static VlogDto of (VlogEn V){
+    public static VlogDto of (Vlog V){
         return new VlogDto(
                 V.getId(),
                 V.getName(),

@@ -1,6 +1,6 @@
 package ganggang3.gang.Service_en;
 import ganggang3.gang.Repository.MyplaceCourseRepository;
-import ganggang3.gang.domain.CourseEn;
+import ganggang3.gang.domain.Course;
 import ganggang3.gang.domain.MyplaceCourse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.List;
 public class MyplaceCourseService {
     private final MyplaceCourseRepository myplaceCourseRepository;
 
-    public List<MyplaceCourse> findAllByCourse(CourseEn course){
+    public List<MyplaceCourse> findAllByCourse(Course course){
         return myplaceCourseRepository.findAllByCourse(course);
     }
 
@@ -23,7 +23,7 @@ public class MyplaceCourseService {
     }
 
     @Transactional
-    public void deleteAllByCourse(CourseEn course) {
+    public void deleteAllByCourse(Course course) {
         myplaceCourseRepository.deleteAllByCourse(course);
     }
 }

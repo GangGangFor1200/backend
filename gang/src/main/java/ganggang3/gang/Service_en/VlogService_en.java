@@ -1,5 +1,6 @@
 package ganggang3.gang.Service_en;
 import ganggang3.gang.Repository.VlogRepository;
+import ganggang3.gang.Repository_en.VlogRepository_en;
 import ganggang3.gang.domain.Place;
 import ganggang3.gang.domain.PlaceVlog;
 import ganggang3.gang.domain.Vlog;
@@ -15,9 +16,9 @@ import java.util.Optional;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class VlogService {
+public class VlogService_en {
 
-    private final VlogRepository vlogRepository;
+    private final VlogRepository_en vlogRepository;
 
     public List<Place> findPlaceList(String vlogurl) {
         Optional<Vlog> vlog=vlogRepository.findByUrl(vlogurl);

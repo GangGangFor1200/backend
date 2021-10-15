@@ -3,6 +3,9 @@ package ganggang3.gang.Service_en;
 import ganggang3.gang.Repository.CategoryRepository;
 import ganggang3.gang.Repository.CityRepository;
 import ganggang3.gang.Repository.PlaceRepository;
+import ganggang3.gang.Repository_en.CategoryRepository_en;
+import ganggang3.gang.Repository_en.CityRepository_en;
+import ganggang3.gang.Repository_en.PlaceRepository_en;
 import ganggang3.gang.domain.*;
 import ganggang3.gang.dto.PlaceDto;
 import ganggang3.gang.dto.VlogDto;
@@ -15,17 +18,16 @@ import java.util.*;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class PlaceService {
+public class PlaceService_en {
 
-    private final PlaceRepository placeRepository;
-    private final CategoryRepository categoryRepository;
-    private final CityRepository cityRepository;
+    private final PlaceRepository_en placeRepository;
+    private final CategoryRepository_en categoryRepository;
+    private final CityRepository_en cityRepository;
 
     public Place findById(Long placeId){
         Optional<Place> place=placeRepository.findById(placeId);
         return place.orElseThrow(()->new NoSuchElementException("place가 존재하지 않습니다"));
     }
-
 
     public List<Place> findTop5FromDb(Long cityId, Long categoryId) {
         Optional<City> city=cityRepository.findById(cityId);

@@ -1,6 +1,8 @@
 package ganggang3.gang.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import ganggang3.gang.domain_en.CourseEn;
+import ganggang3.gang.domain_en.MyplaceEn;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,10 +42,12 @@ public class Member {
         return member;
     }
 
-//    public static Member createMember(Long member_id,String access_token) {
-//        Member member=new Member();
-//        member.setId(member_id);
-//        member.setAccess_token(access_token);
-//        return member;
-//    }
+    @JsonManagedReference
+    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
+    private List<CourseEn> courseListEn =new ArrayList<>();
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
+    private List<MyplaceEn> myplaceListEn = new ArrayList<>();
+
 }

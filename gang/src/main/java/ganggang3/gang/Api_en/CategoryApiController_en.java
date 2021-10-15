@@ -2,7 +2,9 @@ package ganggang3.gang.Api_en;
 
 import ganggang3.gang.Service.CategoryService;
 import ganggang3.gang.Service.MemberService;
+import ganggang3.gang.Service_en.CategoryService_en;
 import ganggang3.gang.domain.Category;
+import ganggang3.gang.domain_en.CategoryEn;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -13,16 +15,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
-public class CategoryApiController {
+public class CategoryApiController_en {
 
-    private final CategoryService categoryService;
+    private final CategoryService_en categoryService;
     private final MemberService memberService;
 
-    @GetMapping("/api/category/findall")
+    @GetMapping("/api/en/category/findall")
     public Result findAllCategory() {
 
 
-        List<Category> categoryList =categoryService.findAll();
+        List<CategoryEn> categoryList =categoryService.findAll();
 
         //Categoey Dto 만들기
         List<CategoryDto> categoryDtoList = categoryList.stream()

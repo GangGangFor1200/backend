@@ -11,7 +11,7 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-public class MemberApiController {
+public class MemberApiController_en {
 
     private final MemberService memberService;
     private final KakaoService kakaoService;

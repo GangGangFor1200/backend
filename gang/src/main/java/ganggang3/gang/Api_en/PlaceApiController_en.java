@@ -1,6 +1,7 @@
 package ganggang3.gang.Api_en;
 
 import ganggang3.gang.Service.PlaceService;
+import ganggang3.gang.Service_en.PlaceService_en;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -13,11 +14,11 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class PlaceApiController {
+public class PlaceApiController_en {
 
-    private final PlaceService placeService;
+    private final PlaceService_en placeService;
 
-    @GetMapping("/api/place/findtop5/{cityid}/{categoryid}")
+    @GetMapping("/api/en/place/findtop5/{cityid}/{categoryid}")
     public Result findTop5(@PathVariable("cityid") long city_id, @PathVariable("categoryid") long category_id){
         return new Result(placeService.getTop5(city_id, category_id));
     }

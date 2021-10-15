@@ -3,9 +3,13 @@ package ganggang3.gang.Api_en;
 import ganggang3.gang.Service.CourseService;
 import ganggang3.gang.Service.MemberService;
 import ganggang3.gang.Service.MyplaceService;
+import ganggang3.gang.Service_en.CourseService_en;
+import ganggang3.gang.Service_en.MyplaceService_en;
 import ganggang3.gang.domain.Course;
 import ganggang3.gang.domain.Member;
 import ganggang3.gang.domain.Myplace;
+import ganggang3.gang.domain_en.CourseEn;
+import ganggang3.gang.domain_en.MyplaceEn;
 import ganggang3.gang.dto.CourseDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,21 +23,25 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-public class CourseApiController {
-    private final CourseService courseService;
-    private final MyplaceService myplaceService;
+public class CourseApiController_en {
+    private final CourseService_en courseService;
+    private final MyplaceService_en myplaceService;
     private final MemberService memberService;
 
-    @GetMapping("/api/course/findall/{memberid}")
+    @GetMapping("/api/en/course/findall/{memberid}")
     public Result findAllCourse(@PathVariable("memberid") Long member_id){
         Member member = memberService.findById(member_id);
-        List<Course> courseList = courseService.findAllByMember(member);
+        List<CourseEn> courseList = courseService.findAllByMember(member);
 
         List<CourseDto> courseDtoList=new ArrayList<>();
         if (courseList!=null)
             courseList.forEach(
                     course -> {
-                        CourseDto cd= CourseDto.of(course);
+                        CourseDto cd= new CourseDto(
+                                course.getId(),
+                                course.getName(),
+                                course.getMember().getId()
+                        );
                         courseDtoList.add(cd);
                     }
             );
@@ -41,7 +49,7 @@ public class CourseApiController {
         return new Result(courseDtoList);
     }
 
-    @PostMapping("/api/course/add/{memberid}")
+    @PostMapping("/api/en/course/add/{memberid}")
     public void addCourse(@PathVariable("memberid") Long member_id,
                           @RequestBody Map<String,Object> map){
         Member member= memberService.findById(member_id);
@@ -49,7 +57,7 @@ public class CourseApiController {
         String name=map.get("name").toString();
 
         //Map에서 받은 HashMapList를 Myplace로 변환
-        List<Myplace> myplaceList= myplaceService.convertMyplaceList((List<Map<String, Object>>) map.get("myplaceList"),member);
+        List<MyplaceEn> myplaceList= myplaceService.convertMyplaceList((List<Map<String, Object>>) map.get("myplaceList"),member);
 
         courseService.addCourse(member,myplaceList,name);
     }
@@ -58,17 +66,17 @@ public class CourseApiController {
                           @PathVariable("courseid") Long course_id,
                           @RequestBody Map<String,Object> map){
         Member member= memberService.findById(member_id);
-        Optional<Course> course = courseService.findById(course_id);
+        Optional<CourseEn> course = courseService.findById(course_id);
         String name=map.get("name").toString();
 
         //Map에서 받은 HashMapList를 Myplace로 변환
-        List<Myplace> myplaceList= myplaceService.convertMyplaceList((List<Map<String, Object>>) map.get("myplaceList"),member);
+        List<MyplaceEn> myplaceList= myplaceService.convertMyplaceList((List<Map<String, Object>>) map.get("myplaceList"),member);
 
         courseService.updateCourse(member,course.get(),myplaceList,name);
     }
 
 
-    @DeleteMapping("/api/course/delete/{courseid}")
+    @DeleteMapping("/api/en/course/delete/{courseid}")
     public void deleteCourse(@PathVariable("courseid") Long course_id){
         courseService.deleteCourse(course_id);
     }

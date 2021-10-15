@@ -2,7 +2,9 @@ package ganggang3.gang.Api_en;
 
 
 import ganggang3.gang.Service.ProvinceService;
+import ganggang3.gang.Service_en.ProvinceService_en;
 import ganggang3.gang.domain.Province;
+import ganggang3.gang.domain_en.ProvinceEn;
 import ganggang3.gang.dto.CityDto;
 import ganggang3.gang.dto.ProvinceDto;
 import ganggang3.gang.dto.StationDto;
@@ -18,13 +20,13 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
-public class ProvinceApiController {
-    private final ProvinceService provinceService;
+public class ProvinceApiController_en {
+    private final ProvinceService_en provinceService;
 
 
-    @GetMapping("/api/province/findall")
+    @GetMapping("/api/en/province/findall")
     public Result findAllProvince(){
-        List<Province> provinceList= provinceService.findAll();
+        List<ProvinceEn> provinceList= provinceService.findAll();
 
         // Province Dto 만들기
         List<ProvinceDto> provinceDtoList = new ArrayList<>();

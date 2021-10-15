@@ -3,10 +3,14 @@ package ganggang3.gang.Api_en;
 import ganggang3.gang.Service.MemberService;
 import ganggang3.gang.Service.MyplaceService;
 import ganggang3.gang.Service.PlaceService;
+import ganggang3.gang.Service_en.MyplaceService_en;
+import ganggang3.gang.Service_en.PlaceService_en;
 import ganggang3.gang.domain.Member;
 import ganggang3.gang.domain.Myplace;
 import ganggang3.gang.domain.Place;
 
+import ganggang3.gang.domain_en.MyplaceEn;
+import ganggang3.gang.domain_en.PlaceEn;
 import ganggang3.gang.dto.MyplaceDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,51 +23,57 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-public class MyplaceApiController {
+public class MyplaceApiController_en {
 
-    private final MyplaceService myplaceService;
+    private final MyplaceService_en myplaceService;
     private final MemberService memberService;
-    private final PlaceService placeService;
+    private final PlaceService_en placeService;
 
 
-    @GetMapping("/api/myplace/findall/{memberid}")
+    @GetMapping("/api/en/myplace/findall/{memberid}")
     public Result findAllMyplace(@PathVariable("memberid") Long member_id){
         Member member=memberService.findById(member_id);
-        List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
+        List<MyplaceEn> myplaceList = myplaceService.findMyplaceList(member);
 
         List<MyplaceDto> myplaceDtoList = new ArrayList<>();
 
         if (myplaceList!=null) {
             myplaceList.forEach(p -> {
-                MyplaceDto md = MyplaceDto.of(p);
+                MyplaceDto md = new MyplaceDto(
+                        p.getId(),
+                        p.getName(),
+                        p.getCategory(),
+                        p.getLocation_x(),
+                        p.getLocation_y(),
+                        p.getAddress()
+                );
                 myplaceDtoList.add(md);
             });
         }
         return new Result(myplaceDtoList);
 
     }
-    @PostMapping("/api/myplace/add/{memberid}/{placeid}")
+    @PostMapping("/api/en/myplace/add/{memberid}/{placeid}")
     public void addMyplace(@PathVariable("memberid") Long member_id,@PathVariable("placeid") Long place_id) {
         Member member=memberService.findById(member_id);
-        Place place=placeService.findById(place_id);
+        PlaceEn place=placeService.findById(place_id);
         myplaceService.add(member,place);
     }
-    @PostMapping("/api/myplace/addfromapi/{memberid}")
+    @PostMapping("/api/en/myplace/addfromapi/{memberid}")
     public void addMyplaceFromapi(@PathVariable("memberid") Long member_id,@RequestBody Map<String,Object> map) {
         Member member=memberService.findById(member_id);
         myplaceService.addFromApi(member,map);
-
     }
-    @DeleteMapping("/api/myplace/deletebyplace/{memberid}/{placeid}")
+    @DeleteMapping("/api/en/myplace/deletebyplace/{memberid}/{placeid}")
     public void deleteMyplaceByPlace(@PathVariable("memberid") Long member_id,@PathVariable("placeid") Long place_id){
         Member member=memberService.findById(member_id);
-        Place place=placeService.findById(place_id);
+        PlaceEn place=placeService.findById(place_id);
         myplaceService.deleteByPlace(member,place);
     }
-    @DeleteMapping("/api/myplace/deletebymyplace/{memberid}/{myplacename}")
+    @DeleteMapping("/api/en/myplace/deletebymyplace/{memberid}/{myplacename}")
     public void deleteMyplaceByMyplace(@PathVariable("memberid") Long member_id,@PathVariable("myplacename") String myplace_name){
         Member member=memberService.findById(member_id);
-        Myplace myplace=myplaceService.findByName(myplace_name);
+        MyplaceEn myplace=myplaceService.findByName(myplace_name);
         myplaceService.deleteByMyplace(member,myplace);
     }
 

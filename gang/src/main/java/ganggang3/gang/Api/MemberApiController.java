@@ -2,7 +2,7 @@ package ganggang3.gang.Api;
 
 import ganggang3.gang.Service.KakaoService;
 import ganggang3.gang.Service.MemberService;
-import ganggang3.gang.domain.Member;
+import ganggang3.gang.domain.MemberEn;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +28,7 @@ public class MemberApiController {
     public Map<String,String> findMember(@RequestBody Map<String,String> map){
         String username=map.get("username");
         String password=map.get("password");
-        Member member=memberService.findByUsernameAndPassword(username,password);
+        MemberEn member=memberService.findByUsernameAndPassword(username,password);
         Map<String,String> map1=new HashMap<>();
         map1.put("memberid",member.getId().toString());
         System.out.println(map1);

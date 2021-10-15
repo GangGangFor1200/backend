@@ -1,7 +1,7 @@
 package ganggang3.gang.domain_en;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import ganggang3.gang.domain.Course;
+import ganggang3.gang.domain.CourseEn;
 import lombok.Getter;
 import lombok.Setter;
 

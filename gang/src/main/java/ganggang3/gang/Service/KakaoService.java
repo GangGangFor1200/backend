@@ -3,7 +3,6 @@ package ganggang3.gang.Service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ganggang3.gang.AuthorizationKakao;
-import ganggang3.gang.domain.Member;
 import ganggang3.gang.exception.DatabaseException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
@@ -12,8 +11,6 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.function.Consumer;
 
 @Service
 @RequiredArgsConstructor

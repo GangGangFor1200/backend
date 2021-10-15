@@ -2,9 +2,9 @@ package ganggang3.gang.Service;
 
 import ganggang3.gang.Repository.MemberRepository;
 import ganggang3.gang.Repository.PlaceRepository;
-import ganggang3.gang.domain.Member;
-import ganggang3.gang.domain.Myplace;
-import ganggang3.gang.domain.Place;
+import ganggang3.gang.domain.MemberEn;
+import ganggang3.gang.domain.MyplaceEn;
+import ganggang3.gang.domain.PlaceEn;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,10 +47,10 @@ public class MyplaceServiceTest {
     public void findAllMyplace(){
         //given
         Long member_id=1234L;
-        Member member=memberService.findById(member_id);
+        MemberEn member=memberService.findById(member_id);
 
         //when
-        List<Myplace> myplaceList=myplaceService.findMyplaceList(member);
+        List<MyplaceEn> myplaceList=myplaceService.findMyplaceList(member);
         myplaceList.forEach(p-> System.out.println(p.getName()));
 
         //then
@@ -63,8 +63,8 @@ public class MyplaceServiceTest {
     public void addMyplace(){
         //given
         Long member_id=1234L;
-        Member member=memberService.findById(member_id);
-        Place place= placeService.findById(5L);
+        MemberEn member=memberService.findById(member_id);
+        PlaceEn place= placeService.findById(5L);
         //when
         long id=myplaceService.add(member,place);
         //then
@@ -78,8 +78,8 @@ public class MyplaceServiceTest {
     public void deleteMyplace(){
         //given
         Long member_id=1234L;
-        Member member=memberService.findById(member_id);
-        Place place= placeService.findById(3L);
+        MemberEn member=memberService.findById(member_id);
+        PlaceEn place= placeService.findById(3L);
         //원래 있는 데이터인지 확인
         //이게 없다면 원래 없는데이터여서 그냥 통과할 수 있음
         //assertNotNull(myplaceService.findByMemberAndName(member,place.getName()));

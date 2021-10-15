@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 
 //밖에서 생성자 못쓰게 하는거 createOrderitem만 쓰도록하는거 롬복
-public class Myplace {
+public class MyplaceEn {
     @Id
     @GeneratedValue
     @Column(name = "myplace_id")
@@ -38,12 +37,12 @@ public class Myplace {
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
-    private Member member;
+    private MemberEn member;
 
-    public static Myplace createMyplace(String name, String category, double location_x,
-                   double location_y, String address, Member member) {
+    public static MyplaceEn createMyplace(String name, String category, double location_x,
+                                          double location_y, String address, MemberEn member) {
 
-        Myplace myplace = new Myplace ();
+        MyplaceEn myplace = new MyplaceEn();
 //        myplace.setId(Long.valueOf(id));
         myplace.setName(name);
         myplace.setCategory(category);

@@ -2,16 +2,13 @@ package ganggang3.gang.Api;
 
 import ganggang3.gang.Service.CategoryService;
 import ganggang3.gang.Service.MemberService;
-import ganggang3.gang.domain.Category;
+import ganggang3.gang.domain.CategoryEn;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 @RestController
@@ -25,7 +22,7 @@ public class CategoryApiController {
     public Result findAllCategory() {
 
 
-        List<Category> categoryList =categoryService.findAll();
+        List<CategoryEn> categoryList =categoryService.findAll();
 
         //Categoey Dto 만들기
         List<CategoryDto> categoryDtoList = categoryList.stream()

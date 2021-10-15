@@ -1,11 +1,8 @@
 package ganggang3.gang.dto;
 
-import ganggang3.gang.domain.Myplace;
-import ganggang3.gang.domain.MyplaceCourse;
+import ganggang3.gang.domain.MyplaceEn;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -19,7 +16,7 @@ public class MyplaceDto {
     private String address;
 
 
-    public static MyplaceDto of (Myplace M){
+    public static MyplaceDto of (MyplaceEn M){
         return new MyplaceDto(
                 M.getId(),
                 M.getName(),

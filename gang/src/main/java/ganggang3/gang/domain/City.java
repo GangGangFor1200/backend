@@ -25,12 +25,12 @@ public class City {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "city",cascade = CascadeType.ALL)
-    private List<Place> placeList=new ArrayList<>();
+    private List<PlaceEn> placeList=new ArrayList<>();
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "province_id")
-    private Province province;
+    private ProvinceEn province;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "city",cascade = CascadeType.ALL)

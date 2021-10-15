@@ -3,9 +3,9 @@ package ganggang3.gang.Api;
 import ganggang3.gang.Service.CourseService;
 import ganggang3.gang.Service.MemberService;
 import ganggang3.gang.Service.MyplaceService;
-import ganggang3.gang.domain.Course;
-import ganggang3.gang.domain.Member;
-import ganggang3.gang.domain.Myplace;
+import ganggang3.gang.domain.CourseEn;
+import ganggang3.gang.domain.MemberEn;
+import ganggang3.gang.domain.MyplaceEn;
 import ganggang3.gang.dto.CourseDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,8 +26,8 @@ public class CourseApiController {
 
     @GetMapping("/api/course/findall/{memberid}")
     public Result findAllCourse(@PathVariable("memberid") Long member_id){
-        Member member = memberService.findById(member_id);
-        List<Course> courseList = courseService.findAllByMember(member);
+        MemberEn member = memberService.findById(member_id);
+        List<CourseEn> courseList = courseService.findAllByMember(member);
 
         List<CourseDto> courseDtoList=new ArrayList<>();
         if (courseList!=null)
@@ -44,12 +44,12 @@ public class CourseApiController {
     @PostMapping("/api/course/add/{memberid}")
     public void addCourse(@PathVariable("memberid") Long member_id,
                           @RequestBody Map<String,Object> map){
-        Member member= memberService.findById(member_id);
+        MemberEn member= memberService.findById(member_id);
 
         String name=map.get("name").toString();
 
         //Map에서 받은 HashMapList를 Myplace로 변환
-        List<Myplace> myplaceList= myplaceService.convertMyplaceList((List<Map<String, Object>>) map.get("myplaceList"),member);
+        List<MyplaceEn> myplaceList= myplaceService.convertMyplaceList((List<Map<String, Object>>) map.get("myplaceList"),member);
 
         courseService.addCourse(member,myplaceList,name);
     }
@@ -57,12 +57,12 @@ public class CourseApiController {
     public void updateCourse(@PathVariable("memberid") Long member_id,
                           @PathVariable("courseid") Long course_id,
                           @RequestBody Map<String,Object> map){
-        Member member= memberService.findById(member_id);
-        Optional<Course> course = courseService.findById(course_id);
+        MemberEn member= memberService.findById(member_id);
+        Optional<CourseEn> course = courseService.findById(course_id);
         String name=map.get("name").toString();
 
         //Map에서 받은 HashMapList를 Myplace로 변환
-        List<Myplace> myplaceList= myplaceService.convertMyplaceList((List<Map<String, Object>>) map.get("myplaceList"),member);
+        List<MyplaceEn> myplaceList= myplaceService.convertMyplaceList((List<Map<String, Object>>) map.get("myplaceList"),member);
 
         courseService.updateCourse(member,course.get(),myplaceList,name);
     }

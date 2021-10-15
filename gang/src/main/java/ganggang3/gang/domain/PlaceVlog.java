@@ -20,25 +20,25 @@ public class PlaceVlog {
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "place_id")
-    private Place place;
+    private PlaceEn place;
 
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vlog_id")
-    private Vlog vlog;
+    private VlogEn vlog;
 
-    public void setPlace(Place place){
+    public void setPlace(PlaceEn place){
         this.place=place;
         place.getPlace_vlogList().add(this);
     }
 
-    public void setVlog(Vlog vlog){
+    public void setVlog(VlogEn vlog){
         this.vlog=vlog;
         vlog.getPlace_vlogList().add(this);
     }
 
-    public static PlaceVlog createPlace_Vlog(Place place, Vlog vlog){
+    public static PlaceVlog createPlace_Vlog(PlaceEn place, VlogEn vlog){
         PlaceVlog place_vlog=new PlaceVlog();
         place_vlog.setPlace(place);
         place_vlog.setVlog(vlog);

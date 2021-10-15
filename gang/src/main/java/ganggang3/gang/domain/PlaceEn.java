@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Place {
+public class PlaceEn {
 
     @Id
     @GeneratedValue
@@ -28,7 +28,7 @@ public class Place {
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
-    private Category category;
+    private CategoryEn category;
 
     private double location_x;
     private double location_y;
@@ -45,7 +45,7 @@ public class Place {
     private List<PlaceVlog> place_vlogList=new ArrayList<>();
 
     //category와 station에도 추가되도록 setter만들기
-    public void setCategory(Category category){
+    public void setCategory(CategoryEn category){
         this.category=category;
         category.getPlaceList().add(this);
     }
@@ -54,7 +54,7 @@ public class Place {
         city.getPlaceList().add(this);
     }
 
-    public static Place of(PlaceVlog place_vlog) {
+    public static PlaceEn of(PlaceVlog place_vlog) {
         return place_vlog.getPlace();
     }
 

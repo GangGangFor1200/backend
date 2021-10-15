@@ -2,7 +2,7 @@ package ganggang3.gang.Service;
 
 
 import ganggang3.gang.Repository.ProvinceRepository;
-import ganggang3.gang.domain.Province;
+import ganggang3.gang.domain.ProvinceEn;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +16,7 @@ public class ProvinceService {
 
     private final ProvinceRepository provinceRepository;
 
-    public List<Province> findAll(){
+    public List<ProvinceEn> findAll(){
         return provinceRepository.findAll();
     }
 

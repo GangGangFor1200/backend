@@ -4,9 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ganggang3.gang.Service.MemberService;
 import ganggang3.gang.Service.MyplaceService;
 import ganggang3.gang.Service.PlaceService;
-import ganggang3.gang.domain.Member;
-import ganggang3.gang.domain.Myplace;
-import ganggang3.gang.domain.Place;
+import ganggang3.gang.domain.MemberEn;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,7 +72,7 @@ public class MyplaceApiControllerTest {
     public void addFromApi() throws Exception{
         Long member_id=1234L;
         //given
-        Member member =memberService.findById(member_id);
+        MemberEn member =memberService.findById(member_id);
         Map<String,Object> map=new HashMap<>();
         String name="어린이대공원";
         map.put("name",name);

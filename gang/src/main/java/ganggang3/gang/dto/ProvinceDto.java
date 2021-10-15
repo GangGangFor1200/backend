@@ -1,8 +1,6 @@
 package ganggang3.gang.dto;
 
-import ganggang3.gang.Api.ProvinceApiController;
-import ganggang3.gang.domain.Place;
-import ganggang3.gang.domain.Province;
+import ganggang3.gang.domain.ProvinceEn;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -16,7 +14,7 @@ public class ProvinceDto {
     private String provinceLink;
     private List<CityDto> cityList;
 
-    public static ProvinceDto of (Province P, List<CityDto> cityDtoList){
+    public static ProvinceDto of (ProvinceEn P, List<CityDto> cityDtoList){
         return new ProvinceDto(
                 P.getName(),
                 P.getProvinceLink(),

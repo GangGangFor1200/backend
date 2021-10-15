@@ -1,6 +1,6 @@
 package ganggang3.gang.Service;
 
-import ganggang3.gang.domain.Member;
+import ganggang3.gang.domain.MemberEn;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
 
-import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -25,7 +24,7 @@ public class MemberServiceTest {
         String member_name="jurl";
 
         //when
-        Member member=memberService.findByUsername(member_name);
+        MemberEn member=memberService.findByUsername(member_name);
 
         //then
         assertEquals(member_name,member.getUsername());

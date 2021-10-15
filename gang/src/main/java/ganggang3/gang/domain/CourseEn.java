@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Course {
+public class CourseEn {
 
     @Id
     @GeneratedValue
@@ -24,15 +24,15 @@ public class Course {
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
-    private Member member;
+    private MemberEn member;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "course",cascade = CascadeType.ALL)
     private List<MyplaceCourse> myplace_courseList=new ArrayList<>();
 
 
-    public static  Course createCourse(String name, Member member){
-        Course course = new Course();
+    public static CourseEn createCourse(String name, MemberEn member){
+        CourseEn course = new CourseEn();
         course.setName(name);
         course.setMember(member);
         return course;

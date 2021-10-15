@@ -1,8 +1,7 @@
 package ganggang3.gang.Service;
 
 import ganggang3.gang.Repository.CategoryRepository;
-import ganggang3.gang.domain.Category;
-import ganggang3.gang.domain.Province;
+import ganggang3.gang.domain.CategoryEn;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +17,7 @@ public class CategoryService {
 
 //    private final JpaRepository jpaRepository;
 
-    public List<Category> findAll(){
+    public List<CategoryEn> findAll(){
         return categoryRepository.findAll();
     }
 

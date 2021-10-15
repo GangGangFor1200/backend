@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Member {
+public class MemberEn {
 
     @Id
     @GeneratedValue
@@ -27,14 +27,14 @@ public class Member {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
-    private List<Course> courseList =new ArrayList<>();
+    private List<CourseEn> courseList =new ArrayList<>();
 
     @JsonManagedReference
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
-    private List<Myplace> myplaceList = new ArrayList<>();
+    private List<MyplaceEn> myplaceList = new ArrayList<>();
 
-    public static Member createMember(String username, String password){
-        Member member=new Member();
+    public static MemberEn createMember(String username, String password){
+        MemberEn member=new MemberEn();
         member.setUsername(username);
         member.setPassword(password);
         return member;

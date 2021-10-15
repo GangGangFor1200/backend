@@ -11,20 +11,16 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Vlog {
+public class CategoryEn {
 
     @Id
     @GeneratedValue
-    @Column(name = "vlog_id")
+    @Column(name = "category_id")
     private Long id;
 
     private String name;
 
-    private String url;
-
     @JsonManagedReference
-    @OneToMany(mappedBy = "vlog",cascade = CascadeType.ALL)
-    private List<PlaceVlog> place_vlogList=new ArrayList<>();
-
-
+    @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
+    private List<PlaceEn> placeList=new ArrayList<>();
 }

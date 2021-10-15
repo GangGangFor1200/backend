@@ -19,24 +19,24 @@ public class MyplaceCourse {
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "myplace_id")
-    private Myplace myplace;
+    private MyplaceEn myplace;
 
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id")
-    private Course course;
+    private CourseEn course;
 
-    public void setMyplace(Myplace myplace){
+    public void setMyplace(MyplaceEn myplace){
         this.myplace=myplace;
         myplace.getMyplace_courseList().add(this);
     }
 
-    public void setCourse(Course course){
+    public void setCourse(CourseEn course){
         this.course=course;
         course.getMyplace_courseList().add(this);
     }
-    public static MyplaceCourse createMyplaceCourse(Myplace myplace, Course course){
+    public static MyplaceCourse createMyplaceCourse(MyplaceEn myplace, CourseEn course){
         MyplaceCourse myplaceCourse = new MyplaceCourse();
         myplaceCourse.setCourse(course);
         myplaceCourse.setMyplace(myplace);

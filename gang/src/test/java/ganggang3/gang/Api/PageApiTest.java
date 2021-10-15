@@ -6,11 +6,10 @@ import ganggang3.gang.Service.CategoryService;
 import ganggang3.gang.Service.CourseService;
 import ganggang3.gang.Service.MemberService;
 import ganggang3.gang.Service.MyplaceService;
-import ganggang3.gang.domain.Course;
-import ganggang3.gang.domain.Member;
-import ganggang3.gang.domain.Myplace;
+import ganggang3.gang.domain.CourseEn;
+import ganggang3.gang.domain.MemberEn;
+import ganggang3.gang.domain.MyplaceEn;
 import ganggang3.gang.dto.MyplaceDto;
-import ganggang3.gang.dto.PlaceDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
@@ -152,9 +150,9 @@ public class PageApiTest {
 
         //3 -> course add
         Long member_id=1234L;
-        Member member=memberService.findById(member_id);
+        MemberEn member=memberService.findById(member_id);
         //일단 test는 member가 가진 myplaceList로
-        List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
+        List<MyplaceEn> myplaceList = myplaceService.findMyplaceList(member);
         //실제 프론트에서는 myplaceDto가 넘어올거임
         List<MyplaceDto> myplaceDtoList = new ArrayList<>();
         myplaceList.forEach(myplace -> {
@@ -180,7 +178,7 @@ public class PageApiTest {
                 .andDo(print());
 
         //4 -> course update
-        Optional<Course> course = courseService.findByNameAndMember(course_name, member);
+        Optional<CourseEn> course = courseService.findByNameAndMember(course_name, member);
         Long id = course.get().getId();
         myplaceList = myplaceService.findMyplaceList(member);
         List<MyplaceDto> updateMyplaceDtoList = new ArrayList<>();

@@ -1,17 +1,16 @@
 package ganggang3.gang.Repository;
 
-import ganggang3.gang.domain.Course;
-import ganggang3.gang.domain.Member;
-import ganggang3.gang.domain.Myplace;
+import ganggang3.gang.domain.CourseEn;
+import ganggang3.gang.domain.MemberEn;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface CourseRepository extends JpaRepository<Course,Long> {
+public interface CourseRepository extends JpaRepository<CourseEn,Long> {
 
-    List<Course> findAllByMember(Member member);
-    Optional<Course> findByNameAndMember(String name, Member member);
-    Optional<Course> findById(Long id);
+    List<CourseEn> findAllByMember(MemberEn member);
+    Optional<CourseEn> findByNameAndMember(String name, MemberEn member);
+    Optional<CourseEn> findById(Long id);
 
 }

@@ -35,6 +35,7 @@ public class MyplaceService_en {
                    place.getLocation_x(),
                    place.getLocation_y(),
                    place.getAddress(),
+                   place.getId(),
                    member
            );
         //add되어 있는지 확인
@@ -47,16 +48,18 @@ public class MyplaceService_en {
 
        return saved.getId();
     }
+
     @Transactional
     public Long addFromApi(Member member, Map<String,Object> map) {
         List<MyplaceEn> myplaceList=new ArrayList<>();
+
         MyplaceEn myplace = MyplaceEn.createMyplace(
                 map.get("name").toString(),
                 map.get("category").toString(),
-                //double 인데?!!?!?!
                 Double.valueOf(map.get("location_x").toString()),
                 Double.valueOf(map.get("location_y").toString()),
                 map.get("address").toString(),
+                Long.valueOf(map.get("placeId").toString()),
                 member
         );
 

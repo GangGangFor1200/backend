@@ -31,11 +31,11 @@
 //    @Override
 //    @Transactional
 //    public void run(ApplicationArguments args) throws Exception {
-//        memberService.saveMember("11gang","1111");
-//        memberService.saveMember("22dfhsdf","2222");
-//        memberService.saveMember("33yjj","3333");
-//        memberService.saveMember("441asd","4444");
-//        memberService.saveMember("551asd","5555");
+//        memberService.saveMember("1111","1111");
+//        memberService.saveMember("2222","2222");
+//        memberService.saveMember("3333","3333");
+//        memberService.saveMember("4444","4444");
+//        memberService.saveMember("5555","5555");
 //
 //        for (int i=0; i<5;i++) {
 //            Member member = memberRepository.findById((i+1L));

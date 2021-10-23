@@ -30,7 +30,6 @@ public class MyplaceApiController {
     public Result findAllMyplace(@PathVariable("memberid") Long member_id){
         Member member=memberService.findById(member_id);
         List<Myplace> myplaceList = myplaceService.findMyplaceList(member);
-
         List<MyplaceDto> myplaceDtoList = new ArrayList<>();
 
         if (myplaceList!=null) {
@@ -39,6 +38,7 @@ public class MyplaceApiController {
                 myplaceDtoList.add(md);
             });
         }
+
         return new Result(myplaceDtoList);
 
     }

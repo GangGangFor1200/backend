@@ -30,6 +30,8 @@ public class Myplace {
 
     private String address;
 
+    private Long placeId;
+
     @JsonManagedReference
     @OneToMany(mappedBy = "myplace",cascade = CascadeType.ALL)
     private List<MyplaceCourse> myplace_courseList=new ArrayList<>();
@@ -40,7 +42,7 @@ public class Myplace {
     private Member member;
 
     public static Myplace createMyplace(String name, String category, double location_x,
-                                        double location_y, String address, Member member) {
+                                        double location_y, String address, Long placeId,Member member) {
 
         Myplace myplace = new Myplace();
 //        myplace.setId(Long.valueOf(id));
@@ -49,6 +51,7 @@ public class Myplace {
         myplace.setLocation_x(location_x);
         myplace.setLocation_y(location_y);
         myplace.setAddress(address);
+        myplace.setPlaceId(placeId);
         myplace.setMember(member);
 
         return myplace;

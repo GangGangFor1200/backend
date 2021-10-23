@@ -32,6 +32,7 @@ public class MyplaceService {
                    place.getLocation_x(),
                    place.getLocation_y(),
                    place.getAddress(),
+                   place.getId(),
                    member
            );
         //add되어 있는지 확인
@@ -50,10 +51,10 @@ public class MyplaceService {
         Myplace myplace = Myplace.createMyplace(
                 map.get("name").toString(),
                 map.get("category").toString(),
-                //double 인데?!!?!?!
                 Double.valueOf(map.get("location_x").toString()),
                 Double.valueOf(map.get("location_y").toString()),
                 map.get("address").toString(),
+                Long.valueOf(map.get("placeId").toString()),
                 member
         );
 
@@ -66,7 +67,6 @@ public class MyplaceService {
         Myplace saved = myplaceRepository.save(myplace);
 
         return saved.getId();
-
     }
 
     @Transactional

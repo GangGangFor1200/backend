@@ -14,7 +14,7 @@ public class MyplaceDto {
     private double location_x;
     private double location_y;
     private String address;
-
+    private long placeId;
 
     public static MyplaceDto of (Myplace M){
         return new MyplaceDto(
@@ -23,7 +23,8 @@ public class MyplaceDto {
                 M.getCategory(),
                 M.getLocation_x(),
                 M.getLocation_y(),
-                M.getAddress()
+                M.getAddress(),
+                M.getPlaceId()
             );
     }
 }

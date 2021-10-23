@@ -45,7 +45,8 @@ public class MyplaceCourseApiController_en {
                                 mc.getMyplace().getCategory(),
                                 mc.getMyplace().getLocation_x(),
                                 mc.getMyplace().getLocation_y(),
-                                mc.getMyplace().getAddress()
+                                mc.getMyplace().getAddress(),
+                                mc.getMyplace().getPlaceId()
                         )
                 );
                 myplaceCourseDtoList.add(myplaceCourseDto);

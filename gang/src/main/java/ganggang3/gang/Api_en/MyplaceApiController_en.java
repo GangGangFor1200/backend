@@ -45,7 +45,8 @@ public class MyplaceApiController_en {
                         p.getCategory(),
                         p.getLocation_x(),
                         p.getLocation_y(),
-                        p.getAddress()
+                        p.getAddress(),
+                        p.getPlaceId()
                 );
                 myplaceDtoList.add(md);
             });

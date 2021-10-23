@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 public class ProvinceApiController {
     private final ProvinceService provinceService;
 
-
     @GetMapping("/api/province/findall")
     public Result findAllProvince(){
         List<Province> provinceList= provinceService.findAll();

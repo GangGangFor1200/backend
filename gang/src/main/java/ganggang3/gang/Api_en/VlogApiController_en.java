@@ -37,7 +37,8 @@ public class VlogApiController_en {
                         place.getName(),
                         place.getLocation_x(),
                         place.getLocation_y(),
-                        place.getCategory().getId()
+                        place.getCategory().getId(),
+                        place.getId()
                 ));
                 x+=place.getLocation_x();
                 y+=place.getLocation_y();

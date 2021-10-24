@@ -18,8 +18,6 @@ public class Vlog {
     @Column(name = "vlog_id")
     private Long id;
 
-    private String name;
-
     private String url;
 
     @JsonManagedReference

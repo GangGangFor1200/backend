@@ -16,7 +16,6 @@ public class PlaceDto {
     private double location_y;
     private String address;
     private String phone;
-    private String category_name;
     private String placeUrl;
     private List<VlogDto> vlog_list;
 
@@ -31,7 +30,6 @@ public class PlaceDto {
                 P.getPhone(),
                 P.getAddress(),
                 P.getPlaceUrl(),
-                P.getCategory_name(),
                 vlogList // 위에서 만들어준 place_vlog_dto
         );
     }

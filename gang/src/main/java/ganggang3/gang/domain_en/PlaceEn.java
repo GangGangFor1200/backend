@@ -35,8 +35,6 @@ public class PlaceEn {
 
     private String phone;
 
-    private String category_name;
-
     private String placeUrl;
 
     private String address;

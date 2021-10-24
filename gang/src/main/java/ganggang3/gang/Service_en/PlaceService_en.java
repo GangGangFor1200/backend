@@ -60,7 +60,6 @@ public class PlaceService_en {
                     p.getLocation_y(),
                     p.getAddress(),
                     p.getPhone(),
-                    p.getCategory_name(),
                     p.getPlaceUrl(),
                     vlog_list
             );
@@ -82,7 +81,6 @@ public class PlaceService_en {
             list.add(
                     new VlogDto(
                             v.getId(),
-                            v.getName(),
                             v.getUrl()
                     ));
         }

@@ -69,7 +69,6 @@ public class PlaceService {
             list.add(
                     new VlogDto(
                             v.getId(),
-                            v.getName(),
                             v.getUrl()
                     ));
         }

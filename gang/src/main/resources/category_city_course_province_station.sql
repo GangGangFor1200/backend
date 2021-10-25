@@ -363,50 +363,70 @@ INSERT INTO station VALUES(251,'극락강역',92);
 INSERT INTO station VALUES(252,'효천역',92);
 INSERT INTO station VALUES(253,'서광주역',92);
 
-INSERT INTO place VALUES(1,'청평면 고성리 616-2','여행 > 관광,명소',127.49072076943015, 37.71502775032536, '쁘띠프랑스', '031-584-8200', 'http://place.map.kakao.com/7920064', 1, 1);
-INSERT INTO place VALUES(2,'경기 가평군 상면 행현리 623-3','여행 > 관광,명소 > 수목원,식물원',127.35166124525132, 37.74300402014755, '아침고요수목원', '1544-6703', 'http://place.map.kakao.com/25855305', 1, 1);
-INSERT INTO place VALUES(3,'경기 가평군 가평읍 달전리 30','여행 > 관광,명소 > 섬 > 섬(내륙)',127.52794671299, 37.8157523632236, '자라섬', '', 'http://place.map.kakao.com/8059024', 1, 1);
-INSERT INTO place VALUES(4,'경기 가평군 가평읍 읍내리 395-1','여행 > 관광,명소 > 테마파크',127.515864051987, 37.8289525253873, '가평레일파크', '031-582-7788', 'http://place.map.kakao.com/27092396', 1, 1);
-INSERT INTO place VALUES(5,'경기 가평군 설악면 이천리 304-31','여행 > 관광,명소 > 테마파크',127.4474798697605, 37.66778896494794, '에델바이스 스위스 테마파크', '031-585-3359', 'http://place.map.kakao.com/27092396', 1, 1);
 
-INSERT INTO vlog VALUES(1,'제목1','CKvzYfkgTyc');
-INSERT INTO vlog VALUES(2,'제목2','uugSc5MwlSE');
-INSERT INTO vlog VALUES(3,'제목3','4MbZC95AKVk');
+INSERT INTO category_en VALUES(1,'Attraction');
+INSERT INTO category_en VALUES(2,'Restaurant');
+INSERT INTO category_en VALUES(3,'Cafe');
 
-INSERT INTO place_vlog VALUES(1,1,1);
-INSERT INTO place_vlog VALUES(2,2,1);
-INSERT INTO place_vlog VALUES(3,4,1);
-INSERT INTO place_vlog VALUES(4,2,2);
-INSERT INTO place_vlog VALUES(5,4,2);
-INSERT INTO place_vlog VALUES(6,5,2);
-INSERT INTO place_vlog VALUES(7,1,3);
-INSERT INTO place_vlog VALUES(8,3,3);
-INSERT INTO place_vlog VALUES(9,5,3);
-INSERT INTO place_vlog VALUES(10,2,3);
-#
-# INSERT INTO member VALUES(1,'주리링1','1234');
-# INSERT INTO member VALUES(2,'주리링2','1234');
-# INSERT INTO member VALUES(3,'주리링3','1234');
-# INSERT INTO member VALUES(4,'주리링4','1234');
-# INSERT INTO member VALUES(5,'주리링5','1234');
+INSERT INTO province_en VALUES(1,'Gyeonggi-do', 'src/province/경기도.png');
+INSERT INTO province_en VALUES(2,'Gangwon-do', 'src/province/강원도.png');
+INSERT INTO province_en VALUES(3,'Chungcheongnam-do', 'src/province/충청남도.png');
+INSERT INTO province_en VALUES(4,'Chungcheongbuk-do', 'src/province/충청북도.png');
+INSERT INTO province_en VALUES(5,'Jeollanam-do', 'src/province/전라남도.png');
+INSERT INTO province_en VALUES(6,'Jeollabuk-do', 'src/province/전라북도.png');
+INSERT INTO province_en VALUES(7,'Gyeongsangnam-do', 'src/province/경상남도.png');
+INSERT INTO province_en VALUES(8,'Gyeongsangbuk-do', 'src/province/경상북도.png');
+INSERT INTO province_en VALUES(9,'Incheon', 'src/province/인천광역시.png');
+INSERT INTO province_en VALUES(10,'Daejeon', 'src/province/대전광역시.png');
+INSERT INTO province_en VALUES(11,'Daegu', 'src/province/대구광역시.png');
+INSERT INTO province_en VALUES(12,'Busan', 'src/province/부산광역시.png');
+INSERT INTO province_en VALUES(13,'Ulsan', 'src/province/울산광역시.png');
+INSERT INTO province_en VALUES(14,'Gwangju', 'src/province/광주광역시.png');
+INSERT INTO province_en VALUES(15,'Sejong', 'src/province/세종특별시.png');
 
-#
-# INSERT INTO myplace VALUES(1,'주소',1,123.12,36.16,'순천만습지1',1);
-#
-# INSERT INTO myplace VALUES(2,'주소',1,123.12,36.16,'순천만습지2',1);
-#
-# INSERT INTO myplace VALUES(3,'주소',1,123.12,36.16,'순천만습지3',1);
-#
-# INSERT INTO myplace VALUES(4,'주소',1,123.12,36.16,'순천만습지4',1);
-#
-# INSERT INTO myplace VALUES(5,'주소',1,123.12,36.16,'순천만습지5',1);
-#
-# INSERT INTO myplace VALUES(6,'주소',1,123.12,36.16,'순천만습지6',1);
-#
-# INSERT INTO myplace VALUES(7,'주소',1,123.12,36.16,'순천만습지7',1);
-#
-# INSERT INTO myplace VALUES(8,'주소',1,123.12,36.16,'순천만습지8',1);
-#
-# INSERT INTO myplace VALUES(9,'주소',1,123.12,36.16,'순천만습지9',1);
-#
-# INSERT INTO myplace VALUES(10,'주소',1,123.12,36.16,'순천만습지10',1);
+INSERT INTO city_en VALUES(11,'src/city/수원시.png','Suwon',1);
+INSERT INTO city_en VALUES(15,'src/city/강릉시.png','Gangneung',2);
+INSERT INTO city_en VALUES(33,'src/city/천안시.png','Cheonan',3);
+INSERT INTO city_en VALUES(36,'src/city/단양군.png','Danyang',4);
+INSERT INTO city_en VALUES(45,'src/city/순천시.png','Suncheon',5);
+INSERT INTO city_en VALUES(57,'src/city/전주시.png','Jeonju',6);
+INSERT INTO city_en VALUES(65,'src/city/하동군.png','Hadong',7);
+INSERT INTO city_en VALUES(73,'src/city/경주시.png','Gyeongju',8);
+INSERT INTO city_en VALUES(85,'src/city/안동시.png','Andong',8);
+INSERT INTO city_en VALUES(89,'src/city/대구광역시.png','Daegu',11);
+INSERT INTO city_en VALUES(90,'src/city/부산광역시.png','Busan',12);
+
+INSERT INTO station_en VALUES(36,'Suwon Station',11);
+INSERT INTO station_en VALUES(40,'Gangneung Station',15);
+INSERT INTO station_en VALUES(41,'Jungdongjin Station',15);
+INSERT INTO station_en VALUES(42,"Anin Station.",15);
+INSERT INTO station_en VALUES(97,'Cheonan Station',33);
+INSERT INTO station_en VALUES(98,'Sex Reversion',33);
+INSERT INTO station_en VALUES(107,'Danyang Station',36);
+INSERT INTO station_en VALUES(125,"Gurye District.",45);
+INSERT INTO station_en VALUES(126,'Suncheon Station',45);
+INSERT INTO station_en VALUES(153,'Jeonju Station',57);
+INSERT INTO station_en VALUES(169,'Bukcheon Station',65);
+INSERT INTO station_en VALUES(170,'Hadong Station',65);
+INSERT INTO station_en VALUES(171,'Hoengcheon Station',65);
+INSERT INTO station_en VALUES(188,'Guncheon Station',73);
+INSERT INTO station_en VALUES(189,'Gyeongju Station',73);
+INSERT INTO station_en VALUES(190,'Bulguksa station',73);
+INSERT INTO station_en VALUES(191,'Seogyeongju Station',73);
+INSERT INTO station_en VALUES(192,"Nervous",73);
+INSERT INTO station_en VALUES(193,'Angang Station',73);
+INSERT INTO station_en VALUES(225,'Andong Station',85);
+INSERT INTO station_en VALUES(233,"Daegu Station.",89);
+INSERT INTO station_en VALUES(234,'Dongdaegu Station',89);
+INSERT INTO station_en VALUES(235,"Gupo Station.",90);
+INSERT INTO station_en VALUES(236,'Busan Station',90);
+INSERT INTO station_en VALUES(237,'Kijang Station',90);
+INSERT INTO station_en VALUES(238,"defective zone.",90);
+INSERT INTO station_en VALUES(239,'Hwamyeong Station',90);
+INSERT INTO station_en VALUES(240,'Jwacheon Station',90);
+INSERT INTO station_en VALUES(241,'Shisang station',90);
+INSERT INTO station_en VALUES(242,"Centum Station.",90);
+INSERT INTO station_en VALUES(243,'Shinhaeundae Station',90);
+
+
+

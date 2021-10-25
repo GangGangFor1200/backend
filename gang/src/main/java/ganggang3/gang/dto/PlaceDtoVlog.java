@@ -12,6 +12,7 @@ public class PlaceDtoVlog {
     private double location_y;
     private long categoryId;
     private long placeId;
+    private String placeUrl;
 
     public static PlaceDtoVlog of (Place P){
         return new PlaceDtoVlog(
@@ -19,7 +20,8 @@ public class PlaceDtoVlog {
                 P.getLocation_x(),
                 P.getLocation_y(),
                 P.getCategory().getId(),
-                P.getId()
+                P.getId(),
+                P.getPlaceUrl()
         );
     }
 }

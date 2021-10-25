@@ -47,6 +47,7 @@ public class Place {
         this.category=category;
         category.getPlaceList().add(this);
     }
+
     public void setCity(City city){
         this.city = city;
         city.getPlaceList().add(this);

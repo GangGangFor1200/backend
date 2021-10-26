@@ -26,13 +26,6 @@ public class CourseService {
     @Transactional
     public Long addCourse(Member member, List<Myplace> myplaceList, String name){
         List<Course> courseList = member.getCourseList();
-
-        //Optional로 null 검사
-        Optional<Course> byNameAndMember = courseRepository.findByNameAndMember(name, member);
-        if (byNameAndMember.isPresent()) {
-            throw new NoSuchElementException("존재하는 이름입니다");
-        }
-
         Course course= Course.createCourse(name, member);
         addmyplaceCourse(course, myplaceList);
 

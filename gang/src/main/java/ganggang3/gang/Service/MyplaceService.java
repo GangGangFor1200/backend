@@ -46,7 +46,7 @@ public class MyplaceService {
        return saved.getId();
     }
     @Transactional
-    public Long addFromApi(Member member, Map<String,Object> map) {
+    public Myplace addFromApi(Member member, Map<String,Object> map) {
         List<Myplace> myplaceList=new ArrayList<>();
         Myplace myplace = Myplace.createMyplace(
                 map.get("name").toString(),
@@ -66,7 +66,7 @@ public class MyplaceService {
         }
         Myplace saved = myplaceRepository.save(myplace);
 
-        return saved.getId();
+        return saved;
     }
 
     @Transactional

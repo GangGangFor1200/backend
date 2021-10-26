@@ -52,7 +52,12 @@ public class MyplaceApiController {
     public void addMyplaceFromapi(@PathVariable("memberid") Long member_id,@RequestBody Map<String,Object> map) {
         Member member=memberService.findById(member_id);
         myplaceService.addFromApi(member,map);
-
+    }
+    @PostMapping("/api/myplace/addfromstart/{memberid}")
+    public Result addMyplaceFromstart(@PathVariable("memberid") Long member_id,@RequestBody Map<String,Object> map) {
+        Member member=memberService.findById(member_id);
+        Myplace myplace = myplaceService.addFromApi(member, map);
+        return new Result(myplace);
     }
     @DeleteMapping("/api/myplace/deletebyplace/{memberid}/{placeid}")
     public void deleteMyplaceByPlace(@PathVariable("memberid") Long member_id,@PathVariable("placeid") Long place_id){

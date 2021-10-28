@@ -18,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -61,9 +62,12 @@ public class MyplaceApiController_en {
         myplaceService.add(member,place);
     }
     @PostMapping("/api/en/myplace/addfromapi/{memberid}")
-    public void addMyplaceFromapi(@PathVariable("memberid") Long member_id,@RequestBody Map<String,Object> map) {
+    public Map<String,Long> addMyplaceFromapi(@PathVariable("memberid") Long member_id,@RequestBody Map<String,Object> map) {
         Member member=memberService.findById(member_id);
-        myplaceService.addFromApi(member,map);
+        MyplaceEn myplaceEn=myplaceService.addFromApi(member,map);
+        Map<String,Long> map1=new HashMap<>();
+        map1.put("myplaceid",myplaceEn.getId());
+        return map1;
     }
     @DeleteMapping("/api/en/myplace/deletebyplace/{memberid}/{placeid}")
     public void deleteMyplaceByPlace(@PathVariable("memberid") Long member_id,@PathVariable("placeid") Long place_id){

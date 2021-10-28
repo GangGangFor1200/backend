@@ -31,12 +31,6 @@ public class CourseService_en {
     public Long addCourse(Member member, List<MyplaceEn> myplaceList, String name){
         List<CourseEn> courseList = member.getCourseListEn();
 
-        //Optional로 null 검사
-        Optional<CourseEn> byNameAndMember = courseRepository.findByNameAndMember(name, member);
-        if (byNameAndMember.isPresent()) {
-            throw new NoSuchElementException("존재하는 이름입니다");
-        }
-
         CourseEn course= CourseEn.createCourse(name, member);
         addmyplaceCourse(course, myplaceList);
 

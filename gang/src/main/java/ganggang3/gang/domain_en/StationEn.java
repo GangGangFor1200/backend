@@ -21,6 +21,9 @@ public class StationEn {
 
     private String name;
 
+    private double location_x;
+    private double location_y;
+
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_en_id")

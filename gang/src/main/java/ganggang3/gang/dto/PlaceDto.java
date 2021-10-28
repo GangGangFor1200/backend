@@ -17,7 +17,9 @@ public class PlaceDto {
     private String address;
     private String phone;
     private String placeUrl;
+    private String image;
     private List<VlogDto> vlog_list;
+
 
 
 
@@ -30,6 +32,7 @@ public class PlaceDto {
                 P.getPhone(),
                 P.getAddress(),
                 P.getPlaceUrl(),
+                P.getImage(),
                 vlogList // 위에서 만들어준 place_vlog_dto
         );
     }

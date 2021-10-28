@@ -39,6 +39,8 @@ public class Place {
 
     private String address;
 
+    private String image;
+
     @OneToMany(mappedBy = "place",cascade = CascadeType.ALL)
     private List<PlaceVlog> place_vlogList=new ArrayList<>();
 

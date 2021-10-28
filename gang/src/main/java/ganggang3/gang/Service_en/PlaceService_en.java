@@ -61,6 +61,7 @@ public class PlaceService_en {
                     p.getAddress(),
                     p.getPhone(),
                     p.getPlaceUrl(),
+                    p.getImage(),
                     vlog_list
             );
 

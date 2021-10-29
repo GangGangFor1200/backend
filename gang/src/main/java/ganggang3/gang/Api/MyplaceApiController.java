@@ -49,7 +49,6 @@ public class MyplaceApiController {
         List<Long> exists = myplaceService.isExists(member, map);
         return exists;
     }
-
     @PostMapping("/api/myplace/add/{memberid}/{placeid}")
     public void addMyplace(@PathVariable("memberid") Long member_id,@PathVariable("placeid") Long place_id) {
         Member member=memberService.findById(member_id);
@@ -68,7 +67,6 @@ public class MyplaceApiController {
     public Result addMyplaceFromstart(@PathVariable("memberid") Long member_id,@RequestBody Map<String,Object> map) {
         Member member=memberService.findById(member_id);
         MyplaceDto myplaceDto = MyplaceDto.of(myplaceService.addFromApi(member, map));
-
         return new Result(myplaceDto);
     }
     @DeleteMapping("/api/myplace/deletebyplace/{memberid}/{placeid}")
@@ -77,6 +75,7 @@ public class MyplaceApiController {
         Place place=placeService.findById(place_id);
         myplaceService.deleteByPlace(member,place);
     }
+
     @DeleteMapping("/api/myplace/deletebymyplace/{memberid}/{myplaceid}")
     public void deleteMyplaceByMyplace(@PathVariable("memberid") Long member_id,@PathVariable("myplaceid") Long myplace_id){
         Member member=memberService.findById(member_id);

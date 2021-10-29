@@ -1,5 +1,6 @@
 package ganggang3.gang.Api_en;
 
+import ganggang3.gang.Api.MyplaceApiController;
 import ganggang3.gang.Service.MemberService;
 import ganggang3.gang.Service.MyplaceService;
 import ganggang3.gang.Service.PlaceService;
@@ -30,7 +31,26 @@ public class MyplaceApiController_en {
     private final MemberService memberService;
     private final PlaceService_en placeService;
 
-
+    @PostMapping("/api/en/myplace/isexists/{memberid}")
+    public List<Long> isExists(@PathVariable("memberid") Long member_id, @RequestBody Map<String,Long>map){
+        Member member=memberService.findById(member_id);
+        List<Long> exists = myplaceService.isExists(member, map);
+        return exists;
+    }
+    @PostMapping("/api/en/myplace/addfromstart/{memberid}")
+    public Result addMyplaceFromstart(@PathVariable("memberid") Long member_id, @RequestBody Map<String,Object> map) {
+        Member member=memberService.findById(member_id);
+        MyplaceDto myplaceDto = new MyplaceDto(
+                Long.valueOf(map.get("id").toString()),
+                map.get("name").toString(),
+                map.get("categoey").toString(),
+                Double.valueOf(map.get("location_x").toString()),
+                Double.valueOf(map.get("location_y").toString()),
+                map.get("address").toString(),
+                Long.valueOf(map.get("placeId").toString())
+        );
+        return new Result(myplaceDto);
+    }
     @GetMapping("/api/en/myplace/findall/{memberid}")
     public Result findAllMyplace(@PathVariable("memberid") Long member_id){
         Member member=memberService.findById(member_id);

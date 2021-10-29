@@ -7,7 +7,7 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     properties:
       hibernate:
         show_sql: true
@@ -18,5 +18,5 @@ logging:
     org.hibernate.type: trace
     org.springframework: INFO
     org.springframework.web: DEBUG
-#server:
-#  port: 80
+server:
+  port: 80

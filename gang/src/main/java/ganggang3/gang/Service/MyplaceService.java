@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
@@ -27,6 +28,32 @@ public class MyplaceService {
     public Myplace findByMemberAndPlaceId(Member member, Long placeid){
         Myplace myplace= myplaceRepository.findByMemberAndPlaceId(member,placeid);
         return myplace;
+    }
+
+    public List<Myplace> findMyplaceList(Member member){
+        return myplaceRepository.findAllByMember(member);
+    }
+    public Myplace findById(Long myplaceId) {
+        Optional<Myplace> myplace=myplaceRepository.findById(myplaceId);
+        return myplace.orElseThrow(()->new NoSuchElementException("myplace가 존재하지 않습니다"));
+    }
+
+    public List<Long> isExists(Member member,Map<String,Long> map){
+        List<Long> placeIdList = new ArrayList<>(map.values());
+        List<Long> checkList = new ArrayList<>();
+        placeIdList.forEach(
+                id->{
+                    Myplace byMemberAndPlaceId = myplaceRepository.findByMemberAndPlaceId(member, id);
+                    if (byMemberAndPlaceId!=null){
+                        checkList.add(byMemberAndPlaceId.getPlaceId());
+                    }
+                    else{
+                        checkList.add(Long.valueOf(-1));
+                    }
+                }
+        );
+
+        return checkList;
     }
 
 
@@ -97,13 +124,6 @@ public class MyplaceService {
         myplaceRepository.deleteByMemberAndName(member, myplace.getName());
     }
 
-    public List<Myplace> findMyplaceList(Member member){
-        return myplaceRepository.findAllByMember(member);
-    }
-    public Myplace findById(Long myplaceId) {
-        Optional<Myplace> myplace=myplaceRepository.findById(myplaceId);
-        return myplace.orElseThrow(()->new NoSuchElementException("myplace가 존재하지 않습니다"));
-    }
 
     public List<Myplace> convertMyplaceList(List<Map<String,Object>> list, Member member) {
         List<Myplace> myplaceList=new ArrayList<>();

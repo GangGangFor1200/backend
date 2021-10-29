@@ -16,11 +16,18 @@ public class MyplaceService {
 
     private final MyplaceRepository myplaceRepository;
 
+
     public Myplace findByMemberAndName(Member member, String name){
         Myplace myplace=myplaceRepository.findByMemberAndName(member,name);
         return myplace;
         //return myplace.orElseThrow(()->new NoSuchElementException("myplace가 존재하지 않습니다"));-> 이거 추가하면 아래에서 add되어 있는지 확인을 못함
     }
+
+    public Myplace findByMemberAndPlaceId(Member member, Long placeid){
+        Myplace myplace= myplaceRepository.findByMemberAndPlaceId(member,placeid);
+        return myplace;
+    }
+
 
     @Transactional
     public Long add(Member member, Place place){
@@ -48,6 +55,7 @@ public class MyplaceService {
     @Transactional
     public Myplace addFromApi(Member member, Map<String,Object> map) {
         List<Myplace> myplaceList=new ArrayList<>();
+
         Myplace myplace = Myplace.createMyplace(
                 map.get("name").toString(),
                 map.get("category").toString(),
@@ -59,12 +67,21 @@ public class MyplaceService {
         );
 
 
-        Myplace check = findByMemberAndName(member, myplace.getName());
+
+        Myplace check = findByMemberAndPlaceId(member, myplace.getPlaceId());
+
+        Myplace saved;
+
         if (check!=null){
             //예외처리 하기
+            saved = check;
             throw new DatabaseException("이미 저장되어 있는 MYPLACE입니다!");
+
         }
-        Myplace saved = myplaceRepository.save(myplace);
+        else{
+            saved = myplaceRepository.save(myplace);
+        }
+
 
         return saved;
     }

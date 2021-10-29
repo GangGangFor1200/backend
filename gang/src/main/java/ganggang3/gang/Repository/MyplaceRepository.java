@@ -14,6 +14,7 @@ public interface MyplaceRepository  extends JpaRepository<Myplace,Long> {
 
     List<Myplace> findAllByMember(Member member);
     Myplace findByMemberAndName(Member member , String name);
+    Myplace findByMemberAndPlaceId(Member member, Long placeid);
     void deleteByMemberAndName(Member member, String name);
 
     Optional<Myplace> findByName(String name);

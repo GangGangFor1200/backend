@@ -43,6 +43,13 @@ public class MyplaceApiController {
         return new Result(myplaceDtoList);
 
     }
+    @PostMapping("/api/myplace/isexists/{memberid}")
+    public List<Long> isExists(@PathVariable("memberid") Long member_id, @RequestBody Map<String,Long>map){
+        Member member=memberService.findById(member_id);
+        List<Long> exists = myplaceService.isExists(member, map);
+        return exists;
+    }
+
     @PostMapping("/api/myplace/add/{memberid}/{placeid}")
     public void addMyplace(@PathVariable("memberid") Long member_id,@PathVariable("placeid") Long place_id) {
         Member member=memberService.findById(member_id);

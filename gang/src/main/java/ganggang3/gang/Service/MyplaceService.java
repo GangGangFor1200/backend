@@ -45,7 +45,7 @@ public class MyplaceService {
                 id->{
                     Myplace byMemberAndPlaceId = myplaceRepository.findByMemberAndPlaceId(member, id);
                     if (byMemberAndPlaceId!=null){
-                        checkList.add(byMemberAndPlaceId.getPlaceId());
+                        checkList.add(byMemberAndPlaceId.getId());
                     }
                     else{
                         checkList.add(Long.valueOf(-1));

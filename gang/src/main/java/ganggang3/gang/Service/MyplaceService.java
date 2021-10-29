@@ -2,6 +2,7 @@ package ganggang3.gang.Service;
 
 import ganggang3.gang.Repository.MyplaceRepository;
 import ganggang3.gang.domain.*;
+import ganggang3.gang.dto.MyplaceDto;
 import ganggang3.gang.exception.DatabaseException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,7 @@ public class MyplaceService {
         Myplace myplace= myplaceRepository.findByMemberAndPlaceId(member,placeid);
         return myplace;
     }
+
 
 
     @Transactional
@@ -65,23 +67,18 @@ public class MyplaceService {
                 Long.valueOf(map.get("placeId").toString()),
                 member
         );
-
-
-
+        //api에서 검사를 하고 service를 호출해서 2번 검사할필요없다
+        // 프론트에서 이미 저장되어있는 myplace를 넘겨받아야해서 오류메세지 못보여주고 api단에서 검사했음
         Myplace check = findByMemberAndPlaceId(member, myplace.getPlaceId());
 
         Myplace saved;
 
         if (check!=null){
-            //예외처리 하기
-            saved = check;
-            throw new DatabaseException("이미 저장되어 있는 MYPLACE입니다!");
-
+            saved= check;
         }
         else{
-            saved = myplaceRepository.save(myplace);
+            saved =  myplaceRepository.save(myplace);
         }
-
 
         return saved;
     }

@@ -60,8 +60,8 @@ public class MyplaceApiController {
     @PostMapping("/api/myplace/addfromstart/{memberid}")
     public Result addMyplaceFromstart(@PathVariable("memberid") Long member_id,@RequestBody Map<String,Object> map) {
         Member member=memberService.findById(member_id);
-        Myplace myplace = myplaceService.addFromApi(member, map);
-        MyplaceDto myplaceDto=MyplaceDto.of(myplace);
+        MyplaceDto myplaceDto = MyplaceDto.of(myplaceService.addFromApi(member, map));
+
         return new Result(myplaceDto);
     }
     @DeleteMapping("/api/myplace/deletebyplace/{memberid}/{placeid}")

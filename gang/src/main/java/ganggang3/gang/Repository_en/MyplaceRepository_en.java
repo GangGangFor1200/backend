@@ -18,6 +18,6 @@ public interface MyplaceRepository_en extends JpaRepository<MyplaceEn,Long> {
     void deleteByMemberAndName(Member member, String name);
 
     Optional<MyplaceEn> findByName(String name);
-
+    MyplaceEn findByMemberAndPlaceId(Member member, Long placeid);
     MyplaceEn findByIdAndMember(Long myplace_id, Member member);
 }

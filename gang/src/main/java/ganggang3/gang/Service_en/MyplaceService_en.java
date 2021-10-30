@@ -24,6 +24,23 @@ public class MyplaceService_en {
         return myplace;
         //return myplace.orElseThrow(()->new NoSuchElementException("myplace가 존재하지 않습니다"));-> 이거 추가하면 아래에서 add되어 있는지 확인을 못함
     }
+    public List<Long> isExists(Member member,Map<String,Long> map){
+        List<Long> placeIdList = new ArrayList<>(map.values());
+        List<Long> checkList = new ArrayList<>();
+        placeIdList.forEach(
+                id->{
+                    MyplaceEn byMemberAndPlaceId = myplaceRepository.findByMemberAndPlaceId(member, id);
+                    if (byMemberAndPlaceId!=null){
+                        checkList.add(byMemberAndPlaceId.getId());
+                    }
+                    else{
+                        checkList.add(Long.valueOf(-1));
+                    }
+                }
+        );
+
+        return checkList;
+    }
 
     @Transactional
     public Long add(Member member, PlaceEn place){
@@ -65,11 +82,15 @@ public class MyplaceService_en {
 
 
         MyplaceEn check = findByMemberAndName(member, myplace.getName());
+
+        MyplaceEn saved;
+
         if (check!=null){
-            //예외처리 하기
-            throw new DatabaseException("이미 저장되어 있는 MYPLACE입니다!");
+            saved= check;
         }
-        MyplaceEn saved = myplaceRepository.save(myplace);
+        else{
+            saved =  myplaceRepository.save(myplace);
+        }
 
         return saved;
 

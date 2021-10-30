@@ -1,6 +1,7 @@
 package ganggang3.gang.dto;
 
 import ganggang3.gang.domain.Myplace;
+import ganggang3.gang.domain_en.MyplaceEn;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -26,5 +27,16 @@ public class MyplaceDto {
                 M.getAddress(),
                 M.getPlaceId()
             );
+    }
+    public static MyplaceDto of (MyplaceEn M){
+        return new MyplaceDto(
+                M.getId(),
+                M.getName(),
+                M.getCategory(),
+                M.getLocation_x(),
+                M.getLocation_y(),
+                M.getAddress(),
+                M.getPlaceId()
+        );
     }
 }

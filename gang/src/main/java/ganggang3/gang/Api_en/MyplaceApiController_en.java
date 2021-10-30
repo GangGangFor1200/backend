@@ -1,5 +1,6 @@
 package ganggang3.gang.Api_en;
 
+import ganggang3.gang.Api.MyplaceApiController;
 import ganggang3.gang.Service.MemberService;
 import ganggang3.gang.Service.MyplaceService;
 import ganggang3.gang.Service.PlaceService;
@@ -68,6 +69,12 @@ public class MyplaceApiController_en {
         Map<String,Long> map1=new HashMap<>();
         map1.put("myplaceid",myplaceEn.getId());
         return map1;
+    }
+    @PostMapping("/api/en/myplace/addfromstart/{memberid}")
+    public Result addMyplaceFromstart(@PathVariable("memberid") Long member_id, @RequestBody Map<String,Object> map) {
+        Member member=memberService.findById(member_id);
+        MyplaceDto myplaceDto = MyplaceDto.of(myplaceService.addFromApi(member, map));
+        return new Result(myplaceDto);
     }
     @DeleteMapping("/api/en/myplace/deletebyplace/{memberid}/{placeid}")
     public void deleteMyplaceByPlace(@PathVariable("memberid") Long member_id,@PathVariable("placeid") Long place_id){

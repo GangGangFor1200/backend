@@ -42,9 +42,7 @@ public class MyplaceApiController_en {
     public Result findAllMyplace(@PathVariable("memberid") Long member_id){
         Member member=memberService.findById(member_id);
         List<MyplaceEn> myplaceList = myplaceService.findMyplaceList(member);
-
         List<MyplaceDto> myplaceDtoList = new ArrayList<>();
-
         if (myplaceList!=null) {
             myplaceList.forEach(p -> {
                 MyplaceDto md = new MyplaceDto(
@@ -88,10 +86,10 @@ public class MyplaceApiController_en {
         PlaceEn place=placeService.findById(place_id);
         myplaceService.deleteByPlace(member,place);
     }
-    @DeleteMapping("/api/en/myplace/deletebymyplace/{memberid}/{myplacename}")
-    public void deleteMyplaceByMyplace(@PathVariable("memberid") Long member_id,@PathVariable("myplacename") String myplace_name){
+    @DeleteMapping("/api/en/myplace/deletebymyplace/{memberid}/{myplaceid}")
+    public void deleteMyplaceByMyplace(@PathVariable("memberid") Long member_id,@PathVariable("myplaceid") Long myplace_id){
         Member member=memberService.findById(member_id);
-        MyplaceEn myplace=myplaceService.findByName(myplace_name);
+        MyplaceEn myplace=myplaceService.findById(myplace_id);
         myplaceService.deleteByMyplace(member,myplace);
     }
 
